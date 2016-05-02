@@ -1,8 +1,8 @@
 package net.qial.vj.shape;
 
-interface Shape
+public interface Shape
 {
-  void paint();
+  public void paint();
 }
 
 //For shapes like the V, maybe I need a way to define a 

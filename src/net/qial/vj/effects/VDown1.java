@@ -1,15 +1,18 @@
 package net.qial.vj.effects;
 
-class VDown1 extends SimpleEffect
+import net.qial.vj.effect.ProcessingEffect;
+import net.qial.vj.util.DrawUtil;
+
+public class VDown1 extends ProcessingEffect
 {
-  void play() {
+  public void play() {
     stroke(255);
     for(int i = 0; i < 6; i++){
       if(i == 0) {
-        float opacity = 255.0/120.0;
-        int frameAmt = frameCount%120;
+        float opacity = 255.0f/120.0f;
+        int frameAmt = frameCount()%120;
         
-        int alpha = (int) (255.0 * (waveUp(frameAmt,120)));
+        int alpha = (int) (255.0 * (DrawUtil.waveUp(frameAmt,120)));
         stroke(alpha);
         fill(alpha);
       } else {
@@ -17,8 +20,8 @@ class VDown1 extends SimpleEffect
         fill(255);
       }
       int off = 120*i;
-      off += frameCount%120;
-      makeV(60,off+30);
+      off += frameCount()%120;
+      DrawUtil.makeV(60,off+30,app);
     }
   }
 }

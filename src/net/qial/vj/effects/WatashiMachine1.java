@@ -1,6 +1,9 @@
 package net.qial.vj.effects;
 
-class WatashiMachine1 extends StreamEffect
+import net.qial.vj.effect.StreamEffect;
+import net.qial.vj.shapes.Rectangle;
+
+public class WatashiMachine1 extends StreamEffect
 {
   WatashiMachine1() {
     // this one is nearly exact

@@ -1,13 +1,16 @@
 package net.qial.vj.shapes;
 
+import net.qial.vj.shape.Shape;
+import net.qial.vj.util.DrawUtil;
+
 class VShape implements Shape
 {
   int w, o;
-  VShape(int w, int offset) {
+  public VShape(int w, int offset) {
     this.w = w;
     this.o = offset;
   }
-  void paint() {
-    makeV(w,o);
+  public void paint() {
+    //DrawUtil.makeV(w,o);
   }
 }

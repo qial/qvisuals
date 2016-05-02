@@ -2,7 +2,10 @@ package net.qial.vj.processing;
 
 import java.util.ArrayList;
 
-import net.qial.vj.effect.Effect;
+import net.qial.vj.effect.*;
+import net.qial.vj.effects.*;
+import net.qial.vj.sequencer.*;
+import net.qial.vj.sequencers.*;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -23,13 +26,18 @@ public class Visuals extends PApplet {
 	int debugFrame = 0;
 	int debugLength = 0;
 	PFont debugFont;
+	
+	public void settings() {
+		// define size
+
+		  size(1280, 720, P3D);
+	}
 
 	public void setup() {
 		// Set the app in ProcessingUtil so effects can find it
 		ProcessingUtil.setApp(this);
 		
 	  // set up basic stuff
-	  size(1280, 720, P3D);
 	  frameRate(60);
 	  strokeWeight(4);
 	  
@@ -44,7 +52,7 @@ public class Visuals extends PApplet {
 	  //spout.initSender("Spout Processing", width, height);
 	  
 	  seq = new SineSequencer();
-	  seq.setSpeed(0.25);
+	  seq.setSpeed(0.25f);
 	  seq.setPeriod(1);
 	  
 	  // set up effects

@@ -1,11 +1,14 @@
 package net.qial.vj.effects;
 
-class TriangleWave2 extends SimpleEffect
+import net.qial.vj.effect.ProcessingEffect;
+import net.qial.vj.util.DrawUtil;
+
+public class TriangleWave2 extends ProcessingEffect
 {
-  void play() {
-    float amt = sin(frameCount/60.0)*30;
+  public void play() {
+    float amt = sin(frameCount()/60.0f)*30.0f;
     for(int i = 1; i < 20; i++) {
-      makeTriangle((int)(100+(amt * i)),100*i);
+      DrawUtil.makeTriangle((int)(100+(amt * i)),100*i,app);
     }
   }
 }

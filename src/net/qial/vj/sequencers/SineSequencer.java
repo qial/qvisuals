@@ -8,17 +8,17 @@ public class SineSequencer extends ProcessingSequencer
   
   // percentage of 2pi the points are over
   // default is 1
-  float period = 1.0f;
+  private float period = 1.0f;
   
   // speed multiplier
   // default speed is a period every measure (once per 2 seconds)
-  float speed = 1.0f;
+  private float speed = 1.0f;
   
   // offset, where to start pattern (Expected to be actual number)
   // Only particularly useful for exporting
-  float offset = 0.0f;
+  private float offset = 0.0f;
    
-  SineSequencer () {
+  public SineSequencer () {
     recalculate();
   }
   
@@ -31,19 +31,17 @@ public class SineSequencer extends ProcessingSequencer
     x += (pointOffset * point);
     
     if(positive()) {
-      // convert sign wave to 0-1
+      // convert sign wave to 0->1
       float val = PApplet.sin(x);
-      val += 1;
-      val /= 2;
       return (PApplet.sin(x)+1.0f)/2.0f;
     }
     return PApplet.sin(x);
   }
   
   // internal calculated variables
-  float periodOffset;
-  float pointOffset;
-  float frameSpeed;
+  private float periodOffset;
+  private float pointOffset;
+  private float frameSpeed;
   
   protected void recalculate() {
     // period offset is simply where it starts, so 1.0 is 
@@ -57,17 +55,17 @@ public class SineSequencer extends ProcessingSequencer
     frameSpeed = (PApplet.PI / frameRate()) * speed;
   }
   
-  void setPeriod(float period) {
+  public void setPeriod(float period) {
     this.period = period;
     recalculate();
   }
   
-  void setSpeed(float speed) {
+  public void setSpeed(float speed) {
     this.speed = speed;
     recalculate();
   }
   
-  void setOffset(float offset) {
+  public void setOffset(float offset) {
     this.offset = offset;
     recalculate();
   }
