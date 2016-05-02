@@ -1,8 +1,8 @@
 package net.qial.vj.sequencer;
 
-interface Sequencer
+public interface Sequencer
 {
-  float get(int point);
-  int getPoints();
-  void setPoints(int points);
+  public float get(int point);
+  public int getPoints();
+  public void setPoints(int points);
 }

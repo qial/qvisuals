@@ -3,7 +3,7 @@ package net.qial.vj.effect;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class ParamEffect extends SimpleEffect
+public abstract class ParamEffect extends ProcessingEffect
 {
   ArrayList<String> paramNames = new ArrayList<String>();
   HashMap<String,Integer> params = new HashMap<String,Integer>();
@@ -24,8 +24,8 @@ public abstract class ParamEffect extends SimpleEffect
   }
   
   public void handleKey() {
-    println("gotkey "+key);
-    switch(key) {
+    println("gotkey "+key());
+    switch(key()) {
       case 'q': incParam(0);break;
       case 'Q': incParamAmt(0);break;
       case 'a': decParam(0);break;

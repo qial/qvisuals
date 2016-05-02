@@ -4,24 +4,24 @@ import java.util.ArrayList;
 
 import net.qial.vj.shapes.Rectangle;
 
-class StreamEffect extends SimpleEffect
+public class StreamEffect extends ProcessingEffect
 {
   private ArrayList<Rectangle> cams;
   private Rectangle gameOuter;
   private Rectangle gameInner;
-  StreamEffect() {
+  public StreamEffect() {
     cams = new ArrayList<Rectangle>();
   }
-  void setOuter(Rectangle outer) {
+  public void setOuter(Rectangle outer) {
     this.gameOuter = outer;
   }
-  void setInner(Rectangle inner) {
+  public void setInner(Rectangle inner) {
     this.gameInner = inner;
   }
-  void addCam(Rectangle cam) {
+  public void addCam(Rectangle cam) {
     cams.add(cam);
   }
-  void play() {
+  public void play() {
     background(255);
     noStroke();
     fill(0);

@@ -1,31 +1,35 @@
 package net.qial.vj.sequencers;
 
-class PulseSequencer extends AbstractSequencer
+import net.qial.vj.sequencer.AbstractSequencer;
+import net.qial.vj.sequencer.ProcessingSequencer;
+import net.qial.vj.util.DrawUtil;
+
+public class PulseSequencer extends ProcessingSequencer
 {
   // amount of frames it takes for the pulse to fully travel
-  int pulseLength = 60;
+  private int pulseLength = 60;
   
   // amount of frames the pulse takes to go up and back.
-  int pulseWidth = 30;
+  private int pulseWidth = 30;
   
   // internal vars
-  float pointWidth = 0.0;
+  private float pointWidth = 0.0f;
   
-  PulseSequencer() {
+  public PulseSequencer() {
     // pulses are in a single direction, so always positive
     setPositive(true);
     recalculate();
   }
   
-  float get(int point) {
+  public float get(int point) {
     // determine framecount to figure out what range
     // of points are within the pulse
-    int pulseFrame = frameCount % pulseLength;
+    int pulseFrame = frameCount() % pulseLength;
     // pulseFrame is now the current frame along the pulse
     
     int pointLocation = round(pointWidth * point);
-    int pulseStart = round(pulseFrame - (pulseWidth/2.0));
-    int pulseEnd = round(pulseFrame + (pulseWidth/2.0));
+    int pulseStart = round(pulseFrame - (pulseWidth/2.0f));
+    int pulseEnd = round(pulseFrame + (pulseWidth/2.0f));
     println("point="+point
         +" pointw="+pointWidth
         +" pulseFrame="+pulseFrame
@@ -36,12 +40,12 @@ class PulseSequencer extends AbstractSequencer
       // get distance from pulse start
       float dist = pointLocation-pulseStart;
       // use the wave function
-      float amt = wave(dist,pulseWidth);
+      float amt = DrawUtil.wave(dist,pulseWidth);
       println("dist="+dist+" amt="+amt);
       return amt;
     }
     else {
-      return 0.0;
+      return 0.0f;
     }
     
     
@@ -71,13 +75,13 @@ class PulseSequencer extends AbstractSequencer
     //return amt;
   }
   
-  void setPulseLength(int pulseLength) {
+  public void setPulseLength(int pulseLength) {
     this.pulseLength = pulseLength;
     recalculate();
   }
   
   // recalculate internal variables
-  void recalculate() {
-    pointWidth = ((float)pulseLength)/((float)points);
+  protected void recalculate() {
+    pointWidth = ((float)pulseLength)/((float)getPoints());
   }
 }

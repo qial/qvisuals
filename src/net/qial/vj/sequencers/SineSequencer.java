@@ -1,40 +1,43 @@
 package net.qial.vj.sequencers;
 
-class SineSequencer extends AbstractSequencer
+import processing.core.PApplet;
+import net.qial.vj.sequencer.ProcessingSequencer;
+
+public class SineSequencer extends ProcessingSequencer
 {
   
   // percentage of 2pi the points are over
   // default is 1
-  float period = 1.0;
+  float period = 1.0f;
   
   // speed multiplier
   // default speed is a period every measure (once per 2 seconds)
-  float speed = 1.0;
+  float speed = 1.0f;
   
   // offset, where to start pattern (Expected to be actual number)
   // Only particularly useful for exporting
-  float offset = 0.0;
+  float offset = 0.0f;
    
   SineSequencer () {
     recalculate();
   }
   
-  float get(int point) {
+  public float get(int point) {
     // get the current point in the pattern
-    float x = frameCount * frameSpeed;
+    float x = frameCount() * frameSpeed;
     // add offset
     x += periodOffset;
     // add point offset
     x += (pointOffset * point);
     
-    if(positive) {
+    if(positive()) {
       // convert sign wave to 0-1
-      float val = sin(x);
+      float val = PApplet.sin(x);
       val += 1;
       val /= 2;
-      return (sin(x)+1.0)/2.0;
+      return (PApplet.sin(x)+1.0f)/2.0f;
     }
-    return sin(x);
+    return PApplet.sin(x);
   }
   
   // internal calculated variables
@@ -42,16 +45,16 @@ class SineSequencer extends AbstractSequencer
   float pointOffset;
   float frameSpeed;
   
-  void recalculate() {
+  protected void recalculate() {
     // period offset is simply where it starts, so 1.0 is 
-    periodOffset = offset * PI;
+    periodOffset = offset * PApplet.PI;
     // point offset is the period length divided by number of points
     // must also convert period length to PI amounts
-    pointOffset = (period / points) * TWO_PI;
+    pointOffset = (period / getPoints()) * PApplet.TWO_PI;
     // framespeed is how much of a period per frame
     // speed 1.0 = 2*frameRate per period
     // speed 0.5 = frameRate per period
-    frameSpeed = (PI / frameRate) * speed;
+    frameSpeed = (PApplet.PI / frameRate()) * speed;
   }
   
   void setPeriod(float period) {

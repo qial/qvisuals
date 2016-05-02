@@ -1,12 +1,12 @@
 package net.qial.vj.effect;
 
-interface Effect
+public interface Effect
 {
-  String name();
-  void play();
-  void handleKey();
-  void setEnabled(boolean enabled);
-  boolean enabled();
-  void toggleAlwaysOn();
-  boolean alwaysOn();
+  public String name();
+  public void play();
+  public void handleKey();
+  public void setEnabled(boolean enabled);
+  public boolean enabled();
+  public void toggleAlwaysOn();
+  public boolean alwaysOn();
 }

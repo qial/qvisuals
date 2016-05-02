@@ -2,6 +2,7 @@ package net.qial.vj.processing;
 
 import java.util.ArrayList;
 
+import net.qial.vj.effect.Effect;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -11,8 +12,6 @@ public class Visuals extends PApplet {
 	//Spout spout;
 
 	PImage tex;
-
-	float altitude = 0.5f * sqrt(3);
 
 	SineSequencer seq;
 
@@ -26,6 +25,9 @@ public class Visuals extends PApplet {
 	PFont debugFont;
 
 	public void setup() {
+		// Set the app in ProcessingUtil so effects can find it
+		ProcessingUtil.setApp(this);
+		
 	  // set up basic stuff
 	  size(1280, 720, P3D);
 	  frameRate(60);

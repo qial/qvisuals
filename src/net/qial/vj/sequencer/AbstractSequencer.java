@@ -1,6 +1,6 @@
 package net.qial.vj.sequencer;
 
-abstract class AbstractSequencer implements Sequencer
+public abstract class AbstractSequencer implements Sequencer
 {
   // number of points in set
   // default is 10
@@ -10,22 +10,22 @@ abstract class AbstractSequencer implements Sequencer
   boolean positive = false;
   
   // recalculate any internal vars
-  abstract void recalculate();
+  protected abstract void recalculate();
   
-  int getPoints() {
+  public int getPoints() {
     return points;
   }
   
-  boolean positive() {
+  public boolean positive() {
     return positive;
   }
   
-  void setPoints(int points) {
+  public void setPoints(int points) {
     this.points = points;
     recalculate();
   }
   
-  void setPositive(boolean positive) {
+  public void setPositive(boolean positive) {
     this.positive = positive;
     // likely nothing to recalculate, but just in case
     recalculate();
