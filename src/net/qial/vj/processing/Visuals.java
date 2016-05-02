@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PFont;
+import processing.core.PImage;
 
 public class Visuals extends PApplet {
 
-	Spout spout;
+	//Spout spout;
 
 	PImage tex;
 
@@ -24,7 +25,7 @@ public class Visuals extends PApplet {
 	int debugLength = 0;
 	PFont debugFont;
 
-	void setup() {
+	public void setup() {
 	  // set up basic stuff
 	  size(1280, 720, P3D);
 	  frameRate(60);
@@ -35,10 +36,10 @@ public class Visuals extends PApplet {
 	  textFont(debugFont);
 	  
 	  // CREATE A NEW SPOUT OBJECT HERE
-	  spout = new Spout();
+	  //spout = new Spout();
 
 	  // INITIALIZE A SPOUT SENDER HERE
-	  spout.initSender("Spout Processing", width, height);
+	  //spout.initSender("Spout Processing", width, height);
 	  
 	  seq = new SineSequencer();
 	  seq.setSpeed(0.25);
@@ -49,7 +50,7 @@ public class Visuals extends PApplet {
 	  loadEffects();
 	} 
 
-	void loadEffects() {
+	public void loadEffects() {
 	  effects.add(new TriangleWave1());
 	  effects.add(new PulseCircle1());
 	  // put this line after the default effect
@@ -68,7 +69,7 @@ public class Visuals extends PApplet {
 	  effects.get(effects.size()-1).toggleAlwaysOn();
 	}
 
-	void draw()  { 
+	public void draw()  { 
 	    
 	  background(0, 0, 0);
 	  
@@ -98,11 +99,11 @@ public class Visuals extends PApplet {
 	  drawDebugMessage();
 	  
 	  // SEND A SHARED TEXTURE HERE
-	  spout.sendTexture();
+	  //spout.sendTexture();
 	  
 	}
 
-	void drawDebugMessage() {
+	public void drawDebugMessage() {
 	  if(DEBUG) {
 	    if(frameCount > debugFrame && 
 	        frameCount < (debugFrame+debugLength)) {
@@ -112,18 +113,18 @@ public class Visuals extends PApplet {
 	  }
 	}
 
-	void message(String text) {
+	public void message(String text) {
 	  // default length is 2 seconds
 	  message(text,(int)(frameRate));
 	}
 
-	void message(String text, int frames) {
+	public void message(String text, int frames) {
 	  debugMessage = text;
 	  debugFrame = frameCount;
 	  debugLength = frames;
 	}
 
-	void keyPressed() {
+	public void keyPressed() {
 	  if(key >= '1' && key <= '9') {
 	    // enable that effect, remove all other effects
 	    int idx = key-'1';
@@ -175,10 +176,9 @@ public class Visuals extends PApplet {
 	  }
 	}
 
-	// over-ride exit to release sharing
-	void exit() {
+	public void exit() {
 	  // CLOSE THE SPOUT SENDER HERE
-	  spout.closeSender();
+	  //spout.closeSender();
 	  super.exit();
 	} 
 }
