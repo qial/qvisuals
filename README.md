@@ -24,7 +24,7 @@ Feel free to drop by and say hello!
 - Resolume Avenue or other VJ software to combine the two.
 
 # Instructions
-** Work in progress **
+**Work in progress**
 
 Ensure all .jar libraries in the lib/ folder are included. 
 
@@ -67,18 +67,17 @@ spout.pde, JSpout.java, and files in the code32 and code64 folders are copied fr
 
 #### Development goals:
 
-- Convert to Eclipse project with standard java structure:
-
-- Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect.
+- Convert to Eclipse project with standard java structure
+- Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect
 - Set things up so this project can be imported as a JAR into Processing
 - Save/load effect parameters
-- Load new effects on the fly instead of a compiled 1-9 list.
+- Load new effects on the fly instead of a compiled 1-9 list
 - Export-to-video button for simplified export of good effects
-- Better effect abstraction to describe effects as shapes moving through time and hide the math.
-- Support for colored textures and effects beyond grayscale.
+- Better effect abstraction to describe effects as shapes moving through time and hide the math
+- Support for colored textures and effects beyond grayscale
 - MIDI input support to change effect parameters using hardware controllers
 - Support for choosing output resolutions
-- Seamlessly transform effect code to produce same output across range of resolutions.
+- Seamlessly transform effect code to produce same output across range of resolutions
 - Global BPM settings to re-render effects for different BPMs. (Default is 120bpm still)
-- PulseSequencer to render sine wave pulse shapes, definable by speed, amount, and size of pulse.
+- PulseSequencer to render sine wave pulse shapes, definable by speed, amount, and size of pulse
 
