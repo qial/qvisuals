@@ -1,0 +1,7 @@
+# hide built class files
+bin/
+
+# hide eclipse files
+.classpath
+.project
+.settings/
