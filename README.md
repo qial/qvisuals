@@ -26,7 +26,9 @@ Feel free to drop by and say hello!
 # Instructions
 ** Work in progress **
 
-This is currently being developed in Eclipse and still isn't directly runnable.
+Ensure all .jar libraries in the lib/ folder are included. 
+
+Run processing.core.PApplet with the argument "net.qial.vj.processing.Visuals"
 
 # Keys
 #### General Keys
@@ -50,31 +52,24 @@ Using shift + key will change parameter by 5 instead of by 1.
 
 # Development info
 
-#### Outdated PDE file descriptions. Will be updated.
-
-- *vjspout.pde* - Main sketch file, loads effects and handles keyboard input.
-- *effect.pde* - Effect interface and utility classes
-- *effects.pde* - Individual effect implementations 
-- *sequencer.pde* - Sequencer handles the math to make sine-like movement easier for effects to use.
-- *shape.pde* - Beginning work on an API for defining effects
-- *shapes.pde* - Helper methods for drawing shapes used in effects.
+- net.qial.vj.effect - Effect interface and abstract utility classes
+- net.qial.vj.effects - Actual effect implementations
+- net.qial.vj.main - Program start classes
+- net.qial.vj.processing - Processing applet setup and interactivity
+- net.qial.vj.sequencer - Sequencer interface and abstract classes
+- net.qial.vj.sequencers - Sequencer implementations
+- net.qial.vj.shape - API for defining effects
+- net.qial.vj.shapes - Shape implementations
+- net.qial.vj.spout - Spout-based classes and the Spout2 code
+- net.qial.vj.util - utility classes and such
 
 spout.pde, JSpout.java, and files in the code32 and code64 folders are copied from the Spout2 installation.
 
 #### Development goals:
 
 - Convert to Eclipse project with standard java structure:
-  - net.qial.vj.effect - Effect interface and abstract utility classes
-  - net.qial.vj.effects - Actual effect implementations
-  - net.qial.vj.main - Program start classes
-  - net.qial.vj.processing - Processing applet setup and interactivity
-  - net.qial.vj.sequencer - Sequencer interface and abstract classes
-  - net.qial.vj.sequencers - Sequencer implementations
-  - net.qial.vj.shape - API for defining effects
-  - net.qial.vj.shapes - Shape implementations
-  - net.qial.vj.spout - Spout-based classes and the Spout2 code
-  - net.qial.vj.util - utility classes and such
-- Create ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect.
+
+- Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect.
 - Set things up so this project can be imported as a JAR into Processing
 - Save/load effect parameters
 - Load new effects on the fly instead of a compiled 1-9 list.
