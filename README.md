@@ -80,4 +80,4 @@ spout.pde, JSpout.java, and files in the code32 and code64 folders are copied fr
 - Seamlessly transform effect code to produce same output across range of resolutions
 - Global BPM settings to re-render effects for different BPMs. (Default is 120bpm still)
 - PulseSequencer to render sine wave pulse shapes, definable by speed, amount, and size of pulse
-
+- Implement a Spout Receiver to bring in Milkdrop textures natively
