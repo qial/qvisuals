@@ -1,10 +1,14 @@
 package net.qial.vj.effect;
 
+import java.util.ArrayList;
+
+import net.qial.vj.shapes.Rectangle;
+
 class StreamEffect extends SimpleEffect
 {
-  ArrayList<Rectangle> cams;
-  Rectangle gameOuter;
-  Rectangle gameInner;
+  private ArrayList<Rectangle> cams;
+  private Rectangle gameOuter;
+  private Rectangle gameInner;
   StreamEffect() {
     cams = new ArrayList<Rectangle>();
   }

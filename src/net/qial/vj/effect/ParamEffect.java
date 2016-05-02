@@ -1,20 +1,29 @@
 package net.qial.vj.effect;
 
-abstract class ParamEffect extends SimpleEffect
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public abstract class ParamEffect extends SimpleEffect
 {
-  ArrayList paramNames = new ArrayList();
-  HashMap params = new HashMap();
-  void addParam(String name, int initialValue) {
+  ArrayList<String> paramNames = new ArrayList<String>();
+  HashMap<String,Integer> params = new HashMap<String,Integer>();
+  
+  protected void addParam(String name, int initialValue) {
     paramNames.add(name);
     params.put(name,initialValue);
   }
-  void setParam(String name, float val) {
+  
+  public void setParam(String name, int val) {
     params.put(name,val);
   }
-  int getParam(String name) {
-    return (int)params.get(name);
+  
+  public int getParam(String name) {
+	  // this was originally casting float to int
+	  // I've changed the map to only use ints
+    return params.get(name);
   }
-  void handleKey() {
+  
+  public void handleKey() {
     println("gotkey "+key);
     switch(key) {
       case 'q': incParam(0);break;

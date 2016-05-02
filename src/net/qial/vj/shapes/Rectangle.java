@@ -1,9 +1,9 @@
 package net.qial.vj.shapes;
 
-class Rectangle
+public class Rectangle
 {
-  int x,y,h,w;
-  Rectangle(int x, int y, int w, int h) {
+  public int x,y,h,w;
+  public Rectangle(int x, int y, int w, int h) {
     this.x = x;
     this.y = y;
     this.h = h;

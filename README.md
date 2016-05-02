@@ -74,6 +74,8 @@ spout.pde, JSpout.java, and files in the code32 and code64 folders are copied fr
   - net.qial.vj.shapes - Shape implementations
   - net.qial.vj.spout - Spout-based classes and the Spout2 code
   - net.qial.vj.util - utility classes and such
+- Create ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect.
+- Set things up so this project can be imported as a JAR into Processing
 - Save/load effect parameters
 - Load new effects on the fly instead of a compiled 1-9 list.
 - Export-to-video button for simplified export of good effects
