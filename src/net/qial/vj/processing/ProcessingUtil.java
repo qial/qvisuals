@@ -1,7 +1,5 @@
 package net.qial.vj.processing;
 
-import processing.core.PApplet;
-
 // static class to handle the Processing API vars and 
 public class ProcessingUtil {
 	// at the moment uses the Visuals app exclusively so I can use the

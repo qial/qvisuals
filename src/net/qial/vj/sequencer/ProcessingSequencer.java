@@ -8,7 +8,7 @@ public abstract class ProcessingSequencer extends AbstractSequencer {
 	private Visuals app = ProcessingUtil.getApp();
 	
 	public void setPApplet(Visuals v) {
-		this.app = app;
+		this.app = v;
 	}
 	
 	public PApplet getPApplet() {

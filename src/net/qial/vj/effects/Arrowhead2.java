@@ -1,8 +1,6 @@
 package net.qial.vj.effects;
 
 import net.qial.vj.effect.ProcessingEffect;
-import net.qial.vj.sequencer.Sequencer;
-import net.qial.vj.sequencers.SineSequencer;
 
 public class Arrowhead2 extends ProcessingEffect
 {

@@ -1,7 +1,6 @@
 package net.qial.vj.effects;
 
 import net.qial.vj.effect.ParamEffect;
-import net.qial.vj.sequencer.Sequencer;
 import net.qial.vj.sequencers.PulseSequencer;
 import net.qial.vj.util.DrawUtil;
 

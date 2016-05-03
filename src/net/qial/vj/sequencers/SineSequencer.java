@@ -32,7 +32,6 @@ public class SineSequencer extends ProcessingSequencer
     
     if(positive()) {
       // convert sign wave to 0->1
-      float val = PApplet.sin(x);
       return (PApplet.sin(x)+1.0f)/2.0f;
     }
     return PApplet.sin(x);
