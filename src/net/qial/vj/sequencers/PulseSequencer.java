@@ -1,6 +1,5 @@
 package net.qial.vj.sequencers;
 
-import net.qial.vj.sequencer.AbstractSequencer;
 import net.qial.vj.sequencer.ProcessingSequencer;
 import net.qial.vj.util.DrawUtil;
 
