@@ -1,4 +1,4 @@
-package net.qial.vj.effects;
+package net.qial.vj.effects.pulse;
 
 import net.qial.vj.effect.ParamEffect;
 import net.qial.vj.sequencer.Sequencer;
@@ -7,10 +7,10 @@ import net.qial.vj.util.DrawUtil;
 
 public class PulseCircle1 extends ParamEffect
 {
-  final String amt = "shapes";
-  final String inc = "spacing";
-  final String amp = "amplitude";
-  final String skip = "skip";
+  protected final String amt = "shapes";
+  protected final String inc = "spacing";
+  protected final String amp = "amplitude";
+  protected final String skip = "skip";
   public PulseCircle1() {
 	// set up sequencer
 	this.setSequencer(new PulseSequencer());

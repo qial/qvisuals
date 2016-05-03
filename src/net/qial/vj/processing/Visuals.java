@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import net.qial.vj.effect.*;
 import net.qial.vj.effects.*;
+import net.qial.vj.effects.pulse.*;
 import net.qial.vj.sequencer.*;
 import net.qial.vj.sequencers.*;
 import processing.core.PApplet;
@@ -62,9 +63,6 @@ public class Visuals extends PApplet {
 
 	public void loadEffects() {
 	  effects.add(new TriangleWave1());
-	  effects.add(new PulseCircle1());
-	  // put this line after the default effect
-	  effects.get(effects.size()-1).setEnabled(true);
 	  effects.add(new Circles2());
 	  effects.add(new VDown1());
 	  effects.add(new VUp1());
@@ -75,7 +73,19 @@ public class Visuals extends PApplet {
 	  effects.add(new Diamond3());
 	  //effects.add(new Diamond2());
 	  //effects.add(new WatashiMachine1());
-	  effects.add(new SequencerViewer());
+	  
+	  // set up pulse effect for testing
+	  ProcessingEffect circle2 = new PulseCircle2();
+	  Sequencer pulseseq = new PulseUpSequencer();
+	  circle2.setSequencer(pulseseq);
+	  effects.add(circle2);
+	  // set sequencer on PulseCircle2
+	  // put this line after the default effect
+	  effects.get(effects.size()-1).setEnabled(true);
+	  
+	  // add sequencerviewer for previous effect sequencer
+	  effects.add(new SequencerViewer(pulseseq));
+	  // put the following line after an effect to turn it always on
 	  effects.get(effects.size()-1).toggleAlwaysOn();
 	}
 

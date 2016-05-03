@@ -26,6 +26,10 @@ public abstract class ProcessingEffect extends SimpleEffect {
 		this.seq = seq;
 	}
 	
+	public Sequencer seq() {
+		return seq;
+	}
+	
 	protected char key() {
 		return app.key;
 	}
