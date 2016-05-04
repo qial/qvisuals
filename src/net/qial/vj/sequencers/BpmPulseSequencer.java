@@ -14,11 +14,11 @@ import net.qial.vj.util.DrawUtil;
  *
  */
 public class BpmPulseSequencer extends ProcessingSequencer {
-	// amount of frames it takes for the pulse to fully travel
+	// amount of times per beat 
 	protected int pulseMultiplier = 1;
 
-	// amount of frames the pulse takes to go up and back.
-	protected int pulseWidth = 20;
+	// width of pulse compared to pulse length
+	protected float pulseWidth = 0.333f;
 
 	// internal vars
 	protected float pointWidth = 0.0f;

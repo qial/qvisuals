@@ -41,8 +41,8 @@ public class DrawUtil {
 	// uses a cosine model from 0 to pi and
 	// returns a value from 1.0 to 0.0
 	// frame/total is mapped to 0 to pi radians
-	public static float waveDown(float frame, int total) {
-		float dist = ((float) frame) / ((float) total);
+	public static float waveDown(float frame, float total) {
+		float dist = frame / total;
 		float amp = PApplet.cos(dist * PApplet.PI);
 		// turn amplitude from -1 -> 1 to 0 -> 2
 		amp += 1.0;
@@ -54,8 +54,8 @@ public class DrawUtil {
 	// uses a cosine model from pi to 2pi and
 	// returns a value from 0.0 to 1.0
 	// frame/total is mapped to pi to 2pi radians
-	public static float waveUp(float frame, int total) {
-		float dist = ((float) frame) / ((float) total);
+	public static float waveUp(float frame, float total) {
+		float dist = frame / total;
 		float amp = PApplet.cos((dist * PApplet.PI) + PApplet.PI);
 		// turn amplitude from -1 -> 1 to 0 -> 2
 		amp += 1.0;
@@ -68,8 +68,8 @@ public class DrawUtil {
 	// frame/total is mapped to pi to 3pi radians
 	// uses a cosine model from pi to 3pi and
 	// returns a value from 0.0 to 1.0
-	public static float wave(float frame, int total) {
-		float dist = ((float) frame) / ((float) total);
+	public static float wave(float frame, float total) {
+		float dist = frame / total;
 		float amp = PApplet.cos((dist * PApplet.TWO_PI) + PApplet.PI);
 		// turn amplitude from -1 -> 1 to 0 -> 2
 		amp += 1.0;
