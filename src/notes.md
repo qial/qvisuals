@@ -25,3 +25,6 @@ track of ideas I'm working on.
 - BPM or resolution information or should that be provided by the effect?
   - Upside of no BPM information, they only render sizes/locations
   - Resolution info still needs to be passed somehow.
+- How to encapsulate Resolution info.
+  - Define things as percentages of resolution.
+  - Example: V-effects, define as some factor of res to define height
