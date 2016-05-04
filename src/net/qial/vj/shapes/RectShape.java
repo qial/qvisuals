@@ -1,9 +1,11 @@
 package net.qial.vj.shapes;
 
 import processing.core.PApplet;
+import net.qial.vj.shape.Paintable;
 import net.qial.vj.shape.Shape;
 
-public class RectShape implements Shape {
+@Shape(name="rect")
+public class RectShape implements Paintable {
 	protected int x, y, w, h;
 
 	public RectShape(int x, int y, int w, int h) {

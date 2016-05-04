@@ -1,5 +1,8 @@
 package net.qial.vj.shapes;
 
+import net.qial.vj.shape.Shape;
+
+
 public class Rectangle {
 	public int x, y, h, w;
 

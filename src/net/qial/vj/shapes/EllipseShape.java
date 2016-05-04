@@ -1,5 +1,8 @@
 package net.qial.vj.shapes;
 
+import net.qial.vj.shape.Shape;
+
+@Shape(name="ellipse")
 public class EllipseShape extends RectShape {
 	public EllipseShape(int x, int y, int w, int h) {
 		super(x, y, w, h);
