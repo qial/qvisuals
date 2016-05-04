@@ -52,6 +52,7 @@ Using shift + key will change parameter by 5 instead of by 1.
 
 # Development info
 
+- net.qial.vj.bpm - BPM related math for effects
 - net.qial.vj.effect - Effect interface and abstract utility classes
 - net.qial.vj.effects - Actual effect implementations
 - net.qial.vj.main - Program start classes

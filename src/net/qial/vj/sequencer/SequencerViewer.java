@@ -26,6 +26,7 @@ public class SequencerViewer extends ParamEffect {
 	public void play() {
 		// draw the boxes
 		noFill();
+		stroke(255);
 		for (int i = 0; i < seq.getPoints(); i++) {
 			float amt = seq.get(i);
 			int offset = round(getParam(a) * amt);

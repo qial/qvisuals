@@ -22,7 +22,7 @@ public class PulseUpSequencer extends PulseSequencer {
 		if(pointLocation <= pulseLocation) {
 			// if pulse has passed, stay at 1.0
 			return 1.0f;
-		} else if (pointLocation >= pulseStart && pulseLocation < pulseEnd) {
+		} else if (pointLocation >= pulseStart && pointLocation < pulseEnd) {
 			// pulse is going up
 			// get distance from pulse start
 			float dist = pointLocation - pulseStart;
