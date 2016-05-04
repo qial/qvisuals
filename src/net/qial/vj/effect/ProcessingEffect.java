@@ -1,12 +1,14 @@
 package net.qial.vj.effect;
 
 import processing.core.PApplet;
+import net.qial.vj.processing.NeedsApp;
 import net.qial.vj.processing.ProcessingUtil;
 import net.qial.vj.processing.Visuals;
 import net.qial.vj.sequencer.Sequencer;
+import net.qial.vj.sequencer.SequencerViewer;
 import net.qial.vj.sequencers.SineSequencer;
 
-public abstract class ProcessingEffect extends SimpleEffect {
+public abstract class ProcessingEffect extends SimpleEffect implements NeedsApp {
 
 	// if needed, subclasses can access this
 	protected Visuals app = ProcessingUtil.getApp();
@@ -14,11 +16,11 @@ public abstract class ProcessingEffect extends SimpleEffect {
 	// subclasses can access this directly
 	protected Sequencer seq = new SineSequencer();
 
-	public void setPApplet(Visuals v) {
+	public void setApp(Visuals v) {
 		this.app = v;
 	}
 
-	public PApplet getPApplet() {
+	public Visuals getApp() {
 		return app;
 	}
 
@@ -93,6 +95,10 @@ public abstract class ProcessingEffect extends SimpleEffect {
 
 	protected float cos(float angle) {
 		return PApplet.cos(angle);
+	}
+	
+	public SequencerViewer getSequencerViewer() {
+		return new SequencerViewer(seq);
 	}
 
 }

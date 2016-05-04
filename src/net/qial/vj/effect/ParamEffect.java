@@ -129,7 +129,7 @@ public abstract class ParamEffect extends ProcessingEffect {
 		// TODO make this change amount instead of just +5
 		String param = (String) paramNames.get(num);
 		int v = (int) params.get(param);
-		v += 5;
+		v += 15;
 		message(param + " = " + v);
 		params.put(param, v);
 	}
@@ -141,7 +141,7 @@ public abstract class ParamEffect extends ProcessingEffect {
 		// TODO make this change amount instead of just +5
 		String param = (String) paramNames.get(num);
 		int v = (int) params.get(param);
-		v -= 5;
+		v -= 15;
 		message(param + " = " + v);
 		params.put(param, v);
 	}

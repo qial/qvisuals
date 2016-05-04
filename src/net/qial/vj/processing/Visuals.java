@@ -11,6 +11,12 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
 
+/**
+ * Base class for all Visuals PApplets
+ * 
+ * @author Kyle
+ *
+ */
 public class Visuals extends PApplet {
 
 	// Spout spout;
@@ -75,16 +81,17 @@ public class Visuals extends PApplet {
 		// effects.add(new WatashiMachine1());
 
 		// set up pulse effect for testing
-		ProcessingEffect circle2 = new PulseCircle2();
-		Sequencer pulseseq = new PulseUpSequencer();
-		circle2.setSequencer(pulseseq);
-		effects.add(circle2);
+		//ProcessingEffect circle2 = new PulseCircle2();
+		//Sequencer pulseseq = new PulseUpSequencer();
+		//circle2.setSequencer(pulseseq);
+		//effects.add(circle2);
 		// set sequencer on PulseCircle2
+		effects.add(new BpmPulseCircle());
 		// put this line after the default effect
 		effects.get(effects.size() - 1).setEnabled(true);
 
 		// add sequencerviewer for previous effect sequencer
-		effects.add(new SequencerViewer(pulseseq));
+		effects.add(((ProcessingEffect)effects.get(effects.size()-1)).getSequencerViewer());
 		// put the following line after an effect to turn it always on
 		effects.get(effects.size() - 1).toggleAlwaysOn();
 	}
