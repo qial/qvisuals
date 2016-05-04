@@ -17,3 +17,11 @@ track of ideas I'm working on.
 - Use functions to define movements/effect parameters as ratios or multipliers
   of beats and measures. In this way a music producer can more intuitively
   match effect descriptions with music, regardless of final BPM.
+  
+#### Shape/Effects API
+
+- Need a way for shapes to have access to the PApplet it can use to draw with.
+- Need a way for effects that use shapes to pass PApplet along (abstract class)
+- BPM or resolution information or should that be provided by the effect?
+  - Upside of no BPM information, they only render sizes/locations
+  - Resolution info still needs to be passed somehow.
