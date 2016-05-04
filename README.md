@@ -52,6 +52,8 @@ Using shift + key will change parameter by 5 instead of by 1.
 
 # Development info
 
+#### Packages
+
 - net.qial.vj.bpm - BPM related math for effects
 - net.qial.vj.effect - Effect interface and abstract utility classes
 - net.qial.vj.effects - Actual effect implementations
@@ -68,7 +70,6 @@ spout.pde, JSpout.java, and files in the code32 and code64 folders are copied fr
 
 #### Development goals:
 
-- Convert to Eclipse project with standard java structure
 - Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect
 - Set things up so this project can be imported as a JAR into Processing
 - Save/load effect parameters
