@@ -4,11 +4,11 @@ import net.qial.vj.sequencer.ProcessingSequencer;
 import net.qial.vj.util.DrawUtil;
 
 /**
- * For now, BPM calculations with the sequencer are going to work
- * on a strict multiplier rule.
+ * For now, BPM calculations with the sequencer are going to work on a strict
+ * multiplier rule.
  * 
- * pulseMultiplier is the amount of times a pulse runs in the BPM.
- * This way effects that are exact factors of BPMs can be handled.
+ * pulseMultiplier is the amount of times a pulse runs in the BPM. This way
+ * effects that are exact factors of BPMs can be handled.
  * 
  * @author kw
  *
@@ -79,11 +79,11 @@ public class BpmPulseSequencer extends ProcessingSequencer {
 		this.pulseLength = pulseLength;
 		recalculate();
 	}
-	
+
 	public int getPulseLength() {
 		return pulseLength;
 	}
-	
+
 	public int getPulseWidth() {
 		return pulseWidth;
 	}
@@ -93,4 +93,3 @@ public class BpmPulseSequencer extends ProcessingSequencer {
 		pointWidth = ((float) pulseLength) / ((float) getPoints());
 	}
 }
-

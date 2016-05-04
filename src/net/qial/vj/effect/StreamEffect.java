@@ -4,31 +4,35 @@ import java.util.ArrayList;
 
 import net.qial.vj.shapes.Rectangle;
 
-public class StreamEffect extends ProcessingEffect
-{
-  private ArrayList<Rectangle> cams;
-  private Rectangle gameOuter;
-  private Rectangle gameInner;
-  public StreamEffect() {
-    cams = new ArrayList<Rectangle>();
-  }
-  public void setOuter(Rectangle outer) {
-    this.gameOuter = outer;
-  }
-  public void setInner(Rectangle inner) {
-    this.gameInner = inner;
-  }
-  public void addCam(Rectangle cam) {
-    cams.add(cam);
-  }
-  public void play() {
-    background(255);
-    noStroke();
-    fill(0);
-    for(Rectangle r : cams) {
-      rect(r.x,r.y,r.w,r.h);
-    }
-    fill(0);
-    rect(gameOuter.x,gameOuter.y,gameOuter.w,gameOuter.h);
-  }
+public class StreamEffect extends ProcessingEffect {
+	private ArrayList<Rectangle> cams;
+	private Rectangle gameOuter;
+	private Rectangle gameInner;
+
+	public StreamEffect() {
+		cams = new ArrayList<Rectangle>();
+	}
+
+	public void setOuter(Rectangle outer) {
+		this.gameOuter = outer;
+	}
+
+	public void setInner(Rectangle inner) {
+		this.gameInner = inner;
+	}
+
+	public void addCam(Rectangle cam) {
+		cams.add(cam);
+	}
+
+	public void play() {
+		background(255);
+		noStroke();
+		fill(0);
+		for (Rectangle r : cams) {
+			rect(r.x, r.y, r.w, r.h);
+		}
+		fill(0);
+		rect(gameOuter.x, gameOuter.y, gameOuter.w, gameOuter.h);
+	}
 }

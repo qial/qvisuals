@@ -3,8 +3,9 @@ package net.qial.vj.sequencers;
 import net.qial.vj.util.DrawUtil;
 
 /**
- * This class uses the same movement as the PulseSequencer, but all points
- * are at 1.0 at the start, and only move to 0.0 after the pulse peak passes.
+ * This class uses the same movement as the PulseSequencer, but all points are
+ * at 1.0 at the start, and only move to 0.0 after the pulse peak passes.
+ * 
  * @author kw
  *
  */
@@ -15,7 +16,7 @@ public class PulseDownSequencer extends PulseSequencer {
 		int pointLocation = getPointLocation(point);
 		int pulseStart = getPulseStart();
 		int pulseEnd = getPulseEnd();
-		if(pointLocation >= pulseLocation) {
+		if (pointLocation >= pulseLocation) {
 			// if pulse hasn't passed, stay at 1.0
 			return 1.0f;
 		} else if (pointLocation >= pulseStart && pointLocation < pulseEnd) {

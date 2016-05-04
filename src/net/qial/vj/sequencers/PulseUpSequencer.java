@@ -16,10 +16,10 @@ public class PulseUpSequencer extends PulseSequencer {
 		int pointLocation = getPointLocation(point);
 		int pulseStart = getPulseStart();
 		int pulseEnd = getPulseEnd();
-		//println("point=" + point + " pointw=" + pointWidth + " pulseFrame="
-		//		+ pulseFrame + " position=" + pointLocation + " pStart="
-		//		+ pulseStart + " pEnd=" + pulseEnd);
-		if(pointLocation <= pulseLocation) {
+		// println("point=" + point + " pointw=" + pointWidth + " pulseFrame="
+		// + pulseFrame + " position=" + pointLocation + " pStart="
+		// + pulseStart + " pEnd=" + pulseEnd);
+		if (pointLocation <= pulseLocation) {
 			// if pulse has passed, stay at 1.0
 			return 1.0f;
 		} else if (pointLocation >= pulseStart && pointLocation < pulseEnd) {

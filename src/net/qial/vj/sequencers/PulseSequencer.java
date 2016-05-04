@@ -69,11 +69,11 @@ public class PulseSequencer extends ProcessingSequencer {
 		this.pulseLength = pulseLength;
 		recalculate();
 	}
-	
+
 	public int getPulseLength() {
 		return pulseLength;
 	}
-	
+
 	public int getPulseWidth() {
 		return pulseWidth;
 	}
