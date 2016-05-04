@@ -6,7 +6,7 @@ track of ideas I'm working on.
 
 #### BPM Functions
 
-#### Requirements
+**Requirements**
 
 - BPM and framerate must be kept separate from effect code.
 - Be able to change BPM and framerate and the effect is essentially the same.
