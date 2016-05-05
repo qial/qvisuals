@@ -30,6 +30,29 @@ Ensure all .jar libraries in the lib/ folder are included.
 
 Run processing.core.PApplet with the argument "net.qial.vj.processing.Visuals"
 
+#### Recommended Setup
+
+This setup is more involved, but useful if you aren't a seasoned Java developer
+and aren't sure how to set up all the required libraries.
+
+- Install Eclipse
+- Extract and install Processing
+- Select Help -> Install New Software
+- Add new Site
+  - **Name**: Proclipsing
+  - **URL**: http://proclipsing.googlecode.com/svn/tags/current_releases/proclipsingSite/
+- Select both packages
+- Accept installing unsigned software
+- Restart Eclipse
+- Create new Eclipse Processing project named "qvisuals" (or anything else)
+- Choose your Processing folder
+- Separately from your workspace, clone the qvisuals project from GitHub
+- Copy all the files from the cloned qvisuals project into your "qvisuals"
+  project root in your Eclipse workspace. (Including **.git/**!) Overwrite
+  any files
+- Delete the src/qvisuals folder
+- You are now ready to run the project!
+
 # Keys
 #### General Keys
 - v - toggles debug output for effects/params
