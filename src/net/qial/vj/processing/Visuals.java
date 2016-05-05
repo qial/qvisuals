@@ -7,6 +7,7 @@ import net.qial.vj.effects.*;
 import net.qial.vj.effects.pulse.*;
 import net.qial.vj.sequencer.*;
 import net.qial.vj.sequencers.*;
+import net.qial.vj.spout.Spout;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -19,7 +20,7 @@ import processing.core.PImage;
  */
 public class Visuals extends PApplet {
 
-	// Spout spout;
+	 Spout spout;
 
 	PImage tex;
 
@@ -53,10 +54,10 @@ public class Visuals extends PApplet {
 		textFont(debugFont);
 
 		// CREATE A NEW SPOUT OBJECT HERE
-		// spout = new Spout();
+		 spout = new Spout();
 
 		// INITIALIZE A SPOUT SENDER HERE
-		// spout.initSender("Spout Processing", width, height);
+		 spout.initSender("Spout QVisuals", width, height);
 
 		seq = new SineSequencer();
 		seq.setSpeed(0.25f);
