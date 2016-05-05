@@ -40,6 +40,22 @@ Lower circles decrease by increment.
 
 Each circle has a movement related to the BpmPulseSequencer. 
 
+Need a way to nest effects.
+
+Define a list of circles, amount is 10. Starting size is 600, each circle drops 
+60 in size.
+
+Define a Movement. Each circle uses the sequencer (which in this case is set to
+0->1 as opposed to -1->1) to move (in this case, radius shrinks) by up to 30.
+
+Separately, we can define fading effects on the smallest and largest circles.
+This would emulate PulseCircle2's effects.
+
+Movement needs to be both changes in color/shading/etc and size changes due to
+a sequencer. All movement should be based on a sequencer to coordinate it.
+
+
+
 #### Effect saving language
 
 Need a language for saving effects and their parameters. It has to work for
