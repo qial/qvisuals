@@ -57,7 +57,7 @@ public class Visuals extends PApplet {
 		 spout = new Spout();
 
 		// INITIALIZE A SPOUT SENDER HERE
-		 spout.initSender("Spout QVisuals", width, height);
+		// spout.initSender("Spout QVisuals", width, height);
 
 		seq = new SineSequencer();
 		seq.setSpeed(0.25f);
