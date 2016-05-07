@@ -1,0 +1,38 @@
+# test/circles1.yaml
+# This is a first test to start working out the effect api
+
+# peffect defines this as a ProcessingEffect
+type: peffect
+
+# Set default fill/stroke settings
+defaults:
+  fill: none
+  strokeWidth: 4
+  stroke: 255
+
+# we need to define a sequencer and bpm (or default will be used)
+sequencer: 
+  # type defines which sequencer processes the rest of the values
+  type: bpm
+  bpm: 120
+  positive: true
+  
+# Now we define the shapes this effect will use
+# The shapes are affected by Movements and driven by the Sequencer
+shapes:
+  # Our first shape is a set of circles
+  - type: set
+    start-size: 600
+    increment: -60
+    amount: 10
+    shape: circle
+    # set movement for each shape
+    movement: 
+      # type 'sequencer' means use the main sequencer
+      type: sequencer
+      amplitude: -30
+  # Set the outer circle
+  - type: circle
+    size: 600
+    # Make this circle grey
+    stroke: 128

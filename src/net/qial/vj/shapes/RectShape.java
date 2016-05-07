@@ -14,6 +14,10 @@ public class RectShape implements Paintable {
 		this.w = w;
 		this.h = h;
 	}
+	
+	public void prepare(PApplet app) {
+		// no changes needed
+	}
 
 	public void paint(PApplet app) {
 		app.rect(x, y, w, h);

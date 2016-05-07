@@ -3,6 +3,24 @@ package net.qial.vj.shape;
 import processing.core.PApplet;
 
 public interface Paintable {
+	/**
+	 * Prepare sets up things that are needed to draw this Paintable, such
+	 * as setting fill, stroke, colors, etc.
+	 * 
+	 * It's a separate method because we don't want to have to copy
+	 * preparations down into lower classes. More advanced Paintables will
+	 * nest other Paintables, and we want to cut down on unnecessary calls
+	 * to the PApplet when things don't need to change.
+	 * 
+	 * @param app the Processing applet
+	 */
+	public void prepare(PApplet app);
+	
+	/**
+	 * Draws this Paintable onto the current app
+	 * 
+	 * @param app the Processing applet
+	 */
 	public void paint(PApplet app);
 }
 

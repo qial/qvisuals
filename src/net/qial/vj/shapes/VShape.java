@@ -13,6 +13,10 @@ class VShape implements Paintable {
 		this.w = w;
 		this.o = offset;
 	}
+	
+	public void prepare(PApplet app) {
+		// no changes needed
+	}
 
 	public void paint(PApplet app) {
 		DrawUtil.makeV(w, o, app);
