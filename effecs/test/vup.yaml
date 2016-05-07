@@ -1,0 +1,34 @@
+# test/vup.yaml
+# This is a first test for the v up effect in the api
+
+# peffect defines this as a ProcessingEffect
+type: peffect
+
+# Set default fill/stroke settings
+defaults:
+  fill: 255
+  strokeWidth: 2
+  stroke: 255
+
+# we need to define a sequencer and bpm (or default will be used)
+sequencer: 
+  # type defines which sequencer processes the rest of the values
+  type: bpm
+  bpm: 120
+  positive: true
+  
+# Now we define the shapes this effect will use
+# The shapes are affected by Movements and driven by the Sequencer
+shapes:
+  # Our first shape is a set of circles
+  - type: set
+    increment: 120
+    shape: 
+      type: v
+      width: 60
+    # set movement for each shape
+    movement: 
+      # type 'constant' means it moves at a set rate
+      type: constant
+      amplitude: 30
+

@@ -14,3 +14,11 @@ package net.qial.vj.shape;
 public @interface Movement {
 	String name();
 }
+
+
+// Movements need to be able to define the parameter that they work against
+// Paintables can then use the parameter name to know what to change when
+// they get a movement applied to them.
+// For example, a Paintable might need multiple movements. In the V-up effect,
+// all Vs need to have the upward Y movement. The topmost v has the additional
+// movement of slowly fading to black over some point of the effect

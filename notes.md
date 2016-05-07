@@ -64,3 +64,12 @@ hardcoded ParamEffects that have parameter names, and also for the Effect API.
 Ideally it would be cool if it could also parse code from some of the live
 coding software. That code is pretty close, might be able to have a separate
 processor to load it into effects.
+
+#### Live VJ Requirements
+
+If I'm going to use Milkdrop in a live setting, I need a good way to be able
+to change the loop/effect in Resolume and also at the same time switch to a 
+new Milkdrop visualizer.
+
+If the computer can handle it, maybe have a queueing visualizer and a backup?
+I suspect though that might get too complicated in Resolume to really do well.
