@@ -6,29 +6,39 @@ type: peffect
 
 # Set default fill/stroke settings
 defaults:
+  # set default shape fill color
   fill: 255
+  # set shape line width
   strokeWidth: 2
+  # set shape line color
   stroke: 255
 
 # we need to define a sequencer and bpm (or default will be used)
 sequencer: 
   # type defines which sequencer processes the rest of the values
-  type: bpm
+  type: bpmhttp://i.imgur.com/0akDEeh.png
+  # set the bpm
   bpm: 120
+  # positive:true sets sequencer to output 0->1 instead of -1->1
   positive: true
   
 # Now we define the shapes this effect will use
 # The shapes are affected by Movements and driven by the Sequencer
 shapes:
-  # Our first shape is a set of circles
+  # Our first shape is a set of Vs
   - type: set
+    # distance between shapes in the set 
     increment: 120
+    # define shape
     shape: 
+      # set as v shape
       type: v
+      # set width of the v
       width: 60
     # set movement for each shape
     movement: 
       # type 'constant' means it moves at a set rate
       type: constant
+      # set rate is 30 pixels per beat (due to bpm sequencer)
       amplitude: 30
 
