@@ -1,8 +1,9 @@
 # test/vup.yaml
 # This is a first test for the v up effect in the api
 
-# peffect defines this as a ProcessingEffect
-type: peffect
+# designed defines this as a DesignedEffect
+# Designed effects use the effect API to build effects
+type: designed
 
 # Set default fill/stroke settings
 defaults:

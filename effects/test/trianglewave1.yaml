@@ -1,0 +1,15 @@
+# test/trianglewave1.yaml
+# Example of a class-based effect
+
+# param defines this as a ParamEffect
+type: param
+
+# This class must be a child class of ParamEffect
+subtype: net.qial.vj.effects.TriangleWave1
+
+# Set default param values
+defaults:
+  shapes: 10
+  spacing: 28
+  amplitude: 18
+  size: 80

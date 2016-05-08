@@ -20,6 +20,9 @@ public class EffectDescription {
 	// Defines what top-level Effect class this should use
 	private String type;
 	
+	// Defines a special class if required 
+	private String subtype;
+	
 	// Defines the sequencer
 	private SequencerDescription sequencer;
 	
@@ -39,24 +42,30 @@ public class EffectDescription {
 		StringBuilder sb = new StringBuilder();
 		sb.append("EffectDescription{\n");
 		sb.append("  type=").append(type).append(",\n");
+		sb.append("  subtype=").append(subtype).append(",\n");
 		sb.append("  defaults={").append(PrintUtil.toString(defaults));
 		sb.append("},\n");
-		sb.append("  seq=").append(sequencer).append(",\n");
-		sb.append("  shapes=[");
-		if(shapes != null) {
-			boolean first = true;
-			for(PaintableDescription shape : paintables) {
-				if(first) {
-					first = false;
-				} else {
-					sb.append(",");
-				}
-				sb.append("\n    ").append(shape);
-				//System.out.println(shape);
-				//System.out.println(shape.get("movement"));
-			}
+		if(sequencer != null) {
+			sb.append("  seq=").append(sequencer).append(",\n");
 		}
-		sb.append("\n  ]\n}");
+		if(shapes != null && shapes.size() > 0) {
+			sb.append("  shapes=[");
+			if(shapes != null) {
+				boolean first = true;
+				for(PaintableDescription shape : paintables) {
+					if(first) {
+						first = false;
+					} else {
+						sb.append(",");
+					}
+					sb.append("\n    ").append(shape);
+					//System.out.println(shape);
+					//System.out.println(shape.get("movement"));
+				}
+			}
+			sb.append("\n  ]");
+		}
+		sb.append("\n}");
 		return sb.toString();
 	}
 	
@@ -112,4 +121,14 @@ public class EffectDescription {
 		//System.out.println("Set defaults: "+defaults);
 		this.defaults = defaults;
 	}
+
+	public String getSubtype() {
+		return subtype;
+	}
+
+	public void setSubtype(String subtype) {
+		this.subtype = subtype;
+	}
+	
+	
 }

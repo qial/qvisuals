@@ -1,8 +1,9 @@
 # test/circles1.yaml
 # This is a first test to start working out the effect api
 
-# peffect defines this as a ProcessingEffect
-type: peffect
+# designed defines this as a DesignedEffect
+# Designed effects use the effect API to build effects
+type: designed
 
 # Set default fill/stroke settings
 defaults:

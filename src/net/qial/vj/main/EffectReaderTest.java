@@ -4,16 +4,31 @@ import java.io.*;
 
 import net.qial.vj.effect.api.EffectDescription;
 import net.qial.vj.effect.api.EffectReader;
+import net.qial.vj.effect.api.yaml.YamlEffectReader;
 
 public class EffectReaderTest {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		testVup();
+		//testVup();
+		//testCircles1();
+		trianglewave1();
 	}
 	
 	public static void testVup() throws Exception {
-		EffectReader er = new EffectReader();
+		readEffect("effects\\test\\vup.yaml");
+	}
+	
+	public static void testCircles1() throws Exception {
+		readEffect("effects\\test\\circles1.yaml");
+	}
+	
+	public static void trianglewave1() throws Exception {
+		readEffect("effects\\test\\trianglewave1.yaml");
+	}
+	
+	public static EffectDescription readEffect(String s) throws Exception {
+		EffectReader er = new YamlEffectReader();
 		
 		File dir = new File(".");
 		//System.out.println(dir.getAbsolutePath());
@@ -23,9 +38,10 @@ public class EffectReaderTest {
 			//System.out.println(f);
 		}
 		
-		InputStream is = new FileInputStream("effects\\test\\vup.yaml");
+		InputStream is = new FileInputStream(s);
 		EffectDescription desc = er.readEffect(is);
 		System.out.println(desc);
+		return desc;
 	}
 
 }

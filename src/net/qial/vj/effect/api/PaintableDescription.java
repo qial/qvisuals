@@ -42,7 +42,12 @@ public class PaintableDescription {
 			}
 			else if("shape".equals(k)) {
 				PaintableDescription desc = new PaintableDescription();
-				desc.setValues((LinkedHashMap)v);
+				// determine if this is a simple type name or an object
+				if(v instanceof String) {
+					desc.setType((String)v);
+				} else {
+					desc.setValues((LinkedHashMap)v);
+				}
 				shape = desc;
 			}
 			else if("movement".equals(k)) {
