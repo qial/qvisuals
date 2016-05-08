@@ -9,11 +9,17 @@ public class EffectBuilderTest {
 
 	public static void main(String[] args) throws Exception {
 		TestApp app = new TestApp();
-		testTriangleWave();
+		//testTriangleWave();
+		testvup();
 	}
 
 	public static Effect testTriangleWave() throws Exception {
 		EffectDescription desc = EffectReaderTest.trianglewave1();
+		return loadEffect(desc);
+	}
+
+	public static Effect testvup() throws Exception {
+		EffectDescription desc = EffectReaderTest.testVup();
 		return loadEffect(desc);
 	}
 	

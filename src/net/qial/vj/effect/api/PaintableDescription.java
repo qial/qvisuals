@@ -88,6 +88,10 @@ public class PaintableDescription {
 	public HashMap<String, Object> getOthers() {
 		return others;
 	}
+	
+	public Object get(String k) {
+		return others.get(k);
+	}
 
 	public void setOthers(HashMap<String, Object> others) {
 		this.others = others;

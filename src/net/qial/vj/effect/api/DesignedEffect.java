@@ -1,6 +1,7 @@
 package net.qial.vj.effect.api;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import net.qial.vj.effect.ProcessingEffect;
@@ -15,6 +16,7 @@ import net.qial.vj.shape.Paintable;
  */
 public class DesignedEffect extends ProcessingEffect {
 	private List<Paintable> parts;
+	private LinkedHashMap defaults;
 	
 	public DesignedEffect() {
 		parts = new ArrayList<Paintable>();
@@ -32,5 +34,13 @@ public class DesignedEffect extends ProcessingEffect {
 	
 	public void addPart(Paintable p) {
 		parts.add(p);
+	}
+
+	public LinkedHashMap getDefaults() {
+		return defaults;
+	}
+
+	public void setDefaults(LinkedHashMap defaults) {
+		this.defaults = defaults;
 	}
 }
