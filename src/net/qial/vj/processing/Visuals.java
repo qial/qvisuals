@@ -54,10 +54,10 @@ public class Visuals extends PApplet {
 		textFont(debugFont);
 
 		// CREATE A NEW SPOUT OBJECT HERE
-		 spout = new Spout();
+		spout = new Spout();
 
 		// INITIALIZE A SPOUT SENDER HERE
-		// spout.initSender("Spout QVisuals", width, height);
+//		spout.initSender("Spout QVisuals", width, height);
 
 		seq = new SineSequencer();
 		seq.setSpeed(0.25f);
@@ -127,7 +127,7 @@ public class Visuals extends PApplet {
 		drawDebugMessage();
 
 		// SEND A SHARED TEXTURE HERE
-		// spout.sendTexture();
+//		spout.sendTexture();
 
 	}
 
@@ -224,7 +224,7 @@ public class Visuals extends PApplet {
 
 	public void exit() {
 		// CLOSE THE SPOUT SENDER HERE
-		// spout.closeSender();
+//		spout.closeSender();
 		super.exit();
 	}
 }

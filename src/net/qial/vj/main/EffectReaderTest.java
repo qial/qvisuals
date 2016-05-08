@@ -15,16 +15,16 @@ public class EffectReaderTest {
 		trianglewave1();
 	}
 	
-	public static void testVup() throws Exception {
-		readEffect("effects\\test\\vup.yaml");
+	public static EffectDescription testVup() throws Exception {
+		return readEffect("effects\\test\\vup.yaml");
 	}
 	
-	public static void testCircles1() throws Exception {
-		readEffect("effects\\test\\circles1.yaml");
+	public static EffectDescription testCircles1() throws Exception {
+		return readEffect("effects\\test\\circles1.yaml");
 	}
 	
-	public static void trianglewave1() throws Exception {
-		readEffect("effects\\test\\trianglewave1.yaml");
+	public static EffectDescription trianglewave1() throws Exception {
+		return readEffect("effects\\test\\trianglewave1.yaml");
 	}
 	
 	public static EffectDescription readEffect(String s) throws Exception {

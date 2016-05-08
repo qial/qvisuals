@@ -5,7 +5,6 @@ public class JSpout {
   static {  
     System.loadLibrary("JSpout");
   }
- 
   
   static native int InitSender(String name, int width, int height, int mode);
 

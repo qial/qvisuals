@@ -32,7 +32,7 @@ public class EffectDescription {
 	
 	// list of defaults
 	// paintables can access this
-	private HashMap<String,String> defaults;
+	private HashMap<String,Object> defaults;
 	
 	public EffectDescription() {
 		paintables = new ArrayList<PaintableDescription>();
@@ -42,7 +42,9 @@ public class EffectDescription {
 		StringBuilder sb = new StringBuilder();
 		sb.append("EffectDescription{\n");
 		sb.append("  type=").append(type).append(",\n");
-		sb.append("  subtype=").append(subtype).append(",\n");
+		if(subtype != null) {
+			sb.append("  subtype=").append(subtype).append(",\n");
+		}
 		sb.append("  defaults={").append(PrintUtil.toString(defaults));
 		sb.append("},\n");
 		if(sequencer != null) {
@@ -113,11 +115,11 @@ public class EffectDescription {
 		}
 	}
 
-	public HashMap<String, String> getDefaults() {
+	public HashMap<String, Object> getDefaults() {
 		return defaults;
 	}
 
-	public void setDefaults(HashMap<String, String> defaults) {
+	public void setDefaults(HashMap<String, Object> defaults) {
 		//System.out.println("Set defaults: "+defaults);
 		this.defaults = defaults;
 	}

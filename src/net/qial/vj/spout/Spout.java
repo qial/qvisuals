@@ -15,6 +15,8 @@
 //
 package net.qial.vj.spout;
 
+//import JSpout;
+
 import net.qial.vj.processing.ProcessingUtil;
 import processing.core.PApplet;
 import processing.core.PImage;
