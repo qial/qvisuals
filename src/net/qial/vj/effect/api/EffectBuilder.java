@@ -1,5 +1,9 @@
 package net.qial.vj.effect.api;
 
+import java.util.List;
+import java.util.Map;
+
+import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import net.qial.vj.bpm.BPM;
 import net.qial.vj.effect.Effect;
 import net.qial.vj.effect.ParamEffect;
@@ -20,21 +24,26 @@ import net.qial.vj.shapes.VShape;
  *
  */
 public class EffectBuilder {
+	private static FastClasspathScanner scanner;
+	private static Map<String,Class<?>> typeMap;
+	
 	public Effect buildEffect(EffectDescription desc) {
+		// make sure the classpath scanner is initialized
+		loadScanner();
+		
 		Effect effect = null;
 		
 		String type = desc.getType();
+		
+		
+		
 		if("param".equals(type)) {
 			String cls = desc.getSubtype();
 			try {
 				Class c = getClass().getClassLoader().loadClass(cls);
 				Class<ParamEffect> paramClass = c.asSubclass(ParamEffect.class);
 				ParamEffect peffect = paramClass.newInstance();
-				for(String k : desc.getDefaults().keySet()) {
-					Object v = desc.getDefaults().get(k);
-					int i = (Integer)v;
-					peffect.setParam(k, i);
-				}
+				peffect.loadFrom(desc);
 				effect = peffect;
 			} catch (ClassNotFoundException e) {
 				System.out.println("Unable to load class from subtype "+cls);
@@ -100,5 +109,35 @@ public class EffectBuilder {
 		}
 		
 		return seq;
+	}
+	
+	private void loadScanner() {
+		// TODO maybe scan everything?
+		// maybe only scan everything if we can detect this is 
+		// running as a library in another project?
+		boolean needScan = scanner.classpathContentsModifiedSinceScan();
+		if(scanner == null) {			
+			scanner = new FastClasspathScanner("net.qial.vj");
+			scanner.scan();
+			needScan = true;
+		}
+		if(needScan) {
+			// update scan
+			scanner.scan();
+			
+			typeMap = new HashMap<String,Class<?>>();
+			
+			// update effect type map
+			List<String> effectClasses = scanner.getNamesOfClassesWithAnnotation(EffectType.class);
+			for(String cls : effectClasses) {
+				try {
+					Class c = getClass().getClassLoader().loadClass(cls);
+					typeMap.put(cls, c);
+				} catch (ClassNotFoundException e) {
+					System.out.println("Unable to load @EffectType class "+cls);
+					e.printStackTrace();
+				} 
+			}
+		}
 	}
 }

@@ -91,6 +91,12 @@ Using shift + key will change parameter by 5 instead of by 1.
 
 spout.pde, JSpout.java, and files in the code32 and code64 folders are copied from the Spout2 installation.
 
+#### Dependencies
+
+This project uses:
+- SnakeYaml 1.17, https://bitbucket.org/asomov/snakeyaml/
+- Fast Classpath Scanner 1.9.18, https://github.com/lukehutch/fast-classpath-scanner/
+
 #### Development goals:
 
 - Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect

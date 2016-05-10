@@ -1,5 +1,7 @@
 package net.qial.vj.effect;
 
+import net.qial.vj.effect.api.EffectDescription;
+
 public abstract class SimpleEffect implements Effect {
 	private boolean enabled = false;
 	private boolean alwaysOn = false;
@@ -32,6 +34,10 @@ public abstract class SimpleEffect implements Effect {
 	}
 
 	public void handleKey() {
+	}
+	
+	public void loadFrom(EffectDescription desc) {
+		// do nothing as the default.
 	}
 
 	public abstract void play();

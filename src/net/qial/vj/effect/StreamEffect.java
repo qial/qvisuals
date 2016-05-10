@@ -2,8 +2,10 @@ package net.qial.vj.effect;
 
 import java.util.ArrayList;
 
+import net.qial.vj.effect.api.EffectType;
 import net.qial.vj.shapes.Rectangle;
 
+@EffectType(name="stream")
 public class StreamEffect extends ProcessingEffect {
 	private ArrayList<Rectangle> cams;
 	private Rectangle gameOuter;

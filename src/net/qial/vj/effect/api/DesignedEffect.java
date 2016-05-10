@@ -14,6 +14,7 @@ import net.qial.vj.shape.Paintable;
  * @author kw
  *
  */
+@EffectType(name="designed")
 public class DesignedEffect extends ProcessingEffect {
 	private List<Paintable> parts;
 	private LinkedHashMap defaults;

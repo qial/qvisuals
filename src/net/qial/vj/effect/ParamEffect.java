@@ -3,6 +3,10 @@ package net.qial.vj.effect;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import net.qial.vj.effect.api.EffectDescription;
+import net.qial.vj.effect.api.EffectType;
+
+@EffectType(name="param")
 public abstract class ParamEffect extends ProcessingEffect {
 	ArrayList<String> paramNames = new ArrayList<String>();
 	HashMap<String, Integer> params = new HashMap<String, Integer>();
@@ -20,6 +24,14 @@ public abstract class ParamEffect extends ProcessingEffect {
 		// this was originally casting float to int
 		// I've changed the map to only use ints
 		return params.get(name);
+	}
+	
+	public void loadFrom(EffectDescription desc) {
+		for(String k : desc.getDefaults().keySet()) {
+			Object v = desc.getDefaults().get(k);
+			int i = (Integer)v;
+			setParam(k, i);
+		}
 	}
 
 	public void handleKey() {
