@@ -36,8 +36,9 @@ public abstract class SimpleEffect implements Effect {
 	public void handleKey() {
 	}
 	
-	public void loadFrom(EffectDescription desc) {
+	public Effect loadFrom(EffectDescription desc) {
 		// do nothing as the default.
+		return this;
 	}
 
 	public abstract void play();

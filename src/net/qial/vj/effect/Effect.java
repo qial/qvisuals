@@ -19,10 +19,11 @@ public interface Effect {
 	
 	/**
 	 * Implementing classes can choose to override this to handle
-	 * saving and loading to/from YAML. The
-	 * default implementation in SimpleEffect does nothing.
+	 * saving and loading to/from YAML. It returns an effect because
+	 * some classes may need to return a new instance. The
+	 * default implementation in SimpleEffect simply returns itself.
 	 * 
 	 * @param desc EffectDescription to load parameters from
 	 */
-	public void loadFrom(EffectDescription desc);
+	public Effect loadFrom(EffectDescription desc);
 }

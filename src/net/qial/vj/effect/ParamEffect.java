@@ -26,12 +26,31 @@ public abstract class ParamEffect extends ProcessingEffect {
 		return params.get(name);
 	}
 	
-	public void loadFrom(EffectDescription desc) {
+	public Effect loadFrom(EffectDescription desc) {
+		// get subtype from description 
+		String cls = desc.getSubtype();
+		try {
+			Class c = getClass().getClassLoader().loadClass(cls);
+			Class<ParamEffect> paramClass = c.asSubclass(ParamEffect.class);
+			ParamEffect peffect = paramClass.newInstance();
+			peffect.loadFrom(desc);
+			return peffect;
+		} catch (ClassNotFoundException e) {
+			System.out.println("Unable to load class from subtype "+cls);
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			System.out.println("Unable to instantiate class from subtype "+cls);
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			System.out.println("Unable to instantiate class from subtype "+cls);
+			e.printStackTrace();
+		}
 		for(String k : desc.getDefaults().keySet()) {
 			Object v = desc.getDefaults().get(k);
 			int i = (Integer)v;
 			setParam(k, i);
 		}
+		return this;
 	}
 
 	public void handleKey() {

@@ -1,5 +1,6 @@
 package net.qial.vj.effect.api;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
