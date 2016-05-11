@@ -39,23 +39,7 @@ public class EffectBuilder {
 		
 		
 		if("param".equals(type)) {
-			String cls = desc.getSubtype();
-			try {
-				Class c = getClass().getClassLoader().loadClass(cls);
-				Class<ParamEffect> paramClass = c.asSubclass(ParamEffect.class);
-				ParamEffect peffect = paramClass.newInstance();
-				peffect.loadFrom(desc);
-				effect = peffect;
-			} catch (ClassNotFoundException e) {
-				System.out.println("Unable to load class from subtype "+cls);
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-				System.out.println("Unable to instantiate class from subtype "+cls);
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				System.out.println("Unable to instantiate class from subtype "+cls);
-				e.printStackTrace();
-			}
+			
 		}
 		else if("designed".equals(type)) {
 			DesignedEffect d = new DesignedEffect();
