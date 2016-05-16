@@ -20,7 +20,7 @@ import processing.core.PImage;
  */
 public class Visuals extends PApplet {
 
-	 Spout spout;
+	Spout spout;
 
 	PImage tex;
 
@@ -37,7 +37,6 @@ public class Visuals extends PApplet {
 
 	public void settings() {
 		// define size
-
 		size(1280, 720, P3D);
 	}
 

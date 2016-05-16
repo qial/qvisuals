@@ -24,13 +24,14 @@ import processing.opengl.*;
 
 public class Spout
 {
+	//TODO: Make sure it keeps track of the app if needed
   PApplet app;
   PGraphicsOpenGL pgl;
   int[] dim = new int[2];
   int memorymode; // memorymode flag
    
   public Spout () {
-	  app = ProcessingUtil.getApp();
+	app = ProcessingUtil.getApp(null);
     pgl = (PGraphicsOpenGL) app.g;
     dim[0] = 0;
     dim[1] = 0;

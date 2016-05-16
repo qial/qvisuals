@@ -6,7 +6,7 @@ import net.qial.vj.processing.ProcessingUtil;
 import net.qial.vj.processing.Visuals;
 
 public abstract class ProcessingSequencer extends AbstractSequencer implements NeedsApp {
-	private Visuals app = ProcessingUtil.getApp();
+	private Visuals app = ProcessingUtil.getApp(this);
 
 	public void setApp(Visuals v) {
 		this.app = v;

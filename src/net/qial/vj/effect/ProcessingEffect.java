@@ -11,7 +11,7 @@ import net.qial.vj.sequencers.SineSequencer;
 public abstract class ProcessingEffect extends SimpleEffect implements NeedsApp {
 
 	// if needed, subclasses can access this
-	protected Visuals app = ProcessingUtil.getApp();
+	protected Visuals app = ProcessingUtil.getApp(this);
 
 	// subclasses can access this directly
 	protected Sequencer seq = new SineSequencer();

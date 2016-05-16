@@ -9,10 +9,20 @@ public class MovieSaverVisuals extends Visuals {
 	private static List<Effect> myEffects = new ArrayList<Effect>();
 	private static int movieFrames;
 	
+	private static String saveBase;
+	private static String savePath;
+	
 	public MovieSaverVisuals() {
-		
+
 	}
 	
+	public static void setSaveBase(String base) {
+		saveBase = base;
+		long time = System.currentTimeMillis();
+		savePath = saveBase+"\\"+time+"\\"+"frame-#####.png";
+		
+	}
+
 	public static void setFrames(int frames) {
 		movieFrames = frames;
 	}
@@ -41,14 +51,16 @@ public class MovieSaverVisuals extends Visuals {
 				e.play();
 			}
 		}
-		if(frameCount < movieFrames) {
+		if(frameCount < movieFrames+2) {
 			// save frame
-			this.saveFrame("frame-#####.png");
+//			this.saveFrame("frame-#####.png");
+			this.saveFrame(savePath);
 		}
 		else {
 			// we're done
-			System.out.println("Finished saving "+movieFrames+" frames");
-			System.exit(0);
+			// don't spam it too much
+			if(frameCount % 60 == 0);
+				System.out.println("Finished saving "+movieFrames+" frames");
 		}
 	}
 }

@@ -16,7 +16,7 @@ public class BPM implements NeedsApp {
 	private float bpmf;
 	private int bpmi;
 	private boolean integer = false;
-	protected Visuals app = ProcessingUtil.getApp();
+	protected Visuals app = ProcessingUtil.getApp(this);
 	
 	public BPM(int bpm) {
 		setBpm(bpm);
