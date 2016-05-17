@@ -31,8 +31,11 @@ public class BpmPulseCircle extends ParamEffect {
 	@Override
 	public void handleKey() {
 		// make sure we change the BPM object when BPM changes
+		// save current bpm
 		int temp = getParam(bpm);
+		// let our parent class handle it
 		super.handleKey();
+		// check if we need to change
 		if(temp != getParam(bpm)) {
 			// bpm has changed
 			myBpm.setBpm(getParam(bpm));
