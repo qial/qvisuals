@@ -5,6 +5,7 @@ import net.qial.vj.util.DrawUtil;
 
 public class Circles2 extends ProcessingEffect {
 	public void play() {
+		background(0);
 		noFill();
 		stroke(255);
 		for (int i = 0; i < 20; i++) {

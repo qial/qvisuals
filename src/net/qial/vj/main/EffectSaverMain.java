@@ -4,6 +4,7 @@ import processing.core.PApplet;
 import net.qial.vj.effect.Effect;
 import net.qial.vj.effects.Circles1;
 import net.qial.vj.effects.Circles2;
+import net.qial.vj.effects.pulse.BpmPulseCircle;
 import net.qial.vj.processing.MovieSaverVisuals;
 import net.qial.vj.processing.ProcessingUtil;
 import net.qial.vj.processing.TestApp;
@@ -47,7 +48,7 @@ public class EffectSaverMain {
 	
 	private static Effect getEffect() {
 		// TODO return something
-		return new Circles1();
+		return new BpmPulseCircle();
 	}
 
 }

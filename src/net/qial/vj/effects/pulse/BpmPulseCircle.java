@@ -16,12 +16,12 @@ public class BpmPulseCircle extends ParamEffect {
 
 	public BpmPulseCircle() {
 		// set up bpm
-		myBpm = new BPM(90);
+		myBpm = new BPM(120);
 		// set up sequencer
 		BpmPulseSequencer bpmseq = new BpmPulseSequencer(myBpm);
 		this.setSequencer(bpmseq);
 		// set up params
-		addParam(bpm, 90);
+		addParam(bpm, 120);
 		addParam(mult, 1);
 		addParam(amt, 10);
 		addParam(inc, 60);
@@ -40,6 +40,7 @@ public class BpmPulseCircle extends ParamEffect {
 	}
 
 	public void play() {
+		background(0);
 		stroke(255);
 		noFill();
 		int printlimit = 60;
