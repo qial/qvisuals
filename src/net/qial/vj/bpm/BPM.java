@@ -53,12 +53,31 @@ public class BPM implements NeedsApp {
 		return getFramesPerBeat();
 	}
 	
+	private int debugFrameRate = 0;
+	private int debugFramesPerBeat = 0;
+	
 	public int getFramesPerBeat() {
 		if(!integer) {
 			throw new RuntimeException("Can't get integer frames per beat with a non-integer bpm");
 		}
+		
+		//TODO remove debug shit
+		boolean debugrate = false;
+		
 		int frameRate = round(app.frameRate);
 		int fpb = (frameRate * 60) / bpmi;
+		
+		// TODO remove more of this debug shit
+		if(frameRate != debugFrameRate) {
+			System.out.println("frameRate changed from "+debugFrameRate+" to "+frameRate);
+			debugrate = true;
+		}
+		if(fpb != debugFramesPerBeat && !debugrate) {
+			System.out.println("framesPerBeat changed from "+debugFramesPerBeat + " to "+fpb);
+		}
+		debugFrameRate = frameRate;
+		debugFramesPerBeat = fpb;
+		
 		return fpb;
 	}
 

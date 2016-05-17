@@ -36,7 +36,7 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	}
 
 	public float get(int point) {
-		int pulseFrame = frameCount() % bpm.getFramesPerBeat();
+		//int pulseFrame = frameCount() % bpm.getFramesPerBeat();
 		int pointLocation = getPointLocation(point);
 		int pulseStart = getPulseStart();
 		int pulseEnd = getPulseEnd();
@@ -57,8 +57,18 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 
 	}
 
+	private int debugPulseLength = 0;
+	
 	protected float getPulseLocation() {
+		// TODO THIS ISNT STEADY
 		int pulseLength = bpm.getFramesPerBeat();
+		
+		// TODO remove debug shit
+//		if(debugPulseLength != pulseLength) {
+//			System.out.println("pulse length changed to "+pulseLength+" from "+debugPulseLength);
+//		}
+//		debugPulseLength = pulseLength;
+		
 		// determine framecount to figure out what range
 		// of points are within the pulse
 		int pulseFrame = frameCount() % pulseLength;
