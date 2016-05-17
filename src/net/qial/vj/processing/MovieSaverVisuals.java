@@ -45,6 +45,7 @@ public class MovieSaverVisuals extends Visuals {
 	}
 	
 	public void draw() {
+		checkFrames();
 		// draw effects
 		for(Effect e : effects) {
 			if(e.enabled()) {
@@ -56,11 +57,19 @@ public class MovieSaverVisuals extends Visuals {
 //			this.saveFrame("frame-#####.png");
 			this.saveFrame(savePath);
 		}
-		else {
+		else if(frameCount >= movieFrames+2 && frameCount < movieFrames+3){
 			// we're done
 			// don't spam it too much
-			if(frameCount % 60 == 0);
-				System.out.println("Finished saving "+movieFrames+" frames");
+			System.out.println("Finished saving frames");
 		}
+	}
+	
+	private int prevFrame = 0;
+
+	private void checkFrames() {
+		if(frameCount > prevFrame+1) {
+			System.out.println("Skipped frames between "+prevFrame+" and "+frameCount);
+		}
+		prevFrame = frameCount;
 	}
 }
