@@ -26,7 +26,7 @@ Feel free to drop by and say hello!
 # Instructions
 **Work in progress**
 
-Ensure all .jar libraries in the lib/ folder are included. 
+Ensure all .jar libraries in the lib/ folder are included. For the SpoutProcessing jar, make sure you set the native path as the lib/spout/ folder. If you are running this in Eclipse I recommend creating a User Library to set it.
 
 Run processing.core.PApplet with the argument "net.qial.vj.processing.Visuals"
 
@@ -79,23 +79,26 @@ Using shift + key will change parameter by 5 instead of by 1.
 
 - net.qial.vj.bpm - BPM related math for effects
 - net.qial.vj.effect - Effect interface and abstract utility classes
+- net.qial.vj.effect.api - Effect API for saving/loading effects
+- net.qial.vj.effect.yaml - YAML API implementation
 - net.qial.vj.effects - Actual effect implementations
-- net.qial.vj.main - Program start classes
+- net.qial.vj.effects.pulse - Effects mainly using the pulse BPM sequencer
+- net.qial.vj.main - Classes to run project in various configurations
 - net.qial.vj.processing - Processing applet setup and interactivity
 - net.qial.vj.sequencer - Sequencer interface and abstract classes
 - net.qial.vj.sequencers - Sequencer implementations
 - net.qial.vj.shape - API for defining effects
 - net.qial.vj.shapes - Shape implementations
-- net.qial.vj.spout - Spout-based classes and the Spout2 code
 - net.qial.vj.util - utility classes and such
 
-spout.pde, JSpout.java, and files in the code32 and code64 folders are copied from the Spout2 installation.
+The lib/spout/JNISpout\_32.dll and lib/spout/JNISpout\_64.dll files were copied from the [SpoutProcessing project](https://github.com/leadedge/SpoutProcessing). lib/user/SpoutProcessing-v2.0.5.4.jar is a compiled version of that project.
 
 #### Dependencies
 
 This project uses:
-- SnakeYaml 1.17, https://bitbucket.org/asomov/snakeyaml/
-- Fast Classpath Scanner 1.9.18, https://github.com/lukehutch/fast-classpath-scanner/
+- SnakeYaml 1.17, https://bitbucket.org/asomov/snakeyaml
+- Fast Classpath Scanner 1.9.18, https://github.com/lukehutch/fast-classpath-scanner
+- SpoutProcessing 2.0.5.4, https://github.com/leadedge/SpoutProcessing
 
 #### Development goals:
 
