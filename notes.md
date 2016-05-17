@@ -73,3 +73,27 @@ new Milkdrop visualizer.
 
 If the computer can handle it, maybe have a queueing visualizer and a backup?
 I suspect though that might get too complicated in Resolume to really do well.
+
+#### BPM Notes round 2
+
+It seems that PApplet.frameRate returns the ACTUAL framerate, rather than the ideal/pre-set framerate. This makes sense, but I didn't realize and is causing a lot of problems in the BPM Sequencer.
+
+I need to keep track of the framerate at particular frames, and that way I can update the framerate slower. We want to make sure that for live effects we're reasonably running as close as possible to the actual framerate so that our BPM doesn't slowly fade off.
+
+Keep track of time in between frames? Somehow we have to combine the framerate with actual time measurement using System.currentTimeMillis. This needs to be changeable though, because if we are generating frames we want to be able to use a constant framerate regardless of how complicated the effect is and how long it takes to render.
+
+Maybe write code to record per-frame times just in case we need them. A debug mode for movie saver or visuals. I can export to CSV if needed.
+
+Can I make a running average of per-frame times? Maybe the longs wouldn't be an issue if I adjust it correctly. I'm using floats anyway for most inputs to the functions, so I could just make my best guess at where in the "frames" any particular render should be. That might make it more consistent for now.
+
+
+#### BPM Fixing Attempts
+
+For now, everything is pure BPM mode, not for output. Even if I use it for output, I don't care about that right now. It bothers me a lot that I'm randomly either missing or gaining files when I try to export, so I'm not going to worry about that part.
+
+Keep an array of the last 10 frame times. Use that to make an average frame time. Use the average to decide the expected "location" of this frame along the visual. Keep in mind, the visual SHOULD be smooth, so being slightly off in any direction is expected and will probably help it be smoother.
+
+
+
+
+
