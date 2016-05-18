@@ -18,6 +18,9 @@ public class BPM implements NeedsApp {
 	private boolean integer = false;
 	protected Visuals app = ProcessingUtil.getApp(this);
 	
+	// track average over last 10 frames by default
+	private TimeArray fpsTracker = new TimeArray(10);
+	
 	public BPM(int bpm) {
 		setBpm(bpm);
 	}
@@ -43,18 +46,28 @@ public class BPM implements NeedsApp {
 	}
 	
 	public float getFramesPerBeatf() {
-		float frameRate = app.frameRate;
+		float frameRate = getFrameRate();
 		float fpb = (frameRate * 60) / bpmf;
 		//println("fps="+frameRate+" bpmf="+bpmf+" fpb="+fpb);
 		return fpb;
+	}
+	
+	// uses the TimeArray averaging (only really works if this class
+	// gets called every frame. Otherwise we will have issues.
+	// TODO make it not suck if for some reason it isn't every frame
+	public float getFrameRate() {
+		float millisPerFrame = fpsTracker.getAverage();
+		// convert millis per frame to frames per second
+		float secPerFrame = millisPerFrame / 1000.0f;
+		return 1.0f / secPerFrame;
 	}
 	
 //	public int fpb() {
 //		return getFramesPerBeat();
 //	}
 	
-	private int debugFrameRate = 0;
-	private int debugFramesPerBeat = 0;
+//	private int debugFrameRate = 0;
+//	private int debugFramesPerBeat = 0;
 	
 //	public int getFramesPerBeat() {
 //		if(!integer) {
@@ -102,12 +115,20 @@ public class BPM implements NeedsApp {
 	private class TimeArray {
 		private final long[] times;
 		private boolean init = false;
-		//private int idx = 0;
+		private int lastFrame = 0;
 		public TimeArray(int num) {
 			times = new long[num];
 			// pretty sure its zero by default, but whatever
 			for(int i = 0; i < times.length; i++) {
 				times[i]=0;
+			}
+		}
+		public void addNow(int frameCount) {
+			// only add the time if its a new frame
+			if(frameCount > lastFrame) {
+				lastFrame = frameCount;
+				// add time
+				addNow();
 			}
 		}
 		public void addNow() {
@@ -121,7 +142,8 @@ public class BPM implements NeedsApp {
 			}
 			times[0] = time;
 		}
-		public int getAverage() {
+		// this essentially returns the average milliseconds per frame
+		public float getAverage() {
 			// smallest will always be at the end
 			long smallest = times[times.length-1];
 			long runningAvg = 0;
@@ -130,7 +152,7 @@ public class BPM implements NeedsApp {
 				runningAvg += dif;
 			}
 			// divide by times.length-1 to find actual average
-			return (int)(runningAvg / (times.length-1));
+			return ((float)runningAvg / ((float)(times.length-1)));
 		}
 	}
 }
