@@ -47,13 +47,25 @@ public abstract class ProcessingEffect extends SimpleEffect implements NeedsApp 
 	protected void background(int rgb) {
 		app.background(rgb);
 	}
+	
+	protected void background(int r, int g, int b) {
+		app.background(r,g,b);
+	}
 
 	protected void stroke(int rgb) {
 		app.stroke(rgb);
 	}
+	
+	protected void stroke(int r, int g, int b) {
+		app.stroke(r,g,b);
+	}
 
 	protected void noStroke() {
 		app.noStroke();
+	}
+	
+	protected void strokeWeight(float w) {
+		app.strokeWeight(w);
 	}
 
 	protected void fill(int rgb) {
@@ -79,6 +91,15 @@ public abstract class ProcessingEffect extends SimpleEffect implements NeedsApp 
 	protected int frameCount() {
 		return app.frameCount;
 	}
+	
+	protected void line(float x1, float y1, float x2, float y2) {
+		app.line(x1, y1, x2, y2);
+	}
+	
+	protected void line(float x1, float y1, float x2, 
+			float y2, float z1, float z2) {
+		app.line(x1, y1, x2, y2,z1,z2);
+	}
 
 	protected void rect(float x, float y, float w, float h) {
 		app.rect(x, y, w, h);
@@ -95,6 +116,10 @@ public abstract class ProcessingEffect extends SimpleEffect implements NeedsApp 
 
 	protected float cos(float angle) {
 		return PApplet.cos(angle);
+	}
+	
+	protected float sqrt(float n) {
+		return PApplet.sqrt(n);
 	}
 	
 	public SequencerViewer getSequencerViewer() {

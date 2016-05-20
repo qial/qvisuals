@@ -66,7 +66,8 @@ public class Visuals extends PApplet {
 		effects.add(new VUp1());
 		// effects.add(new TriangleWave2());
 		// effects.add(new Arrowhead1());
-		effects.add(new Rotater1());
+		// effects.add(new Rotater1());
+		effects.add(new SuperSpiral());
 		effects.add(new Arrowhead2());
 		effects.add(new Diamond3());
 		// effects.add(new Diamond2());
