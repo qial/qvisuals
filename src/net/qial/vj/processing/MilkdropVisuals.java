@@ -34,10 +34,25 @@ public class MilkdropVisuals extends Visuals {
 		// receive pixels from spout
 		img = spout.receivePixels(img);
 		
-		// now we want to look for non-black pixels in our effects
 		// TODO, maybe resize to width/height? Or force it in winamp?
-		for(int x = 0; x < width && x < img.width; x++) {
-			for(int y = 0; y < height && y < img.height; y++) {
+		// for now just centering the spout image
+		int spoutOffsetX = (width - img.width) / 2;
+		int spoutOffsetY = (height - img.height) / 2; 
+		
+		// now we want to look for non-black pixels in our effects
+		
+		for(int spoutx = 0; spoutx < img.width; spoutx++) {
+			int x = spoutx + spoutOffsetX;
+			if(x < 0 || x >= width) {
+				// don't render, no point
+				continue;
+			}
+			for(int spouty = 0; spouty < img.height; spouty++) {
+				int y = spouty + spoutOffsetY;
+				if(y < 0 || y >= width) {
+					// don't render, no point
+					continue;
+				}
 				int color = pgl.get(x, y);
 				//System.out.print(color+" ");
 				if(color == -16777216) {
@@ -45,7 +60,7 @@ public class MilkdropVisuals extends Visuals {
 				} else {
 					// TODO make this better
 					// for now just replace with milkdrop
-					int mlk = img.get(x, y);
+					int mlk = img.get(spoutx, spouty);
 					pgl.set(x,y,mlk);
 				}
 			}
