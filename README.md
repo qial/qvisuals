@@ -104,7 +104,7 @@ This project uses:
 
 - Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect
 - Set things up so this project can be imported as a JAR into Processing
-- Save/load effect parameters
+- Save/~~load~~ effect parameters *YAML basic support implemented*
 - Load new effects on the fly instead of a compiled 1-9 list
 - Export-to-video button for simplified export of good effects
 - Better effect abstraction to describe effects as shapes moving through time and hide the math
@@ -112,6 +112,9 @@ This project uses:
 - MIDI input support to change effect parameters using hardware controllers
 - Support for choosing output resolutions
 - Seamlessly transform effect code to produce same output across range of resolutions
-- Global BPM settings to re-render effects for different BPMs. (Default is 120bpm still)
-- PulseSequencer to render sine wave pulse shapes, definable by speed, amount, and size of pulse
-- Implement a Spout Receiver to bring in Milkdrop textures natively
+- ~~Global BPM settings to re-render effects for different BPMs. (Default is 120bpm still)~~ *fixed bpm glitches, added record and performance modes~~
+- ~~PulseSequencer to render sine wave pulse shapes, definable by speed, amount, and size of pulse~~ *mostly done and fixed*
+- ~~Implement a Spout Receiver to bring in Milkdrop textures natively~~ *see net.qial.vj.processing.MilkdropReceiver and MilkdropVisuals*
+- Create a UI (maybe even an Atom-based text editor) to make loading, saving, and running effects through the yaml api much easier.
+- Look into possibility of sending keyboard input to background milkdrop for easier control
+
