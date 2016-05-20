@@ -74,6 +74,16 @@ new Milkdrop visualizer.
 If the computer can handle it, maybe have a queueing visualizer and a backup?
 I suspect though that might get too complicated in Resolume to really do well.
 
+#### BPM Fixing try 3
+
+Two modes of operation. 
+
+Recording mode: Ignores the actual framerate completely and simply uses the framecount and target framerate to render each frame.
+
+Performance mode: Ignores actual framerate and the specfic framecount and keeps track of the time the app starts. It calculates the effective positioning based on how many frames should have happened. Essentially keeping track of the time to decide what frame we should be on due to the BPM.
+
+In performance mode, it might make sense to reset the inital frame time whenever the BPM changes. That way longer effects don't just start randomly in the middle.
+
 #### BPM Notes round 2
 
 It seems that PApplet.frameRate returns the ACTUAL framerate, rather than the ideal/pre-set framerate. This makes sense, but I didn't realize and is causing a lot of problems in the BPM Sequencer.

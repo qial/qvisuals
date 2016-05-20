@@ -48,7 +48,7 @@ public class BPM implements NeedsApp {
 	public float getFramesPerBeatf() {
 		float frameRate = getFrameRate();
 		float fpb = (frameRate * 60) / bpmf;
-		//println("fps="+frameRate+" bpmf="+bpmf+" fpb="+fpb);
+//		println("fps="+frameRate+" bpmf="+bpmf+" fpb="+fpb);
 		return fpb;
 	}
 	
@@ -56,6 +56,8 @@ public class BPM implements NeedsApp {
 	// gets called every frame. Otherwise we will have issues.
 	// TODO make it not suck if for some reason it isn't every frame
 	public float getFrameRate() {
+		// make sure we add the frame to our average
+		fpsTracker.addNow(app.frameCount);
 		float millisPerFrame = fpsTracker.getAverage();
 		// convert millis per frame to frames per second
 		float secPerFrame = millisPerFrame / 1000.0f;
@@ -137,8 +139,8 @@ public class BPM implements NeedsApp {
 		public void addTime(long time) {
 			// TODO: Make this circular. I was lazy
 			// move values forward
-			for(int i = 0; i < times.length-1; i++) {
-				times[i+1] = times[i];
+			for(int i = times.length-1; i > 0; i--) {
+				times[i] = times[i-1];
 			}
 			times[0] = time;
 		}
@@ -147,12 +149,15 @@ public class BPM implements NeedsApp {
 			// smallest will always be at the end
 			long smallest = times[times.length-1];
 			long runningAvg = 0;
-			for(int i = times.length-1; i > 0; i--) {
-				long dif = times[i]-times[i-1];
+			for(int i = 0; i < times.length-1; i++) {
+				long dif = times[i]-times[i+1];
 				runningAvg += dif;
+//				System.out.println("["+i+"] d="+dif+" r="+runningAvg);
 			}
 			// divide by times.length-1 to find actual average
-			return ((float)runningAvg / ((float)(times.length-1)));
+			float avg = ((float)runningAvg / ((float)(times.length-1)));
+//			System.out.println("avg="+avg);
+			return avg;
 		}
 	}
 }

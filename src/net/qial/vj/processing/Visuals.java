@@ -28,6 +28,8 @@ public class Visuals extends PApplet {
 
 	ArrayList<Effect> effects;
 
+	private int targetFramerate = 60;
+	
 	// debug display vars
 	boolean DEBUG = true;
 	String debugMessage = "";
@@ -225,5 +227,11 @@ public class Visuals extends PApplet {
 		// CLOSE THE SPOUT SENDER HERE
 		spout.closeSender();
 		super.exit();
+	}
+	
+	// Provide a method for setting integer framerates
+	public void frameRate(int framerate) {
+		frameRate(framerate);
+		this.targetFramerate = framerate;
 	}
 }
