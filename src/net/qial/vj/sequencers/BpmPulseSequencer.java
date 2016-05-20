@@ -23,6 +23,7 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	protected float pulsePortion = 0.666f;
 	
 	protected BPM bpm = new BPM(120);
+	private long startTime = 0;
 
 	public BpmPulseSequencer() {
 		this(new BPM(120));
@@ -31,8 +32,7 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	public BpmPulseSequencer(BPM bpm) {
 		// pulses are in a single direction, so always positive
 		setPositive(true);
-		recalculate();
-		this.bpm = bpm;
+		setBpm(bpm);
 	}
 
 	public float get(int point) {
@@ -40,7 +40,7 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 		int pointLocation = getPointLocation(point);
 		int pulseStart = getPulseStart();
 		int pulseEnd = getPulseEnd();
-		 //println("point=" + point + " pointw=" + pointWidth() + " pulseFrame="
+		//println("point=" + point + " pointw=" + pointWidth() + " pulseFrame="
 		// + pulseFrame + " position=" + pointLocation + " pStart="
 		// + pulseStart + " pEnd=" + pulseEnd + " fpb="+bpm.getFramesPerBeat()
 		// + " pw=" + pulseWidth());
@@ -124,6 +124,7 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	// recalculate internal variables
 	protected void recalculate() {
 		// no internal variables anymore
+		startTime = System.currentTimeMillis();
 	}
 	
 	public void setBpm(BPM bpm) {

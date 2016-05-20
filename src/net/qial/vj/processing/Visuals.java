@@ -232,6 +232,10 @@ public class Visuals extends PApplet {
 	// Provide a method for setting integer framerates
 	public void frameRate(int framerate) {
 		frameRate(framerate);
-		this.targetFramerate = framerate;
+		targetFramerate = framerate;
+	}
+
+	public int getTargetFramerate() {
+		return targetFramerate;
 	}
 }

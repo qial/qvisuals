@@ -16,10 +16,13 @@ public class BPM implements NeedsApp {
 	private float bpmf;
 	private int bpmi;
 	private boolean integer = false;
-	protected Visuals app = ProcessingUtil.getApp(this);
+	
+	private long startTime = 0;
 	
 	// track average over last 10 frames by default
-	private TimeArray fpsTracker = new TimeArray(10);
+	//private TimeArray fpsTracker = new TimeArray(10);
+	
+	protected Visuals app = ProcessingUtil.getApp(this);
 	
 	public BPM(int bpm) {
 		setBpm(bpm);
@@ -33,12 +36,16 @@ public class BPM implements NeedsApp {
 		bpmi = bpm;
 		bpmf = bpm;
 		integer = true;
+		// reset timer
+		startTime = System.currentTimeMillis();
 	}
 	
 	public void setBpm(float bpm) {
 		bpmf = bpm;
 		bpmi = (int)bpm;
 		integer = false;
+		// reset timer
+		startTime = System.currentTimeMillis();
 	}
 	
 	public float fpbf() {
@@ -46,7 +53,7 @@ public class BPM implements NeedsApp {
 	}
 	
 	public float getFramesPerBeatf() {
-		float frameRate = getFrameRate();
+		float frameRate = app.getTargetFramerate();
 		float fpb = (frameRate * 60) / bpmf;
 //		println("fps="+frameRate+" bpmf="+bpmf+" fpb="+fpb);
 		return fpb;
@@ -55,14 +62,14 @@ public class BPM implements NeedsApp {
 	// uses the TimeArray averaging (only really works if this class
 	// gets called every frame. Otherwise we will have issues.
 	// TODO make it not suck if for some reason it isn't every frame
-	public float getFrameRate() {
-		// make sure we add the frame to our average
-		fpsTracker.addNow(app.frameCount);
-		float millisPerFrame = fpsTracker.getAverage();
-		// convert millis per frame to frames per second
-		float secPerFrame = millisPerFrame / 1000.0f;
-		return 1.0f / secPerFrame;
-	}
+//	public float getFrameRate() {
+//		// make sure we add the frame to our average
+//		fpsTracker.addNow(app.frameCount);
+//		float millisPerFrame = fpsTracker.getAverage();
+//		// convert millis per frame to frames per second
+//		float secPerFrame = millisPerFrame / 1000.0f;
+//		return 1.0f / secPerFrame;
+//	}
 	
 //	public int fpb() {
 //		return getFramesPerBeat();
