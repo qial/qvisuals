@@ -59,6 +59,22 @@ public class BPM implements NeedsApp {
 		return fpb;
 	}
 	
+	public float getCurrentFrame() {
+		// get current time
+		long curTime = System.currentTimeMillis();
+		long passedTime = curTime - startTime;
+		// get target framerate
+		int frameRate = app.getTargetFramerate();
+		// frames / sec, passedTime sec / 1000
+		long frameMillis = frameRate * passedTime;
+		float frame = frameMillis / 1000.0f;
+		return frame;
+	}
+	
+//	public float getCurrentFrame() {
+//		
+//	}
+	
 	// uses the TimeArray averaging (only really works if this class
 	// gets called every frame. Otherwise we will have issues.
 	// TODO make it not suck if for some reason it isn't every frame

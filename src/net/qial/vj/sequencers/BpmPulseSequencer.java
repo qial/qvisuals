@@ -61,7 +61,12 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	
 	protected float getPulseLocation() {
 		// TODO THIS ISNT STEADY
+		
+		// pulse length is number of frames
 		float pulseLength = bpm.getFramesPerBeatf();
+		
+		// get current frame
+		float currentFrame = bpm.getCurrentFrame();
 		
 		// TODO remove debug shit
 //		if(debugPulseLength != pulseLength) {
@@ -69,9 +74,11 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 //		}
 //		debugPulseLength = pulseLength;
 		
+		
+		
 		// determine framecount to figure out what range
 		// of points are within the pulse
-		float pulseFrame = frameCount() % pulseLength;
+		float pulseFrame = currentFrame % pulseLength;
 		// we need to adjust so the pulse starts before and
 		// ends after the start and end points of the effect
 		float pulseAdjustment = (pulseLength + pulseWidth())
