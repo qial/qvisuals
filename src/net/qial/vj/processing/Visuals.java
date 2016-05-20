@@ -20,13 +20,9 @@ import spout.Spout;
  */
 public class Visuals extends PApplet {
 
-	Spout spout;
+	protected SineSequencer seq;
 
-	PImage tex;
-
-	SineSequencer seq;
-
-	ArrayList<Effect> effects;
+	protected ArrayList<Effect> effects;
 
 	private int targetFramerate = 60;
 	
@@ -53,12 +49,6 @@ public class Visuals extends PApplet {
 		// create font for debug mode messages
 		debugFont = createFont("Arial", 18, true);
 		textFont(debugFont);
-
-		// CREATE A NEW SPOUT OBJECT HERE
-		spout = new Spout(this);
-
-		// INITIALIZE A SPOUT SENDER HERE
-		spout.createSender("Spout QVisuals", width, height);
 
 		seq = new SineSequencer();
 		seq.setSpeed(0.25f);
@@ -126,9 +116,6 @@ public class Visuals extends PApplet {
 		// diamond1();
 
 		drawDebugMessage();
-
-		// SEND A SHARED TEXTURE HERE
-		spout.sendTexture();
 
 	}
 
@@ -224,8 +211,6 @@ public class Visuals extends PApplet {
 	}
 
 	public void exit() {
-		// CLOSE THE SPOUT SENDER HERE
-		spout.closeSender();
 		super.exit();
 	}
 	
