@@ -102,6 +102,7 @@ This project uses:
 
 #### Development goals:
 
+- Flesh out the effect API more to make designing effects easier
 - Finish adding methods to ProcessingEffect class such that Processing code can be pasted directly from a sketch into an effect
 - Set things up so this project can be imported as a JAR into Processing
 - Save/~~load~~ effect parameters *YAML basic support implemented*
