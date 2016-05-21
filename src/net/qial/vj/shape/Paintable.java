@@ -1,7 +1,13 @@
 package net.qial.vj.shape;
 
+import net.qial.vj.effect.api.PaintableDescription;
 import processing.core.PApplet;
 
+/**
+ * 
+ * @author Kyle
+ *
+ */
 public interface Paintable {
 	/**
 	 * Prepare sets up things that are needed to draw this Paintable, such
@@ -22,6 +28,13 @@ public interface Paintable {
 	 * @param app the Processing applet
 	 */
 	public void paint(PApplet app);
+	
+	/**
+	 * Loads values into this Paintable from a given PaintableDescription
+	 * 
+	 * @param desc the PaintableDescription with settings to load from
+	 */
+	public void loadValues(PaintableDescription desc);
 }
 
 // For shapes like the V, maybe I need a way to define a

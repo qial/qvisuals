@@ -36,28 +36,33 @@ public class PaintableDescription {
 			String k = (String)o;
 			Object v = map.get(k);
 			
-			// handle some values specially
-			if("type".equals(k)) {
-				type = (String)v;
-			}
-			else if("shape".equals(k)) {
-				PaintableDescription desc = new PaintableDescription();
-				// determine if this is a simple type name or an object
-				if(v instanceof String) {
-					desc.setType((String)v);
-				} else {
-					desc.setValues((LinkedHashMap)v);
-				}
-				shape = desc;
-			}
-			else if("movement".equals(k)) {
-				MovementDescription desc = new MovementDescription();
+			set(k,v);
+		}
+	}
+	
+	// set a particular value
+	public void set(String k, Object v) {
+		// handle some values specially
+		if("type".equals(k)) {
+			type = (String)v;
+		}
+		else if("shape".equals(k)) {
+			PaintableDescription desc = new PaintableDescription();
+			// determine if this is a simple type name or an object
+			if(v instanceof String) {
+				desc.setType((String)v);
+			} else {
 				desc.setValues((LinkedHashMap)v);
-				movement = desc;
 			}
-			else {
-				others.put(k, v);
-			}
+			shape = desc;
+		}
+		else if("movement".equals(k)) {
+			MovementDescription desc = new MovementDescription();
+			desc.setValues((LinkedHashMap)v);
+			movement = desc;
+		}
+		else {
+			others.put(k, v);
 		}
 	}
 	
