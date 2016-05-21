@@ -4,6 +4,9 @@ bin/
 # hide output files
 output/
 
+# hide documentation
+doc/
+
 # hide eclipse files
 .classpath
 .project

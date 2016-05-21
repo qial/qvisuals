@@ -42,23 +42,26 @@ public class EffectBuilder {
 			
 		}
 		else if("designed".equals(type)) {
-			DesignedEffect d = new DesignedEffect();
-			if(desc.getSequencer() != null) {
-				Sequencer seq = buildSequencer(desc.getSequencer());
-				d.setSequencer(seq);
-			}
-			d.setDefaults(d.getDefaults());
-			for(PaintableDescription pdesc : desc.getPaintables()) {
-				Paintable p = buildPaintable(pdesc);
-				if(p != null) {
-					d.addPart(p);
-				}
-			}
-			
-			effect = d;
+			effect = buildDesignedEffect(desc);
 		}
 		
 		return effect;
+	}
+	
+	public DesignedEffect buildDesignedEffect(EffectDescription desc) {
+		DesignedEffect d = new DesignedEffect();
+		if(desc.getSequencer() != null) {
+			Sequencer seq = buildSequencer(desc.getSequencer());
+			d.setSequencer(seq);
+		}
+		d.setDefaults(d.getDefaults());
+		for(PaintableDescription pdesc : desc.getPaintables()) {
+			Paintable p = buildPaintable(pdesc);
+			if(p != null) {
+				d.addPart(p);
+			}
+		}
+		return d;
 	}
 	
 	public Paintable buildPaintable(PaintableDescription desc) {
