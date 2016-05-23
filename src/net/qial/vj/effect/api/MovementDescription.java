@@ -7,12 +7,12 @@ public class MovementDescription extends Description {
 	
 	private int amplitude;
 	
-	private HashMap<String,Object> others;
+//	private HashMap<String,Object> others;
 	
 //	private DesignedEffect parent;
 	
 	public MovementDescription() {
-		others = new HashMap<String,Object>();
+//		others = new HashMap<String,Object>();
 	}
 	
 	public void setValues(LinkedHashMap map) {
@@ -28,7 +28,8 @@ public class MovementDescription extends Description {
 				amplitude = (Integer) v;
 			}
 			else {
-				others.put(k, v);
+				set(k,v);
+//				others.put(k, v);
 			}
 		}
 	}
@@ -54,8 +55,8 @@ public class MovementDescription extends Description {
 		sb.append("MovementDescription{");
 		sb.append("type=").append(getType());
 		sb.append(",amplitude=").append(amplitude);
-		for(String k : others.keySet()) {
-			Object v = others.get(k);
+		for(String k : getDefaults().keySet()) {
+			Object v = getDefaults().get(k);
 			sb.append(",").append(k);
 			sb.append("=").append(v);
 		}

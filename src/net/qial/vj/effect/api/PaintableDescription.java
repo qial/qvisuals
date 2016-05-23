@@ -103,8 +103,8 @@ public class PaintableDescription extends Description {
 		if(movement != null)
 			sb.append(",movement=").append(movement);
 		//boolean first = true;
-		for(Object k : others.keySet()) {
-			Object v = others.get(k);
+		for(Object k : getDefaults().keySet()) {
+			Object v = getDefaults().get(k);
 			sb.append(",");
 			sb.append(k).append("=").append(v);
 		}

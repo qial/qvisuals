@@ -27,6 +27,10 @@ public abstract class Description {
 		defaults.put(key,val);
 	}
 	
+	public Map<String,Object> getDefaults() {
+		return defaults;
+	}
+	
 	public void setDefaults(Map<String,Object> defaults) {
 		this.defaults = defaults;
 	}
