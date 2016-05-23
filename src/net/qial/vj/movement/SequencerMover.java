@@ -6,4 +6,14 @@ import net.qial.vj.shape.Movement;
 @Movement(name="sequencer")
 public class SequencerMover extends AbstractMover {
 
+	public SequencerMover() {
+		
+	}
+	
+	@Override
+	public float getMovement() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
