@@ -1,5 +1,6 @@
 package net.qial.vj.sequencers;
 
+import net.qial.vj.sequencer.SequencerType;
 import net.qial.vj.util.DrawUtil;
 
 /**
@@ -9,6 +10,7 @@ import net.qial.vj.util.DrawUtil;
  * @author kw
  *
  */
+@SequencerType(name="pulseDown")
 public class PulseDownSequencer extends PulseSequencer {
 	public float get(int point) {
 		float pulseLocation = getPulseLocation();

@@ -2,7 +2,9 @@ package net.qial.vj.sequencers;
 
 import processing.core.PApplet;
 import net.qial.vj.sequencer.ProcessingSequencer;
+import net.qial.vj.sequencer.SequencerType;
 
+@SequencerType(name="sin")
 public class SineSequencer extends ProcessingSequencer {
 
 	// percentage of 2pi the points are over

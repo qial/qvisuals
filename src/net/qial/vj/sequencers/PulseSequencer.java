@@ -1,8 +1,10 @@
 package net.qial.vj.sequencers;
 
 import net.qial.vj.sequencer.ProcessingSequencer;
+import net.qial.vj.sequencer.SequencerType;
 import net.qial.vj.util.DrawUtil;
 
+@SequencerType(name="pulse")
 public class PulseSequencer extends ProcessingSequencer {
 	// amount of frames it takes for the pulse to fully travel
 	protected int pulseLength = 30;

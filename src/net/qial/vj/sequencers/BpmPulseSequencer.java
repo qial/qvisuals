@@ -3,6 +3,7 @@ package net.qial.vj.sequencers;
 import net.qial.vj.bpm.BPM;
 import net.qial.vj.bpm.BpmBased;
 import net.qial.vj.sequencer.ProcessingSequencer;
+import net.qial.vj.sequencer.SequencerType;
 import net.qial.vj.util.DrawUtil;
 
 /**
@@ -15,6 +16,7 @@ import net.qial.vj.util.DrawUtil;
  * @author kw
  *
  */
+@SequencerType(name="bpm")
 public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	// amount of times per beat 
 	protected int pulseMultiplier = 1;
