@@ -29,7 +29,7 @@ public class ShapeSet extends AbstractShape {
 	@Override
 	public void paint(PApplet app) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
