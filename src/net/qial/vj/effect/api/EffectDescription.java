@@ -75,6 +75,8 @@ public class EffectDescription extends Description {
 	public void setSequencer(SequencerDescription sequencer) {
 		//System.out.println("Set sequencer: "+sequencer);
 		this.sequencer = sequencer;
+		// set parent
+		sequencer.setParent(this);
 	}
 
 	public List<LinkedHashMap> getShapes() {
@@ -95,9 +97,10 @@ public class EffectDescription extends Description {
 			for(LinkedHashMap map : shapes) {
 				PaintableDescription p = new PaintableDescription();
 				p.setValues(map);
+				p.setParent(this);
 				paintables.add(p);
-				this.paintables = paintables;
 			}
+			this.paintables = paintables;
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -59,6 +59,8 @@ public class PaintableDescription extends Description {
 		else if("movement".equals(k)) {
 			MovementDescription desc = new MovementDescription();
 			desc.setValues((LinkedHashMap)v);
+			// set parent
+			desc.setParent(this);
 			movement = desc;
 		}
 		else {
