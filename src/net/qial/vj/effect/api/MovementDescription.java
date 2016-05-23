@@ -11,6 +11,8 @@ public class MovementDescription {
 	
 	private HashMap<String,Object> others;
 	
+	private DesignedEffect parent;
+	
 	public MovementDescription() {
 		others = new HashMap<String,Object>();
 	}
@@ -49,6 +51,14 @@ public class MovementDescription {
 		this.amplitude = amplitude;
 	}
 	
+	public DesignedEffect getParent() {
+		return parent;
+	}
+
+	public void setParent(DesignedEffect parent) {
+		this.parent = parent;
+	}
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("MovementDescription{");

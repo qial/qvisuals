@@ -27,6 +27,8 @@ public class PaintableDescription {
 	
 	private HashMap<String,Object> others;
 	
+	private DesignedEffect parent;
+	
 	public PaintableDescription() {
 		others = new HashMap<String,Object>();
 	}
@@ -100,6 +102,18 @@ public class PaintableDescription {
 
 	public void setOthers(HashMap<String, Object> others) {
 		this.others = others;
+	}
+
+	public DesignedEffect getParent() {
+		return parent;
+	}
+
+	public void setParent(DesignedEffect parent) {
+		this.parent = parent;
+		// set parent on our child descriptions
+		if(movement != null) {
+			movement.setParent(parent);
+		}
 	}
 
 	public String toString() {

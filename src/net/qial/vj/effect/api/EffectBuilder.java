@@ -56,6 +56,8 @@ public class EffectBuilder {
 		}
 		d.setDefaults(d.getDefaults());
 		for(PaintableDescription pdesc : desc.getPaintables()) {
+			// set parent effect
+			pdesc.setParent(d);
 			Paintable p = buildPaintable(pdesc);
 			if(p != null) {
 				d.addPart(p);
