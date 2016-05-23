@@ -10,7 +10,7 @@ import net.qial.vj.util.PrintUtil;
  * @author kw
  *
  */
-public class SequencerDescription {
+public class SequencerDescription extends Description {
 	// the "type" key defines the sequencer class used
 	
 	private String type;

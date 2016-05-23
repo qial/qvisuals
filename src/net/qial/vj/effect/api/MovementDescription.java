@@ -3,15 +3,13 @@ package net.qial.vj.effect.api;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class MovementDescription {
-
-	private String type;
+public class MovementDescription extends Description {
 	
 	private int amplitude;
 	
 	private HashMap<String,Object> others;
 	
-	private DesignedEffect parent;
+//	private DesignedEffect parent;
 	
 	public MovementDescription() {
 		others = new HashMap<String,Object>();
@@ -24,7 +22,7 @@ public class MovementDescription {
 			
 			// handle some values specially
 			if("type".equals(k)) {
-				type = (String) v;
+				setType((String) v);
 			}
 			else if("amplitude".equals(k)) {
 				amplitude = (Integer) v;
@@ -35,14 +33,6 @@ public class MovementDescription {
 		}
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 	public int getAmplitude() {
 		return amplitude;
 	}
@@ -51,18 +41,18 @@ public class MovementDescription {
 		this.amplitude = amplitude;
 	}
 	
-	public DesignedEffect getParent() {
-		return parent;
-	}
-
-	public void setParent(DesignedEffect parent) {
-		this.parent = parent;
-	}
+//	public DesignedEffect getParent() {
+//		return parent;
+//	}
+//
+//	public void setParent(DesignedEffect parent) {
+//		this.parent = parent;
+//	}
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("MovementDescription{");
-		sb.append("type=").append(type);
+		sb.append("type=").append(getType());
 		sb.append(",amplitude=").append(amplitude);
 		for(String k : others.keySet()) {
 			Object v = others.get(k);

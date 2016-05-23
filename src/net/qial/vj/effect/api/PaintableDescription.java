@@ -17,20 +17,18 @@ import net.qial.vj.util.PrintUtil;
  * @author kw
  *
  */
-public class PaintableDescription {
-	
-	private String type;
+public class PaintableDescription extends Description {
 	
 	private PaintableDescription shape;
 	
 	private MovementDescription movement;
 	
-	private HashMap<String,Object> others;
+//	private HashMap<String,Object> others;
 	
-	private DesignedEffect parent;
+	//private DesignedEffect parent;
 	
 	public PaintableDescription() {
-		others = new HashMap<String,Object>();
+//		others = new HashMap<String,Object>();
 	}
 	
 	public void setValues(LinkedHashMap map) {
@@ -46,7 +44,7 @@ public class PaintableDescription {
 	public void set(String k, Object v) {
 		// handle some values specially
 		if("type".equals(k)) {
-			type = (String)v;
+			setType((String)v);
 		}
 		else if("shape".equals(k)) {
 			PaintableDescription desc = new PaintableDescription();
@@ -64,16 +62,8 @@ public class PaintableDescription {
 			movement = desc;
 		}
 		else {
-			others.put(k, v);
+			super.set(k,v);
 		}
-	}
-	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public PaintableDescription getShape() {
@@ -92,34 +82,22 @@ public class PaintableDescription {
 		this.movement = movement;
 	}
 
-	public HashMap<String, Object> getOthers() {
-		return others;
-	}
-	
-	public Object get(String k) {
-		return others.get(k);
-	}
-
-	public void setOthers(HashMap<String, Object> others) {
-		this.others = others;
-	}
-
-	public DesignedEffect getParent() {
-		return parent;
-	}
-
-	public void setParent(DesignedEffect parent) {
-		this.parent = parent;
-		// set parent on our child descriptions
-		if(movement != null) {
-			movement.setParent(parent);
-		}
-	}
+//	public DesignedEffect getParent() {
+//		return parent;
+//	}
+//
+//	public void setParent(DesignedEffect parent) {
+//		this.parent = parent;
+//		// set parent on our child descriptions
+//		if(movement != null) {
+//			movement.setParent(parent);
+//		}
+//	}
 
 	public String toString() {
 		StringBuilder sb = new StringBuilder(); 
 		sb.append("PaintableDescription{");
-		sb.append("type=").append(type);
+		sb.append("type=").append(getType());
 		if(shape != null)
 			sb.append(",shape=").append(shape);
 		if(movement != null)

@@ -15,10 +15,7 @@ import net.qial.vj.util.PrintUtil;
  * @author kw
  *
  */
-public class EffectDescription {
-
-	// Defines what top-level Effect class this should use
-	private String type;
+public class EffectDescription extends Description {
 	
 	// Defines a special class if required 
 	private String subtype;
@@ -41,7 +38,7 @@ public class EffectDescription {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("EffectDescription{\n");
-		sb.append("  type=").append(type).append(",\n");
+		sb.append("  type=").append(getType()).append(",\n");
 		if(subtype != null) {
 			sb.append("  subtype=").append(subtype).append(",\n");
 		}
@@ -69,15 +66,6 @@ public class EffectDescription {
 		}
 		sb.append("\n}");
 		return sb.toString();
-	}
-	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		//System.out.println("Set type: "+type);
-		this.type = type;
 	}
 
 	public SequencerDescription getSequencer() {
@@ -113,15 +101,6 @@ public class EffectDescription {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public HashMap<String, Object> getDefaults() {
-		return defaults;
-	}
-
-	public void setDefaults(HashMap<String, Object> defaults) {
-		//System.out.println("Set defaults: "+defaults);
-		this.defaults = defaults;
 	}
 
 	public String getSubtype() {
