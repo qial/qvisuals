@@ -1,6 +1,6 @@
 package net.qial.vj.shape;
 
-public abstract class AbstractMover implements Movement {
+public abstract class AbstractMovement implements Movement {
 	private String param;
 
 	@Override

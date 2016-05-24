@@ -6,7 +6,7 @@ import java.util.List;
 import processing.core.PApplet;
 import net.qial.vj.effect.api.MovementDescription;
 import net.qial.vj.effect.api.PaintableDescription;
-import net.qial.vj.movement.SequencerMover;
+import net.qial.vj.movement.SequencerMovement;
 import net.qial.vj.shape.AbstractShape;
 import net.qial.vj.shape.Paintable;
 
@@ -58,7 +58,7 @@ public class ShapeSet extends AbstractShape {
 				// create the mover for this
 				
 				//TODO load movement class and values dynamically
-				SequencerMover seqm = new SequencerMover();
+				SequencerMovement seqm = new SequencerMovement();
 				seqm.setParam("size");
 				seqm.setPoint(i);
 				
