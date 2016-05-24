@@ -4,10 +4,10 @@ import processing.core.PApplet;
 import net.qial.vj.effect.api.PaintableDescription;
 import net.qial.vj.shape.AbstractShape;
 import net.qial.vj.shape.Paintable;
-import net.qial.vj.shape.Shape;
+import net.qial.vj.shape.ShapeType;
 import net.qial.vj.util.DrawUtil;
 
-@Shape(name="v-up")
+@ShapeType(name="v-up")
 public class VShape extends AbstractShape {
 	private int w, o;
 	

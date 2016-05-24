@@ -31,6 +31,10 @@ shapes:
     movement: 
       # type 'sequencer' means use the main sequencer
       type: sequencer
+      # param says which part of the shape it should modify
+      param: size
+      # amplitude is the max movement
+      # Remember that Movers return [0f,1f] or [-1f,1f]
       amplitude: -30
   # Set the outer circle
   - type: circle

@@ -1,9 +1,9 @@
 package net.qial.vj.movement;
 
 import net.qial.vj.shape.AbstractMover;
-import net.qial.vj.shape.Movement;
+import net.qial.vj.shape.MovementType;
 
-@Movement(name="sequencer")
+@MovementType(name="sequencer")
 public class SequencerMover extends AbstractMover {
 
 	private int point;

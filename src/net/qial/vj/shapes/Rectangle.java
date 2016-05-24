@@ -1,6 +1,6 @@
 package net.qial.vj.shapes;
 
-import net.qial.vj.shape.Shape;
+import net.qial.vj.shape.ShapeType;
 
 
 public class Rectangle {

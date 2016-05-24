@@ -11,8 +11,8 @@ public class EffectReaderTest {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		//testVup();
-		//testCircles1();
-		trianglewave1();
+//		testCircles1();
+//		trianglewave1();
 	}
 	
 	public static EffectDescription testVup() throws Exception {

@@ -9,10 +9,14 @@ import net.qial.vj.bpm.BPM;
 import net.qial.vj.effect.Effect;
 import net.qial.vj.effect.ParamEffect;
 import net.qial.vj.sequencer.Sequencer;
+import net.qial.vj.sequencer.SequencerType;
 import net.qial.vj.sequencers.BpmPulseSequencer;
+import net.qial.vj.shape.MovementType;
 import net.qial.vj.shape.Movement;
 import net.qial.vj.shape.Paintable;
+import net.qial.vj.shape.ShapeType;
 import net.qial.vj.shapes.VShape;
+import net.qial.vj.util.PrintUtil;
 
 /**
  * Builds an actual Effect given an EffectDescription Handles types and such.
@@ -26,7 +30,10 @@ import net.qial.vj.shapes.VShape;
  */
 public class EffectBuilder {
 	private static FastClasspathScanner scanner;
-	private static Map<String,Class<?>> typeMap;
+	private static Map<String,Class<?>> effectMap;
+	private static Map<String,Class<?>> sequencerMap;
+	private static Map<String,Class<?>> paintableMap;
+	private static Map<String,Class<?>> movementMap;
 	
 	public Effect buildEffect(EffectDescription desc) {
 		// make sure the classpath scanner is initialized
@@ -83,7 +90,7 @@ public class EffectBuilder {
 	}
 	
 	// TODO: Figure out final movement classes
-	public Movement buildMovement(MovementDescription desc) {
+	public MovementType buildMovement(MovementDescription desc) {
 		return null;
 	}
 	
@@ -101,33 +108,105 @@ public class EffectBuilder {
 		return seq;
 	}
 	
-	private void loadScanner() {
+	private static synchronized void loadScanner() {
 		// TODO maybe scan everything?
 		// maybe only scan everything if we can detect this is 
 		// running as a library in another project?
-		boolean needScan = scanner.classpathContentsModifiedSinceScan();
+		boolean needScan = true;
 		if(scanner == null) {			
 			scanner = new FastClasspathScanner("net.qial.vj");
-			scanner.scan();
-			needScan = true;
+		} else {
+			needScan = scanner.classpathContentsModifiedSinceScan();
 		}
 		if(needScan) {
 			// update scan
+			scanner.verbose();
 			scanner.scan();
 			
-			typeMap = new HashMap<String,Class<?>>();
+			// load effect types
+			effectMap = new HashMap<String,Class<?>>();
+			loadTypes(EffectType.class,effectMap);
+			System.out.println("Effects:"+PrintUtil.toString(effectMap));
 			
-			// update effect type map
-			List<String> effectClasses = scanner.getNamesOfClassesWithAnnotation(EffectType.class);
-			for(String cls : effectClasses) {
-				try {
-					Class c = getClass().getClassLoader().loadClass(cls);
-					typeMap.put(cls, c);
-				} catch (ClassNotFoundException e) {
-					System.out.println("Unable to load @EffectType class "+cls);
-					e.printStackTrace();
-				} 
-			}
+			// load sequencer types
+			sequencerMap = new HashMap<String,Class<?>>();
+			loadTypes(SequencerType.class, sequencerMap);
+			System.out.println("Sequencers:"+PrintUtil.toString(sequencerMap));
+			
+			// load movement types
+			movementMap = new HashMap<String,Class<?>>();
+			loadTypes(MovementType.class, movementMap);
+			System.out.println("Movements:"+PrintUtil.toString(movementMap));
+			
+			// load shapes
+			paintableMap = new HashMap<String,Class<?>>();
+			loadTypes(ShapeType.class, paintableMap);
+			System.out.println("Paintables:"+PrintUtil.toString(paintableMap));
+		}
+	}
+	
+	public static Effect getEffect(String type) {
+		// ensure scanner is loaded
+		loadScanner();
+		
+		Class<?> cls = effectMap.get(type);
+		return (Effect)getInstance(cls);
+	}
+	
+	public static Sequencer getSequencer(String type) {
+		// ensure scanner is loaded
+		loadScanner();
+		
+		Class<?> cls = sequencerMap.get(type);
+		return (Sequencer)getInstance(cls);
+	}
+	
+	public static Movement getMovement(String type) {
+		// ensure scanner is loaded
+		loadScanner();
+		
+		Class<?> cls = movementMap.get(type);
+		return (Movement)getInstance(cls);
+	}
+	
+	public static Paintable getShape(String type) {
+		// ensure scanner is loaded
+		loadScanner();
+		
+		Class<?> cls = paintableMap.get(type);
+		return (Paintable)getInstance(cls);
+	}
+	
+	public static <T> T getInstance(Class<T> clazz) {
+		if(clazz == null) {
+			// it wasn't found
+			return null;
+		}
+		try {
+			T obj = clazz.newInstance();
+			return obj;
+		} catch (InstantiationException e) {
+			System.err.println("Unable to load instance of class "+clazz.getCanonicalName());
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			System.err.println("Unable to load instance of class "+clazz.getCanonicalName());
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	private static synchronized void loadTypes(Class<?> clazz, Map<String,Class<?>> map) {
+		// update effect type map
+		List<String> classes = scanner.getNamesOfClassesWithAnnotation("net.qial.vj.effect.api.EffectType");
+		System.out.println(clazz.getCanonicalName()+" found: "+classes+" ("+classes.size()+")");
+		for(String cls : classes) {
+			try {
+				Class c = EffectBuilder.class.getClassLoader().loadClass(cls);
+				map.put(cls, c);
+			} catch (ClassNotFoundException e) {
+				System.out.println("Unable to load @"+clazz.getName()+" class "+cls);
+				e.printStackTrace();
+			} 
 		}
 	}
 }

@@ -1,9 +1,9 @@
 package net.qial.vj.shapes;
 
 import net.qial.vj.effect.api.PaintableDescription;
-import net.qial.vj.shape.Shape;
+import net.qial.vj.shape.ShapeType;
 
-@Shape(name="circle")
+@ShapeType(name="circle")
 public class CircleShape extends EllipseShape {
 	public CircleShape() {
 		

@@ -9,7 +9,7 @@ import processing.core.PApplet;
  * @author Kyle
  *
  */
-public abstract class AbstractShape implements Paintable {
+public abstract class AbstractShape implements Shape {
 	
 	public AbstractShape() {
 		// do nothing
