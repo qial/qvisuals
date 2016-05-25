@@ -9,5 +9,7 @@ public interface Movement {
 	public float getMovement();
 	public String getParam();
 	public void setParam(String paramName);
+	public int getAmplitude();
+	public void setAmplitude(int amplitude);
 	public void loadFrom(MovementDescription desc);
 }

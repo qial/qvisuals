@@ -46,9 +46,11 @@ public class EffectSaverMain {
 		PApplet.main(new String[]{className});
 	}
 	
-	private static Effect getEffect() {
+	private static Effect getEffect() throws Exception {
 		// TODO return something
-		return new BpmPulseCircle();
+//		return new BpmPulseCircle();
+		// lets load a designed effect
+		return EffectBuilderTest.testCircles1();
 	}
 
 }

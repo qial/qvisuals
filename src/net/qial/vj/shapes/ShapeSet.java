@@ -33,8 +33,9 @@ public class ShapeSet extends AbstractShape {
 
 	@Override
 	public void paint(PApplet app) {
-		// TODO Auto-generated method stub
-		
+		for(Paintable p : shapes) {
+			p.paint(app);
+		}
 	}
 
 	@Override

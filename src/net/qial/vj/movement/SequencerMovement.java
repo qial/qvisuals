@@ -25,8 +25,7 @@ public class SequencerMovement extends AbstractMovement {
 	
 	@Override
 	public float getMovement() {
-		// TODO Auto-generated method stub
-		return 0;
+		return seq.get(point) * amplitude;
 	}
 	
 	public void loadFrom(MovementDescription desc) {
