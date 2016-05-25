@@ -17,7 +17,7 @@ public class CircleShape extends EllipseShape {
 		super(x, y, size, size);
 	}
 	
-	public void loadValues(PaintableDescription desc) {
+	public void loadFrom(PaintableDescription desc) {
 		// circle uses x,y,and r, so convert to old values
 		int size = (Integer)desc.get("size");
 		desc.set("w",size);

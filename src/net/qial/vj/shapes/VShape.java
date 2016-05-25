@@ -33,7 +33,7 @@ public class VShape extends AbstractShape {
 	}
 
 	@Override
-	public void loadValues(PaintableDescription desc) {
+	public void loadFrom(PaintableDescription desc) {
 		this.w = (Integer)desc.get("w");
 		this.o = (Integer)desc.get("o");
 	}

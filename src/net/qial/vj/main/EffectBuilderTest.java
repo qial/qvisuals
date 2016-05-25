@@ -10,7 +10,13 @@ public class EffectBuilderTest {
 	public static void main(String[] args) throws Exception {
 		TestApp app = new TestApp();
 		//testTriangleWave();
-		testvup();
+		//testvup();
+		testCircles1();
+	}
+	
+	public static Effect testCircles1() throws Exception {
+		EffectDescription desc = EffectReaderTest.testCircles1();
+		return loadEffect(desc);
 	}
 
 	public static Effect testTriangleWave() throws Exception {

@@ -49,7 +49,7 @@ public class EffectBuilder {
 	private static Map<String,Class<?>> paintableMap;
 	private static Map<String,Class<?>> movementMap;
 	
-	public Effect buildEffect(EffectDescription desc) {
+	public static Effect buildEffect(EffectDescription desc) {
 		// make sure the classpath scanner is initialized
 		loadScanner();
 		
@@ -57,50 +57,60 @@ public class EffectBuilder {
 		
 		String type = desc.getType();
 		
-		
-		
-		if("param".equals(type)) {
-			
+		Class<?> cls = effectMap.get(type);
+		if(cls != null) {
+			try {
+				Effect e = (Effect)cls.newInstance();
+				Effect e2 = e.loadFrom(desc);
+				return e2;
+			} catch(Exception e) {
+				System.out.println("Unable to create effect for type "+type+" and class "+cls.getCanonicalName());
+				e.printStackTrace();
+				return null;
+			}
 		}
-		else if("designed".equals(type)) {
-			effect = buildDesignedEffect(desc);
+		else {
+			System.out.println("Could not find effect for type "+type);
+			return null;
 		}
 		
-		return effect;
+//		if("param".equals(type)) {
+//			
+//		}
+//		else if("designed".equals(type)) {
+//			effect = buildDesignedEffect(desc);
+//		}
+//		
+//		return effect;
 	}
 	
 	public DesignedEffect buildDesignedEffect(EffectDescription desc) {
 		DesignedEffect d = new DesignedEffect();
-		if(desc.getSequencer() != null) {
-			Sequencer seq = buildSequencer(desc.getSequencer());
-			d.setSequencer(seq);
-		}
-		d.setDefaults(d.getDefaults());
-		for(PaintableDescription pdesc : desc.getPaintables()) {
-			// set parent effect
-			//pdesc.setParent(d);
-			Paintable p = buildPaintable(pdesc);
-			if(p != null) {
-				d.addPart(p);
-			}
-		}
+		d.loadFrom(desc);
 		return d;
 	}
 	
-	public Paintable buildPaintable(PaintableDescription desc) {
+	public static Paintable buildPaintable(PaintableDescription desc) {
 		Paintable p = null;
 		
-		//TODO move this into individual paintables
 		String type = desc.getType();
-		if("v".equals(type)) {
-			// TODO determine offset? Maybe change how vshape is?
-			// TODO movements?
-			VShape v = new VShape((Integer)desc.get("width"),0);
-			p = v;
-			System.out.println(p);
-		}
 		
-		return p;
+		Class<?> cls = paintableMap.get(type);
+		if(cls != null) {
+			try {
+				p = (Paintable)cls.newInstance();
+				p.loadFrom(desc);
+				return p;
+			} catch(Exception e) {
+				System.out.println("Unable to create effect for type "+type+" and class "+cls.getCanonicalName());
+				e.printStackTrace();
+				return null;
+			}
+		}
+		else {
+			System.out.println("Could not find effect for type "+type);
+			return null;
+		}
 	}
 	
 	// TODO: Figure out final movement classes
@@ -112,14 +122,23 @@ public class EffectBuilder {
 		Sequencer seq = null;
 		
 		String type = desc.getType();
-		if("bpm".equals(type)) {
-			int bpmSpeed = desc.getBpm();
-			BPM bpm = new BPM(bpmSpeed);
-			BpmPulseSequencer bpmseq = new BpmPulseSequencer(bpm);
-			seq = bpmseq;
-		}
-		
-		return seq;
+		return null;
+//		Class<?> cls = sequencerMap.get(type);
+//		if(cls != null) {
+//			try {
+//				Effect e = (Effect)cls.newInstance();
+//				Effect e2 = e.loadFrom(desc);
+//				return e2;
+//			} catch(Exception e) {
+//				System.out.println("Unable to create effect for type "+type+" and class "+cls.getCanonicalName());
+//				e.printStackTrace();
+//				return null;
+//			}
+//		}
+//		else {
+//			System.out.println("Could not find effect for type "+type);
+//			return null;
+//		}
 	}
 	
 	private static synchronized void loadScanner() {

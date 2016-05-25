@@ -35,7 +35,7 @@ public class ShapeSet extends AbstractShape {
 	}
 
 	@Override
-	public void loadValues(PaintableDescription desc) {
+	public void loadFrom(PaintableDescription desc) {
 		// determine our shapes
 		// TODO determine load order to use the Shape Annotation
 		this.startSize = (Integer) desc.get("start-size");

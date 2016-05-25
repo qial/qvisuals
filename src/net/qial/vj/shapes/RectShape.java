@@ -34,7 +34,7 @@ public class RectShape extends AbstractShape {
 	}
 
 	@Override
-	public void loadValues(PaintableDescription desc) {
+	public void loadFrom(PaintableDescription desc) {
 		this.x = (Integer)desc.get("x");
 		this.y = (Integer)desc.get("y");
 		this.w = (Integer)desc.get("w");

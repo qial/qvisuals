@@ -17,7 +17,7 @@ public class SquareShape extends RectShape {
 		super(x, y, s, s);
 	}
 	
-	public void loadValues(PaintableDescription desc) {
+	public void loadFrom(PaintableDescription desc) {
 		// square uses x, y, and s, so convert to old values
 		int s = (Integer)desc.get("s");
 		desc.set("w",s);

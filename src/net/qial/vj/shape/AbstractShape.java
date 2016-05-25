@@ -17,7 +17,7 @@ public abstract class AbstractShape implements Shape {
 	
 	public AbstractShape(PaintableDescription desc) {
 		// load from description
-		loadValues(desc);
+		loadFrom(desc);
 	}
 
 	@Override

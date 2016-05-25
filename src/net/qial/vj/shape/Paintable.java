@@ -34,7 +34,7 @@ public interface Paintable {
 	 * 
 	 * @param desc the PaintableDescription with settings to load from
 	 */
-	public void loadValues(PaintableDescription desc);
+	public void loadFrom(PaintableDescription desc);
 }
 
 // For shapes like the V, maybe I need a way to define a
