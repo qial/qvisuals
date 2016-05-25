@@ -1,5 +1,7 @@
 package net.qial.vj.sequencer;
 
+import net.qial.vj.effect.api.SequencerDescription;
+
 public abstract class AbstractSequencer implements Sequencer {
 	// number of points in set
 	// default is 10
@@ -28,5 +30,9 @@ public abstract class AbstractSequencer implements Sequencer {
 		this.positive = positive;
 		// likely nothing to recalculate, but just in case
 		recalculate();
+	}
+	
+	public void loadFrom(SequencerDescription desc) {
+		// do nothing by default
 	}
 }

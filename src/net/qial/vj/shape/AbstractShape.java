@@ -11,6 +11,8 @@ import processing.core.PApplet;
  */
 public abstract class AbstractShape implements Shape {
 	
+	protected Movement movement;
+	
 	public AbstractShape() {
 		// do nothing
 	}
@@ -24,6 +26,14 @@ public abstract class AbstractShape implements Shape {
 	public void prepare(PApplet app) {
 		// this is implemented as an empty method because most simple shapes
 		// won't need any setup
+	}
+	
+	public Movement getMovement() {
+		return movement;
+	}
+	
+	public void setMovement(Movement movement) {
+		this.movement = movement;
 	}
 
 }

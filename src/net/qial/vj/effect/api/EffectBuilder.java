@@ -84,11 +84,11 @@ public class EffectBuilder {
 //		return effect;
 	}
 	
-	public DesignedEffect buildDesignedEffect(EffectDescription desc) {
-		DesignedEffect d = new DesignedEffect();
-		d.loadFrom(desc);
-		return d;
-	}
+//	public DesignedEffect buildDesignedEffect(EffectDescription desc) {
+//		DesignedEffect d = new DesignedEffect();
+//		d.loadFrom(desc);
+//		return d;
+//	}
 	
 	public static Paintable buildPaintable(PaintableDescription desc) {
 		Paintable p = null;
@@ -113,32 +113,22 @@ public class EffectBuilder {
 		}
 	}
 	
-	// TODO: Figure out final movement classes
-	public MovementType buildMovement(MovementDescription desc) {
-		return null;
+	public static Movement buildMovement(MovementDescription desc) {
+		String type = desc.getType();
+		Movement move = getMovement(type);
+		if(move != null) {
+			move.loadFrom(desc);
+		}
+		return move;
 	}
 	
-	public Sequencer buildSequencer(SequencerDescription desc) {
-		Sequencer seq = null;
-		
+	public static Sequencer buildSequencer(SequencerDescription desc) {
 		String type = desc.getType();
-		return null;
-//		Class<?> cls = sequencerMap.get(type);
-//		if(cls != null) {
-//			try {
-//				Effect e = (Effect)cls.newInstance();
-//				Effect e2 = e.loadFrom(desc);
-//				return e2;
-//			} catch(Exception e) {
-//				System.out.println("Unable to create effect for type "+type+" and class "+cls.getCanonicalName());
-//				e.printStackTrace();
-//				return null;
-//			}
-//		}
-//		else {
-//			System.out.println("Could not find effect for type "+type);
-//			return null;
-//		}
+		Sequencer seq = getSequencer(type);
+		if(seq != null) {
+			seq.loadFrom(desc);
+		}
+		return seq;
 	}
 	
 	private static synchronized void loadScanner() {

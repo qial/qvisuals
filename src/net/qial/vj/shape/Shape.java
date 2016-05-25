@@ -15,5 +15,6 @@ package net.qial.vj.shape;
  *
  */
 public interface Shape extends Paintable {
-
+	public Movement getMovement();
+	public void setMovement(Movement movement);
 }

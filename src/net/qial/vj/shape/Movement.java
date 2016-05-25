@@ -1,5 +1,7 @@
 package net.qial.vj.shape;
 
+import net.qial.vj.effect.api.MovementDescription;
+
 public interface Movement {
 	// should it move the shape, or should the shape use it to adjust
 	// its own size/etc? Probably the latter, The mover says what to
@@ -7,4 +9,5 @@ public interface Movement {
 	public float getMovement();
 	public String getParam();
 	public void setParam(String paramName);
+	public void loadFrom(MovementDescription desc);
 }

@@ -49,9 +49,13 @@ public class DesignedEffect extends ProcessingEffect {
 	}
 	
 	public Effect loadFrom(EffectDescription desc) {
+		// set ourselves in the effect description
+		desc.set("effectObject", this);
 		if(desc.getSequencer() != null) {
-//			Sequencer seq = buildSequencer(desc.getSequencer());
+			Sequencer seq = EffectBuilder.buildSequencer(desc.getSequencer());
 			setSequencer(seq);
+			// put sequencer in the effect description
+			desc.set("sequencerObject", seq);
 		}
 		setDefaults(desc.getDefaults());
 		for(PaintableDescription pdesc : desc.getPaintables()) {

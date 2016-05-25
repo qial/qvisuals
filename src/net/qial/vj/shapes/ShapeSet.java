@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import processing.core.PApplet;
+import net.qial.vj.effect.api.EffectBuilder;
 import net.qial.vj.effect.api.MovementDescription;
 import net.qial.vj.effect.api.PaintableDescription;
 import net.qial.vj.movement.SequencerMovement;
 import net.qial.vj.shape.AbstractShape;
+import net.qial.vj.shape.Movement;
 import net.qial.vj.shape.Paintable;
+import net.qial.vj.shape.Shape;
 
 public class ShapeSet extends AbstractShape {
 	
@@ -48,25 +51,31 @@ public class ShapeSet extends AbstractShape {
 		
 		shapes = new ArrayList<Paintable>();
 		
-		if("circle".equals(shape)) {
-			int curSize = startSize;
-			for(int i = 0; i < amount; i++) {
-				// TODO figure out good way of setting the center
-				// TODO load class dynamically, use setValues
-				Paintable p = new CircleShape(640,360,curSize);
-				shapes.add(p);
-				// create the mover for this
-				
-				//TODO load movement class and values dynamically
-				SequencerMovement seqm = new SequencerMovement();
-				seqm.setParam("size");
-				seqm.setPoint(i);
-				
-				
-				
-				// update values for next shape
-				curSize += increment;
-			}
+		// TODO: make this dynamic, not just circles
+		
+		int curSize = startSize;
+		for(int i = 0; i < amount; i++) {
+			// TODO figure out good way of setting the center
+			// TODO load class dynamically, use setValues
+			Shape s = new CircleShape(640,360,curSize);
+			
+			mdesc.set("point", i);
+			
+			Movement m = EffectBuilder.buildMovement(mdesc);
+			s.setMovement(m);
+			
+//			SequencerMovement seqm = new SequencerMovement();
+//			seqm.setParam("size");
+			
+			shapes.add(s);
+			// create the mover for this
+			
+			//TODO load movement class and values dynamically
+			
+			
+			
+			// update values for next shape
+			curSize += increment;
 		}
 	}
 
