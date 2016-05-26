@@ -7,6 +7,7 @@ import java.util.Map;
 
 import net.qial.vj.effect.Effect;
 import net.qial.vj.effect.ProcessingEffect;
+import net.qial.vj.processing.ProcessingSettings;
 import net.qial.vj.sequencer.Sequencer;
 import net.qial.vj.shape.Paintable;
 
@@ -21,6 +22,7 @@ import net.qial.vj.shape.Paintable;
 public class DesignedEffect extends ProcessingEffect {
 	private List<Paintable> parts;
 	private Map<String,Object> defaults;
+	private ProcessingSettings settings;
 	
 	public DesignedEffect() {
 		parts = new ArrayList<Paintable>();
@@ -28,6 +30,9 @@ public class DesignedEffect extends ProcessingEffect {
 
 	@Override
 	public void play() {
+		// set default settings
+		settings.apply(app);
+		// paint our shapes
 		for(Paintable p : parts) {
 			// set up any defaults it needs
 			p.prepare(app);
@@ -57,7 +62,9 @@ public class DesignedEffect extends ProcessingEffect {
 			// put sequencer in the effect description
 			desc.set("sequencerObject", seq);
 		}
+		// set defaults and create ProcessingSettings
 		setDefaults(desc.getDefaults());
+		settings = new ProcessingSettings(desc.getDefaults());
 		for(PaintableDescription pdesc : desc.getPaintables()) {
 			Paintable p = EffectBuilder.buildPaintable(pdesc);
 			if(p != null) {

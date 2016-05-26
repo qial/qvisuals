@@ -1,5 +1,7 @@
 package net.qial.vj.shape;
 
+import net.qial.vj.processing.ProcessingSettings;
+
 /**
  * I like the name Shape in the heirarchy, so I'm using this
  * as the top level interface instead of Paintable.
@@ -17,4 +19,6 @@ package net.qial.vj.shape;
 public interface Shape extends Paintable {
 	public Movement getMovement();
 	public void setMovement(Movement movement);
+	public ProcessingSettings getSettings();
+	public void setSettings(ProcessingSettings settings);
 }

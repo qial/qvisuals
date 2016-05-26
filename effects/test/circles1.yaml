@@ -7,8 +7,9 @@ type: designed
 
 # Set default fill/stroke settings
 defaults:
+  background: 0
   fill: none
-  strokeWidth: 4
+  strokeWeight: 4
   stroke: 255
 
 # we need to define a sequencer and bpm (or default will be used)

@@ -30,8 +30,8 @@ public abstract class ParamEffect extends ProcessingEffect {
 		// get subtype from description 
 		String cls = desc.getSubtype();
 		try {
-			Class c = getClass().getClassLoader().loadClass(cls);
-			Class<ParamEffect> paramClass = c.asSubclass(ParamEffect.class);
+			Class<?> c = getClass().getClassLoader().loadClass(cls);
+			Class<? extends ParamEffect> paramClass = c.asSubclass(ParamEffect.class);
 			ParamEffect peffect = paramClass.newInstance();
 			peffect.loadFrom(desc);
 			return peffect;
