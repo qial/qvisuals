@@ -11,7 +11,7 @@ public class EffectBuilderTest {
 		TestApp app = new TestApp();
 		//testTriangleWave();
 		//testvup();
-		testCircles1();
+		Effect e = testCircles1();
 	}
 	
 	public static Effect testCircles1() throws Exception {

@@ -34,7 +34,7 @@ public abstract class AbstractMovement implements Movement {
 			setParam(param);
 		}
 		// try to load amplitude
-		Integer amp = (Integer)desc.get("amplitude");
+		Integer amp = (Integer)desc.getAmplitude();
 		if(amp != null) {
 			setAmplitude(amp);
 		}
