@@ -45,7 +45,7 @@ public class ShapeSet extends AbstractShape {
 		this.startSize = (Integer) desc.get("start-size");
 		this.increment = (Integer) desc.get("increment");
 		this.amount = (Integer) desc.get("amount");
-		this.shape = (String) desc.get("circle");
+		this.shape = (String) desc.get("shape");
 		
 		// load movement
 		MovementDescription mdesc = desc.getMovement();

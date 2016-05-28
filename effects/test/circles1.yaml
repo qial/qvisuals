@@ -11,6 +11,7 @@ defaults:
   fill: none
   strokeWeight: 4
   stroke: 255
+  location: center
 
 # we need to define a sequencer and bpm (or default will be used)
 sequencer: 

@@ -14,6 +14,8 @@ public class MilkdropVisuals extends Visuals {
 	
 	protected PGraphicsOpenGL pgl;
 	
+	protected boolean showMilkdrop = true;
+	
 	@Override
 	public void setup() {
 		// call the main setup
@@ -31,8 +33,13 @@ public class MilkdropVisuals extends Visuals {
 		// draw the effects
 		super.draw();
 
+		if(!showMilkdrop) {
+			return;
+		}
+		
 		// receive pixels from spout
 		img = spout.receivePixels(img);
+		// only draw milkdrop if the showMilkdrop is true
 		
 		// TODO, maybe resize to width/height? Or force it in winamp?
 		// for now just centering the spout image
@@ -40,7 +47,6 @@ public class MilkdropVisuals extends Visuals {
 		int spoutOffsetY = (height - img.height) / 2; 
 		
 		// now we want to look for non-black pixels in our effects
-		
 		for(int spoutx = 0; spoutx < img.width; spoutx++) {
 			int x = spoutx + spoutOffsetX;
 			if(x < 0 || x >= width) {
@@ -65,6 +71,18 @@ public class MilkdropVisuals extends Visuals {
 				}
 			}
 		}
+	}
+	
+	public void keyPressed() {
+		// test for milkdrop button
+		if(key == 'm') {
+			// toggle milkdrop
+			showMilkdrop = !showMilkdrop;
+			return;
+		}
+		
+		// call superclass to handle everything else
+		super.keyPressed();
 	}
 	
 	//SELECT A SPOUT SENDER
