@@ -52,13 +52,35 @@ public class ShapeSet extends AbstractShape {
 		
 		shapes = new ArrayList<Paintable>();
 		
+		// handle location options if x and y isn't set
+		int x = 0, y = 0;
+		String location = (String) desc.get("location");
+		if(location != null) {
+			if("center".equals(location)) {
+				// set x and y to center
+				// TODO do we have to give shapes an idea of a center
+				// so that when they draw using the app they can find
+				// their location on the fly?
+				// TODO make this dynamic somehow
+				x = 640;
+				y = 360;
+			}
+		}
+		// now do overrides for x and y
+		if(desc.get("x") != null) {
+			x = (int) desc.get("x");
+		}
+		if(desc.get("y") != null) {
+			y = (int) desc.get("y");
+		}
+		
 		// TODO: make this dynamic, not just circles
 		
 		int curSize = startSize;
 		for(int i = 0; i < amount; i++) {
 			// TODO figure out good way of setting the center
 			// TODO load class dynamically, use setValues
-			Shape s = new CircleShape(640,360,curSize);
+			Shape s = new CircleShape(x,y,curSize);
 			
 			mdesc.set("point", i);
 			
