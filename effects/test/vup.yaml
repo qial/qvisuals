@@ -32,14 +32,17 @@ shapes:
     start-size: 0
     # distance between shapes in the set 
     increment: 120
+    # number of shapes
+    amount: 4
     # define shape
     shape: 
       # set as v shape
       type: v
       # set width of the v
       width: 60
+    # list of parameters shown
     params:
-      offset: 
+      - name: offset 
         start: 0
         increment: 120
     # set movement for each shape

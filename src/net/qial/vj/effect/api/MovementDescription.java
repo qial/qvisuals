@@ -15,22 +15,16 @@ public class MovementDescription extends Description {
 //		others = new HashMap<String,Object>();
 	}
 	
-	public void setValues(LinkedHashMap map) {
-		for(Object o : map.keySet()) {
-			String k = (String)o;
-			Object v = map.get(k);
-			
-			// handle some values specially
-			if("type".equals(k)) {
-				setType((String) v);
-			}
-			else if("amplitude".equals(k)) {
-				amplitude = (Integer) v;
-			}
-			else {
-				set(k,v);
-//				others.put(k, v);
-			}
+	public void set(String k, Object v) {
+		// handle some values specially
+		if("type".equals(k)) {
+			setType((String) v);
+		}
+		else if("amplitude".equals(k)) {
+			amplitude = (Integer) v;
+		}
+		else {
+			super.set(k,v);
 		}
 	}
 

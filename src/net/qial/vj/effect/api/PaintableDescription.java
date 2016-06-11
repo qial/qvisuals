@@ -1,7 +1,9 @@
 package net.qial.vj.effect.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import net.qial.vj.util.PrintUtil;
 
@@ -23,21 +25,14 @@ public class PaintableDescription extends Description {
 	
 	private MovementDescription movement;
 	
+	private List<ParamDescription> params;
+	
 //	private HashMap<String,Object> others;
 	
 	//private DesignedEffect parent;
 	
 	public PaintableDescription() {
 //		others = new HashMap<String,Object>();
-	}
-	
-	public void setValues(LinkedHashMap map) {
-		for(Object o : map.keySet()) {
-			String k = (String)o;
-			Object v = map.get(k);
-			
-			set(k,v);
-		}
 	}
 	
 	// set a particular value
@@ -62,6 +57,27 @@ public class PaintableDescription extends Description {
 			// set parent
 			desc.setParent(this);
 			movement = desc;
+		}
+		else if("params".equals(k)) {
+			params = new ArrayList<ParamDescription>();
+			if(v instanceof List<?>) {
+				List<LinkedHashMap> paramList = (List<LinkedHashMap>) v;
+				for(LinkedHashMap vals : paramList) {
+					ParamDescription param = new ParamDescription();
+					param.setValues(vals);
+					params.add(param);
+				}
+			}
+			else if(v instanceof LinkedHashMap) {
+				// probably just one param
+				LinkedHashMap vals = (LinkedHashMap) v;
+				ParamDescription param = new ParamDescription();
+				param.setValues(vals);
+				params.add(param);
+			}
+			else {
+				System.out.println("")
+			}
 		}
 		else {
 			super.set(k,v);

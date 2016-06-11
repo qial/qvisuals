@@ -92,7 +92,7 @@ public class EffectDescription extends Description {
 		this.shapes = shapes;
 		
 		// create list of paintables
-		try{
+		try {
 			List<PaintableDescription> paintables = new ArrayList<PaintableDescription>();
 			for(LinkedHashMap map : shapes) {
 				PaintableDescription p = new PaintableDescription();

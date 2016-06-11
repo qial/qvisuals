@@ -1,6 +1,7 @@
 package net.qial.vj.effect.api;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public abstract class Description {
@@ -13,6 +14,15 @@ public abstract class Description {
 	
 	public Description() {
 		defaults = new HashMap<String,Object>();
+	}
+	
+	public void setValues(LinkedHashMap map) {
+		for(Object o : map.keySet()) {
+			String k = (String)o;
+			Object v = map.get(k);
+			
+			set(k,v);
+		}
 	}
 	
 	public Object get(String key) {
