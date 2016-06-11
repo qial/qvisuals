@@ -15,9 +15,10 @@ import net.qial.vj.shape.Shape;
 
 public class ShapeSet extends AbstractShape {
 	
-//	protected int startSize = 0;
-//	protected int increment = 0;
+	protected int startSize = 0;
+	protected int increment = 0;
 	protected int amount = 0;
+	protected PaintableDescription shape = null;
 //	protected String shape;
 	
 	// TODO handle the movement
@@ -45,7 +46,8 @@ public class ShapeSet extends AbstractShape {
 		this.startSize = (Integer) desc.get("start-size");
 		this.increment = (Integer) desc.get("increment");
 		this.amount = (Integer) desc.get("amount");
-		this.shape = (String) desc.get("shape");
+		this.shape = desc.getShape();
+//		this.shape = (String) desc.get("shape");
 		
 		// load movement
 		MovementDescription mdesc = desc.getMovement();

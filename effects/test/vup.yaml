@@ -38,6 +38,10 @@ shapes:
       type: v
       # set width of the v
       width: 60
+    params:
+      offset: 
+        start: 0
+        increment: 120
     # set movement for each shape
     movement: 
       # type 'constant' means it moves at a set rate
