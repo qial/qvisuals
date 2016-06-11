@@ -34,7 +34,7 @@ public class VShape extends AbstractShape {
 
 	@Override
 	public void loadFrom(PaintableDescription desc) {
-		this.w = (Integer)desc.get("w");
-		this.o = (Integer)desc.get("o");
+		this.w = (Integer)desc.get("width");
+		this.o = (Integer)desc.get("offset");
 	}
 }

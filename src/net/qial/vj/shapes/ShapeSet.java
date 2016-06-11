@@ -15,10 +15,10 @@ import net.qial.vj.shape.Shape;
 
 public class ShapeSet extends AbstractShape {
 	
-	protected int startSize = 0;
-	protected int increment = 0;
+//	protected int startSize = 0;
+//	protected int increment = 0;
 	protected int amount = 0;
-	protected String shape;
+//	protected String shape;
 	
 	// TODO handle the movement
 	protected List<Paintable> shapes;

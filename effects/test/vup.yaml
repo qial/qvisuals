@@ -28,6 +28,8 @@ sequencer:
 shapes:
   # Our first shape is a set of Vs
   - type: set
+    # start position
+    start-size: 0
     # distance between shapes in the set 
     increment: 120
     # define shape
