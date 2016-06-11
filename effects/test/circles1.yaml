@@ -16,7 +16,7 @@ defaults:
 # we need to define a sequencer and bpm (or default will be used)
 sequencer: 
   # type defines which sequencer processes the rest of the values
-  type: bpm
+  type: pulse
   bpm: 120
   positive: true
   

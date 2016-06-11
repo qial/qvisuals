@@ -1,12 +1,15 @@
 package net.qial.vj.shapes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import processing.core.PApplet;
 import net.qial.vj.effect.api.EffectBuilder;
 import net.qial.vj.effect.api.MovementDescription;
 import net.qial.vj.effect.api.PaintableDescription;
+import net.qial.vj.effect.api.ParamDescription;
 import net.qial.vj.movement.SequencerMovement;
 import net.qial.vj.shape.AbstractShape;
 import net.qial.vj.shape.Movement;
@@ -15,8 +18,8 @@ import net.qial.vj.shape.Shape;
 
 public class ShapeSet extends AbstractShape {
 	
-	protected int startSize = 0;
-	protected int increment = 0;
+//	protected int startSize = 0;
+//	protected int increment = 0;
 	protected int amount = 0;
 	protected PaintableDescription shape = null;
 //	protected String shape;
@@ -43,8 +46,8 @@ public class ShapeSet extends AbstractShape {
 	public void loadFrom(PaintableDescription desc) {
 		// determine our shapes
 		// TODO determine load order to use the Shape Annotation
-		this.startSize = (Integer) desc.get("start-size");
-		this.increment = (Integer) desc.get("increment");
+//		this.startSize = (Integer) desc.get("start-size");
+//		this.increment = (Integer) desc.get("increment");
 		this.amount = (Integer) desc.get("amount");
 		this.shape = desc.getShape();
 		
@@ -79,11 +82,25 @@ public class ShapeSet extends AbstractShape {
 		
 		// TODO: make this dynamic, not just circles
 		
-		int curSize = startSize;
+//		int curSize = startSize;
+		
+		// start storing parameters with starts
+		Map<String,Integer> curParams = new HashMap<String,Integer>();
+		for(ParamDescription p : desc.getParams()) {
+			curParams.put(p.getName(),p.getStart());
+		}
+		
 		for(int i = 0; i < amount; i++) {
 			// TODO figure out good way of setting the center
 			// TODO load class dynamically, use setValues
-			Shape s = new CircleShape(x,y,curSize);
+//			Shape s = new CircleShape(x,y,curSize);
+			
+			// update the shape description
+			for(ParamDescription p : desc.getParams()) {
+				shape.set(p.getName(), curParams.get(p.getName()));
+			}
+			
+			Shape s = (Shape) EffectBuilder.buildPaintable(shape);
 			
 			mdesc.set("point", i);
 			
@@ -101,7 +118,11 @@ public class ShapeSet extends AbstractShape {
 			
 			
 			// update values for next shape
-			curSize += increment;
+			for(ParamDescription p : desc.getParams()) {
+				int amt = curParams.get(p.getName());
+				amt += p.getIncrement();
+				curParams.put(p.getName(), amt);
+			}
 		}
 	}
 

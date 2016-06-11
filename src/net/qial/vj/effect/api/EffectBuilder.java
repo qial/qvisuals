@@ -18,6 +18,7 @@ import net.qial.vj.movement.SequencerMovement;
 import net.qial.vj.sequencer.Sequencer;
 import net.qial.vj.sequencer.SequencerType;
 import net.qial.vj.sequencers.BpmPulseSequencer;
+import net.qial.vj.sequencers.BpmSequencer;
 import net.qial.vj.shape.MovementType;
 import net.qial.vj.shape.Movement;
 import net.qial.vj.shape.Paintable;
@@ -145,7 +146,7 @@ public class EffectBuilder {
 		
 		// sequencers
 		sequencerMap = new HashMap<String,Class<?>>();
-		sequencerMap.put("bpm", BpmPulseSequencer.class);
+		sequencerMap.put("bpm", BpmSequencer.class);
 		sequencerMap.put("pulseDown", BpmPulseSequencer.class);
 		sequencerMap.put("pulseUp", BpmPulseSequencer.class);
 		sequencerMap.put("pulse", BpmPulseSequencer.class);

@@ -7,6 +7,8 @@ type: designed
 
 # Set default fill/stroke settings
 defaults:
+  # set background to black
+  background: 0
   # set default shape fill color
   fill: 255
   # set shape line width
@@ -28,16 +30,12 @@ sequencer:
 shapes:
   # Our first shape is a set of Vs
   - type: set
-    # start position
-    start-size: 0
-    # distance between shapes in the set 
-    increment: 120
     # number of shapes
     amount: 4
     # define shape
     shape: 
       # set as v shape
-      type: v
+      type: v-up
       # set width of the v
       width: 60
     # list of parameters shown
@@ -48,7 +46,9 @@ shapes:
     # set movement for each shape
     movement: 
       # type 'constant' means it moves at a set rate
-      type: constant
+      type: sequencer
+      # set the parameter to change
+      param: offset
       # set rate is 30 pixels per beat (due to bpm sequencer)
       amplitude: 30
 

@@ -16,19 +16,16 @@ import net.qial.vj.util.DrawUtil;
  * @author kw
  *
  */
-@SequencerType(name="bpm")
-public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
+@SequencerType(name="bpm-pulse")
+public class BpmPulseSequencer extends BpmSequencer {
 	// amount of times per beat 
 	protected int pulseMultiplier = 1;
 
 	// width of pulse compared to pulse length
 	protected float pulsePortion = 0.666f;
-	
-	protected BPM bpm = new BPM(120);
-	private long startTime = 0;
 
 	public BpmPulseSequencer() {
-		this(new BPM(120));
+		super();
 	}
 	
 	public BpmPulseSequencer(BPM bpm) {
@@ -128,20 +125,5 @@ public class BpmPulseSequencer extends ProcessingSequencer implements BpmBased {
 	
 	public float getPulsePortion() {
 		return pulsePortion;
-	}
-
-	// recalculate internal variables
-	protected void recalculate() {
-		// no internal variables anymore
-		startTime = System.currentTimeMillis();
-	}
-	
-	public void setBpm(BPM bpm) {
-		this.bpm = bpm;
-		recalculate();
-	}
-	
-	public BPM getBpm() {
-		return bpm;
 	}
 }

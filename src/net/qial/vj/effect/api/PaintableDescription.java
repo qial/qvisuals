@@ -30,7 +30,7 @@ public class PaintableDescription extends Description {
 //	private HashMap<String,Object> others;
 	
 	//private DesignedEffect parent;
-	
+
 	public PaintableDescription() {
 //		others = new HashMap<String,Object>();
 	}
@@ -76,7 +76,8 @@ public class PaintableDescription extends Description {
 				params.add(param);
 			}
 			else {
-				System.out.println("")
+				System.out.println("Couldn't figure out 'params' var, class "+ 
+						v.getClass().getName() + ": " + v);
 			}
 		}
 		else {
@@ -98,6 +99,14 @@ public class PaintableDescription extends Description {
 
 	public void setMovement(MovementDescription movement) {
 		this.movement = movement;
+	}
+	
+	public List<ParamDescription> getParams() {
+		return params;
+	}
+
+	public void setParams(List<ParamDescription> params) {
+		this.params = params;
 	}
 
 //	public DesignedEffect getParent() {
