@@ -3,8 +3,11 @@ package net.qial.vj.shape;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.qial.vj.effect.api.EffectBuilder;
+import net.qial.vj.effect.api.MovementDescription;
 import net.qial.vj.effect.api.PaintableDescription;
 import net.qial.vj.movement.Movement;
+import net.qial.vj.movement.Movement.MovementStyle;
 import net.qial.vj.processing.ProcessingSettings;
 import processing.core.PApplet;
 
@@ -58,6 +61,17 @@ public abstract class AbstractShape implements Shape {
 	public void setSettings(ProcessingSettings settings) {
 		this.settings = settings;
 	}
+	
+	public void loadFrom(PaintableDescription desc) {
+		// default loading values for settings and description
+		List<MovementDescription> mdescs = desc.getMovements();
+		if(mdescs != null) {
+			for(MovementDescription mdesc : mdescs) {
+				Movement m = EffectBuilder.buildMovement(mdesc);
+				addMovement(m);
+			}
+		}
+	}
 
 	public void applyMovement(Movement m, PApplet app) {
 		// this is where it gets weird
@@ -69,11 +83,23 @@ public abstract class AbstractShape implements Shape {
 		
 		if(m.getParam().equals("fill")) {
 			// change the fill parameter
-			
+			if(m.getStyle() == MovementStyle.RANGE) {
+				//System.out.println("Setting fill from movement");
+				app.fill(m.getMovement());
+			}
+			else {
+				System.err.println(m.getStyle()+" movement for 'fill' param not implemented");
+			}
 		}
 		if(m.getParam().equals("stroke")) {
 			// change the stroke parameter
-			
+			if(m.getStyle() == MovementStyle.RANGE) {
+				//System.out.println("Setting stroke from movement");
+				app.stroke(m.getMovement());
+			}
+			else {
+				System.err.println(m.getStyle()+" movement for 'stroke' param not implemented");
+			}
 		}
 		
 	}

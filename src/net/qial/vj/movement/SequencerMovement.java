@@ -23,15 +23,41 @@ public class SequencerMovement extends AbstractMovement {
 	
 	@Override
 	public float getMovement() {
-		return seq.get(point) * amplitude;
+		// determine style to figure out what we need to do
+		if(style == MovementStyle.AMPLITUDE) {
+			return seq.get(point) * amplitude;
+		}
+		else if(style == MovementStyle.RANGE) {
+			// calculate range
+			float val = end - start;
+			float pt = seq.get(point);
+			val *= pt;
+			val += start;
+			// Sanity check values in case of floating point errors
+//			if(val > end) {
+//				return end;
+//			}
+//			else if(val < start) {
+//				return start;
+//			}
+			return val;
+		}
+		
+		return 0;
 	}
 	
 	public void loadFrom(MovementDescription desc) {
 		// call parent class to load some parts
 		super.loadFrom(desc);
 		// load point and sequencer
-		int point = (Integer) desc.get("point");
-		setPoint(point);
+		Integer point = (Integer) desc.get("point");
+		if(point != null) {
+			setPoint(point);
+		}
+		else {
+			// default to zero
+			setPoint(0);
+		}
 		seq = (Sequencer)desc.get("sequencerObject");
 	}
 	

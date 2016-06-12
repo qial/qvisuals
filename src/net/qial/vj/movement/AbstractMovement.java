@@ -51,6 +51,11 @@ public abstract class AbstractMovement implements Movement {
 	}
 	
 	@Override
+	public MovementStyle getStyle() {
+		return style;
+	}
+	
+	@Override
 	public void setStyle(MovementStyle style) {
 		this.style = style;
 	}
@@ -62,10 +67,25 @@ public abstract class AbstractMovement implements Movement {
 		if(param != null) {
 			setParam(param);
 		}
+		boolean configured = false;
+		// check for start/end
+		Integer start = (Integer) desc.get("start");
+		Integer end = (Integer) desc.get("end");
+		if(start != null && end != null) {
+			setStart(start);
+			setEnd(end);
+			configured = true;
+			setStyle(MovementStyle.RANGE);
+		}
 		// try to load amplitude
-		Integer amp = (Integer)desc.getAmplitude();
+		Integer amp = (Integer)desc.get("amplitude");
 		if(amp != null) {
 			setAmplitude(amp);
+			configured = true;
+			setStyle(MovementStyle.AMPLITUDE);
+		}
+		if(!configured) {
+			throw new RuntimeException("Movement must be configured with either an Amplitude or Start & End values");
 		}
 	}
 }

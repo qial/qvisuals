@@ -15,6 +15,7 @@ public interface Movement {
 	public void setStart(int start);
 	public int getEnd();
 	public void setEnd(int end);
+	public MovementStyle getStyle();
 	public void setStyle(MovementStyle style);
 	public void loadFrom(MovementDescription desc);
 	

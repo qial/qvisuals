@@ -60,7 +60,11 @@ public class VShape extends AbstractShape {
 
 	@Override
 	public void loadFrom(PaintableDescription desc) {
+		// load our variables
 		this.w = (Integer)desc.get("width");
 		this.o = (Integer)desc.get("offset");
+		
+		// load default vars
+		super.loadFrom(desc);
 	}
 }

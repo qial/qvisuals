@@ -5,7 +5,9 @@ import java.util.LinkedHashMap;
 
 public class MovementDescription extends Description {
 	
-	private int amplitude;
+//	private int amplitude;
+//	private int start;
+//	private int end;
 	
 //	private HashMap<String,Object> others;
 	
@@ -20,21 +22,18 @@ public class MovementDescription extends Description {
 		if("type".equals(k)) {
 			setType((String) v);
 		}
-		else if("amplitude".equals(k)) {
-			amplitude = (Integer) v;
-		}
 		else {
 			super.set(k,v);
 		}
 	}
 
-	public int getAmplitude() {
-		return amplitude;
-	}
-
-	public void setAmplitude(int amplitude) {
-		this.amplitude = amplitude;
-	}
+//	public int getAmplitude() {
+//		return amplitude;
+//	}
+//
+//	public void setAmplitude(int amplitude) {
+//		this.amplitude = amplitude;
+//	}
 	
 //	public DesignedEffect getParent() {
 //		return parent;
@@ -48,7 +47,6 @@ public class MovementDescription extends Description {
 		StringBuilder sb = new StringBuilder();
 		sb.append("MovementDescription{");
 		sb.append("type=").append(getType());
-		sb.append(",amplitude=").append(amplitude);
 		for(String k : getDefaults().keySet()) {
 			Object v = getDefaults().get(k);
 			sb.append(",").append(k);
