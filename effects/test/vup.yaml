@@ -31,7 +31,7 @@ shapes:
   # Our first shape is a set of Vs
   - type: set
     # number of shapes
-    amount: 5
+    amount: 4
     # define shape
     shape: 
       # set as v shape
@@ -41,7 +41,7 @@ shapes:
     # list of parameters shown
     params:
       - name: offset 
-        start: 240
+        start: 360
         increment: 120
     # set movement for each shape
     movement: 
@@ -51,4 +51,27 @@ shapes:
       param: offset
       # set rate is 30 pixels per beat (due to bpm sequencer)
       amplitude: -120
+  # Add last v separately so it can fade out
+  - type: v-up
+    # define width
+    width: 60
+    # set the initial position above the set
+    offset: 240
+    # define the movements
+    movement:
+      # first define the upward movement
+      - type: sequencer
+        # set offset as param
+        param: offset
+        # set the rate of change
+        amplitude: -120
+      # Now we define the fadeout
+      - type: sequencer
+        # set it to change color
+        param: fill
+        # set start color for sequence
+        start: 255
+        # set end color
+        end: 0
+    
 

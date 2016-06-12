@@ -11,5 +11,14 @@ public interface Movement {
 	public void setParam(String paramName);
 	public int getAmplitude();
 	public void setAmplitude(int amplitude);
+	public int getStart();
+	public void setStart(int start);
+	public int getEnd();
+	public void setEnd(int end);
+	public void setStyle(MovementStyle style);
 	public void loadFrom(MovementDescription desc);
+	
+	public enum MovementStyle {
+		AMPLITUDE, RANGE
+	}
 }
