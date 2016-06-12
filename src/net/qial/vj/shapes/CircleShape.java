@@ -2,6 +2,7 @@ package net.qial.vj.shapes;
 
 import processing.core.PApplet;
 import net.qial.vj.effect.api.PaintableDescription;
+import net.qial.vj.movement.Movement;
 import net.qial.vj.shape.ShapeType;
 
 @ShapeType(name="circle")
@@ -53,8 +54,12 @@ public class CircleShape extends EllipseShape {
 		app.noFill();
 		// need to redefine paint to handle movements
 		float drawSize = size;
-		if(movement != null) {
-			drawSize += movement.getMovement();
+		if(movements != null) {
+			for(Movement m : movements) {
+				if(m.getParam().equals("size")) {
+					drawSize += m.getMovement();
+				}
+			}
 		}
 		app.ellipse(x,y,drawSize,drawSize);
 	}

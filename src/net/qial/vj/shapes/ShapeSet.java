@@ -54,7 +54,7 @@ public class ShapeSet extends AbstractShape {
 //		this.shape = (String) desc.get("shape");
 		
 		// load movement
-		MovementDescription mdesc = desc.getMovement();
+		List<MovementDescription> mdescs = desc.getMovements();
 		
 		shapes = new ArrayList<Paintable>();
 		
@@ -102,11 +102,11 @@ public class ShapeSet extends AbstractShape {
 			
 			Shape s = (Shape) EffectBuilder.buildPaintable(shape);
 			
-			mdesc.set("point", i);
-			
-			Movement m = EffectBuilder.buildMovement(mdesc);
-			s.setMovement(m);
-			
+			for(MovementDescription mdesc : mdescs) {
+				mdesc.set("point", i);
+				Movement m = EffectBuilder.buildMovement(mdesc);
+				s.addMovement(m);
+			}
 //			SequencerMovement seqm = new SequencerMovement();
 //			seqm.setParam("size");
 			

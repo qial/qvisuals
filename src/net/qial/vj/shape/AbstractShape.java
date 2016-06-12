@@ -1,5 +1,8 @@
 package net.qial.vj.shape;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.qial.vj.effect.api.PaintableDescription;
 import net.qial.vj.movement.Movement;
 import net.qial.vj.processing.ProcessingSettings;
@@ -13,7 +16,7 @@ import processing.core.PApplet;
  */
 public abstract class AbstractShape implements Shape {
 	
-	protected Movement movement;
+	protected List<Movement> movements;
 	protected ProcessingSettings settings;
 	
 	public AbstractShape() {
@@ -33,12 +36,19 @@ public abstract class AbstractShape implements Shape {
 		}
 	}
 	
-	public Movement getMovement() {
-		return movement;
+	public List<Movement> getMovements() {
+		return movements;
 	}
 	
-	public void setMovement(Movement movement) {
-		this.movement = movement;
+	public void setMovements(List<Movement> movements) {
+		this.movements = movements;
+	}
+	
+	public void addMovement(Movement movement) {
+		if(movements == null) {
+			movements = new ArrayList<Movement>();
+		}
+		movements.add(movement);
 	}
 	
 	public ProcessingSettings getSettings() {

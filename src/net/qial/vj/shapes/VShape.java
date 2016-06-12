@@ -2,6 +2,7 @@ package net.qial.vj.shapes;
 
 import processing.core.PApplet;
 import net.qial.vj.effect.api.PaintableDescription;
+import net.qial.vj.movement.Movement;
 import net.qial.vj.shape.AbstractShape;
 import net.qial.vj.shape.Paintable;
 import net.qial.vj.shape.ShapeType;
@@ -32,15 +33,17 @@ public class VShape extends AbstractShape {
 		float offset = (float) o;
 		float width = (float) w;
 		
-		if(movement != null) {
-			if(movement.getParam().equals("offset")) {
-				offset += movement.getMovement();
-			}
-			else if(movement.getParam().equals("width")) {
-				width += movement.getMovement();
-			}
-			else {
-				super.applyMovement(movement, app);
+		if(movements != null) {
+			for(Movement m : movements) {
+				if(m.getParam().equals("offset")) {
+					offset += m.getMovement();
+				}
+				else if(m.getParam().equals("width")) {
+					width += m.getMovement();
+				}
+				else {
+					super.applyMovement(m, app);
+				}
 			}
 		}
 		DrawUtil.makeV((int) width, (int) offset, app);

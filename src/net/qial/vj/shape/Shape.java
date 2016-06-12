@@ -1,5 +1,7 @@
 package net.qial.vj.shape;
 
+import java.util.List;
+
 import net.qial.vj.movement.Movement;
 import net.qial.vj.processing.ProcessingSettings;
 
@@ -18,8 +20,9 @@ import net.qial.vj.processing.ProcessingSettings;
  *
  */
 public interface Shape extends Paintable {
-	public Movement getMovement();
-	public void setMovement(Movement movement);
+	public List<Movement> getMovements();
+	public void setMovements(List<Movement> movements);
+	public void addMovement(Movement movement);
 	public ProcessingSettings getSettings();
 	public void setSettings(ProcessingSettings settings);
 }

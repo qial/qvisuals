@@ -23,7 +23,7 @@ public class PaintableDescription extends Description {
 	
 	private PaintableDescription shape;
 	
-	private MovementDescription movement;
+	private List<MovementDescription> movements;
 	
 	private List<ParamDescription> params;
 	
@@ -52,13 +52,25 @@ public class PaintableDescription extends Description {
 			shape = desc;
 		}
 		else if("movement".equals(k)) {
-			// check if its one movement or more
+			movements = new ArrayList<MovementDescription>();
 			
-			MovementDescription desc = new MovementDescription();
-			desc.setValues((LinkedHashMap)v);
-			// set parent
-			desc.setParent(this);
-			movement = desc;
+			// check if its one movement or more
+			if(v instanceof List<?>) {
+				for(LinkedHashMap vals : (List<LinkedHashMap>) v) {
+					MovementDescription desc = new MovementDescription();
+					desc.setValues(vals);
+					desc.setParent(this);
+					movements.add(desc);
+				}
+			}
+			else if(v instanceof LinkedHashMap) {
+				MovementDescription desc = new MovementDescription();
+				desc.setValues((LinkedHashMap)v);
+				// set parent
+				desc.setParent(this);
+				movements.add(desc);
+			}
+			
 		}
 		else if("params".equals(k)) {
 			params = new ArrayList<ParamDescription>();
@@ -95,12 +107,19 @@ public class PaintableDescription extends Description {
 		this.shape = shape;
 	}
 
-	public MovementDescription getMovement() {
-		return movement;
+	public List<MovementDescription> getMovements() {
+		return movements;
 	}
 
-	public void setMovement(MovementDescription movement) {
-		this.movement = movement;
+	public void setMovements(List<MovementDescription> movements) {
+		this.movements = movements;
+	}
+	
+	public void addMovement(MovementDescription movement) {
+		if(movements == null) {
+			movements = new ArrayList<MovementDescription>();
+		}
+		movements.add(movement);
 	}
 	
 	public List<ParamDescription> getParams() {
@@ -129,8 +148,8 @@ public class PaintableDescription extends Description {
 		sb.append("type=").append(getType());
 		if(shape != null)
 			sb.append(",shape=").append(shape);
-		if(movement != null)
-			sb.append(",movement=").append(movement);
+		if(movements != null)
+			sb.append(",movement=").append(movements);
 		//boolean first = true;
 		for(Object k : getDefaults().keySet()) {
 			Object v = getDefaults().get(k);
