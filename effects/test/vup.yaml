@@ -12,7 +12,7 @@ defaults:
   # set default shape fill color
   fill: 255
   # set shape line width
-  strokeWidth: 2
+  strokeWidth: 1
   # set shape line color
   stroke: 255
 
@@ -31,7 +31,7 @@ shapes:
   # Our first shape is a set of Vs
   - type: set
     # number of shapes
-    amount: 4
+    amount: 5
     # define shape
     shape: 
       # set as v shape
@@ -41,7 +41,7 @@ shapes:
     # list of parameters shown
     params:
       - name: offset 
-        start: 0
+        start: 240
         increment: 120
     # set movement for each shape
     movement: 
@@ -50,5 +50,5 @@ shapes:
       # set the parameter to change
       param: offset
       # set rate is 30 pixels per beat (due to bpm sequencer)
-      amplitude: 30
+      amplitude: -120
 

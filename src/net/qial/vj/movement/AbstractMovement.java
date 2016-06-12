@@ -1,4 +1,4 @@
-package net.qial.vj.shape;
+package net.qial.vj.movement;
 
 import net.qial.vj.effect.api.MovementDescription;
 

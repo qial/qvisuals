@@ -1,5 +1,6 @@
 package net.qial.vj.shape;
 
+import net.qial.vj.movement.Movement;
 import net.qial.vj.processing.ProcessingSettings;
 
 /**

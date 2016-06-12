@@ -1,6 +1,7 @@
 package net.qial.vj.shape;
 
 import net.qial.vj.effect.api.PaintableDescription;
+import net.qial.vj.movement.Movement;
 import net.qial.vj.processing.ProcessingSettings;
 import processing.core.PApplet;
 
@@ -46,6 +47,25 @@ public abstract class AbstractShape implements Shape {
 	
 	public void setSettings(ProcessingSettings settings) {
 		this.settings = settings;
+	}
+
+	public void applyMovement(Movement m, PApplet app) {
+		// this is where it gets weird
+		// for movements that only change app settings
+		// we need something better than just adding to
+		// some static value.
+		// We basically need start and end values instead
+		// of amplitude modifiers.
+		
+		if(m.getParam().equals("fill")) {
+			// change the fill parameter
+			
+		}
+		if(m.getParam().equals("stroke")) {
+			// change the stroke parameter
+			
+		}
+		
 	}
 
 }

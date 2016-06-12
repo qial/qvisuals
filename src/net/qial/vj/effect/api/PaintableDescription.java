@@ -52,6 +52,8 @@ public class PaintableDescription extends Description {
 			shape = desc;
 		}
 		else if("movement".equals(k)) {
+			// check if its one movement or more
+			
 			MovementDescription desc = new MovementDescription();
 			desc.setValues((LinkedHashMap)v);
 			// set parent

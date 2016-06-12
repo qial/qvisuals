@@ -10,9 +10,9 @@ import net.qial.vj.effect.api.EffectBuilder;
 import net.qial.vj.effect.api.MovementDescription;
 import net.qial.vj.effect.api.PaintableDescription;
 import net.qial.vj.effect.api.ParamDescription;
+import net.qial.vj.movement.Movement;
 import net.qial.vj.movement.SequencerMovement;
 import net.qial.vj.shape.AbstractShape;
-import net.qial.vj.shape.Movement;
 import net.qial.vj.shape.Paintable;
 import net.qial.vj.shape.Shape;
 

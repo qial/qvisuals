@@ -1,4 +1,4 @@
-package net.qial.vj.shape;
+package net.qial.vj.movement;
 
 /**
  * Base annotation for defining movement of shapes or lists of shapes.

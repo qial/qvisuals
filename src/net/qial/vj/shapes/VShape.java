@@ -29,7 +29,30 @@ public class VShape extends AbstractShape {
 	}
 
 	public void paint(PApplet app) {
-		DrawUtil.makeV(w, o, app);
+		float offset = (float) o;
+		float width = (float) w;
+		
+		if(movement != null) {
+			if(movement.getParam().equals("offset")) {
+				offset += movement.getMovement();
+			}
+			else if(movement.getParam().equals("width")) {
+				width += movement.getMovement();
+			}
+			else {
+				super.applyMovement(movement, app);
+			}
+		}
+		DrawUtil.makeV((int) width, (int) offset, app);
+
+		// TODO handle the fill/nofill options
+		//app.noFill();
+		// need to redefine paint to handle movements
+		//float drawSize = size;
+		//if(movement != null) {
+		//	drawSize += movement.getMovement();
+		//}
+		//app.ellipse(x,y,drawSize,drawSize);
 	}
 
 	@Override

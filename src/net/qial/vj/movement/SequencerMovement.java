@@ -2,8 +2,6 @@ package net.qial.vj.movement;
 
 import net.qial.vj.effect.api.MovementDescription;
 import net.qial.vj.sequencer.Sequencer;
-import net.qial.vj.shape.AbstractMovement;
-import net.qial.vj.shape.MovementType;
 
 @MovementType(name="sequencer")
 public class SequencerMovement extends AbstractMovement {
