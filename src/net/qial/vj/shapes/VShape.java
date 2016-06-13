@@ -35,14 +35,16 @@ public class VShape extends AbstractShape {
 		
 		if(movements != null) {
 			for(Movement m : movements) {
-				if(m.getParam().equals("offset")) {
-					offset += m.getMovement();
-				}
-				else if(m.getParam().equals("width")) {
-					width += m.getMovement();
-				}
-				else {
-					super.applyMovement(m, app);
+				for(String param : m.getParams()) {
+					if(param.equals("offset")) {
+						offset += m.getMovement();
+					}
+					else if(param.equals("width")) {
+						width += m.getMovement();
+					}
+					else {
+						super.applyMovement(m, app);
+					}
 				}
 			}
 		}

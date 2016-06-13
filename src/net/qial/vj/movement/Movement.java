@@ -1,5 +1,7 @@
 package net.qial.vj.movement;
 
+import java.util.List;
+
 import net.qial.vj.effect.api.MovementDescription;
 
 public interface Movement {
@@ -7,8 +9,8 @@ public interface Movement {
 	// its own size/etc? Probably the latter, The mover says what to
 	// do and the shape applies it during printing.
 	public float getMovement();
-	public String getParam();
-	public void setParam(String paramName);
+	public List<String> getParams();
+	public void setParams(List<String> paramName);
 	public int getAmplitude();
 	public void setAmplitude(int amplitude);
 	public int getStart();

@@ -80,25 +80,26 @@ public abstract class AbstractShape implements Shape {
 		// some static value.
 		// We basically need start and end values instead
 		// of amplitude modifiers.
-		
-		if(m.getParam().equals("fill")) {
-			// change the fill parameter
-			if(m.getStyle() == MovementStyle.RANGE) {
-				//System.out.println("Setting fill from movement");
-				app.fill(m.getMovement());
+		for(String param : m.getParams()) {
+			if(param.equals("fill")) {
+				// change the fill parameter
+				if(m.getStyle() == MovementStyle.RANGE) {
+					//System.out.println("Setting fill from movement");
+					app.fill(m.getMovement());
+				}
+				else {
+					System.err.println(m.getStyle()+" movement for 'fill' param not implemented");
+				}
 			}
-			else {
-				System.err.println(m.getStyle()+" movement for 'fill' param not implemented");
-			}
-		}
-		if(m.getParam().equals("stroke")) {
-			// change the stroke parameter
-			if(m.getStyle() == MovementStyle.RANGE) {
-				//System.out.println("Setting stroke from movement");
-				app.stroke(m.getMovement());
-			}
-			else {
-				System.err.println(m.getStyle()+" movement for 'stroke' param not implemented");
+			if(param.equals("stroke")) {
+				// change the stroke parameter
+				if(m.getStyle() == MovementStyle.RANGE) {
+					//System.out.println("Setting stroke from movement");
+					app.stroke(m.getMovement());
+				}
+				else {
+					System.err.println(m.getStyle()+" movement for 'stroke' param not implemented");
+				}
 			}
 		}
 		

@@ -56,8 +56,10 @@ public class CircleShape extends EllipseShape {
 		float drawSize = size;
 		if(movements != null) {
 			for(Movement m : movements) {
-				if(m.getParam().equals("size")) {
-					drawSize += m.getMovement();
+				for(String param : m.getParams()) {
+					if(param.equals("size")) {
+						drawSize += m.getMovement();
+					}
 				}
 			}
 		}

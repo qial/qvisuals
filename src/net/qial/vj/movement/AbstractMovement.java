@@ -1,23 +1,26 @@
 package net.qial.vj.movement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.qial.vj.effect.api.MovementDescription;
 
 public abstract class AbstractMovement implements Movement {
 	
-	protected String param;
+	protected List<String> params;
 	protected int amplitude;
 	protected int start;
 	protected int end;
 	protected MovementStyle style;
 
 	@Override
-	public String getParam() {
-		return param;
+	public List<String> getParams() {
+		return params;
 	}
 
 	@Override
-	public void setParam(String paramName) {
-		this.param = paramName;
+	public void setParams(List<String> params) {
+		this.params = params;
 	}
 	
 	@Override
@@ -63,10 +66,18 @@ public abstract class AbstractMovement implements Movement {
 	@Override
 	public void loadFrom(MovementDescription desc) {
 		// try to load the param name
-		String param = (String)desc.get("param");
+		Object param = desc.get("param");
 		if(param != null) {
-			setParam(param);
+			if(param instanceof List<?>) {
+				setParams((List<String>)param);
+			}
+			else if(param instanceof String) {
+				List<String> paramList = new ArrayList<String>();
+				paramList.add((String)param);
+				setParams(paramList);
+			}
 		}
+		
 		boolean configured = false;
 		// check for start/end
 		Integer start = (Integer) desc.get("start");

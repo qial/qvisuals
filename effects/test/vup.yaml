@@ -31,7 +31,7 @@ shapes:
   # Our first shape is a set of Vs
   - type: set
     # number of shapes
-    amount: 4
+    amount: 5
     # define shape
     shape: 
       # set as v shape
@@ -41,7 +41,7 @@ shapes:
     # list of parameters shown
     params:
       - name: offset 
-        start: 360
+        start: 300
         increment: 120
     # set movement for each shape
     movement: 
@@ -56,7 +56,7 @@ shapes:
     # define width
     width: 60
     # set the initial position above the set
-    offset: 240
+    offset: 180
     # define the movements
     movement:
       # first define the upward movement
@@ -68,10 +68,9 @@ shapes:
       # Now we define the fadeout
       - type: sequencer
         # set it to change color
-        param: fill
+        param: [fill, stroke]
         # set start color for sequence
         start: 255
         # set end color
         end: 0
-    
 
