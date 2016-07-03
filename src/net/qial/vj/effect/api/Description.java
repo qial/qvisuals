@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public abstract class Description {
+
+	private String label;
 	
 	private String type;
 	
@@ -34,7 +36,19 @@ public abstract class Description {
 	}
 	
 	public void set(String key, Object val) {
+		//WARNING: I was dumb at least once. The yaml reader will detect any
+		// variable names with get/set on the original pass so we don't
+		// need to handle it ourselves. Just pass anything it can't figure
+		// out to the defaults map and later code can deal with it.
 		defaults.put(key,val);
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
 	}
 	
 	public Map<String,Object> getDefaults() {
@@ -60,5 +74,7 @@ public abstract class Description {
 	public void setParent(Description parent) {
 		this.parent = parent;
 	}
+
+	public 
 	
 }
