@@ -74,7 +74,5 @@ public abstract class Description {
 	public void setParent(Description parent) {
 		this.parent = parent;
 	}
-
-	public 
 	
 }
