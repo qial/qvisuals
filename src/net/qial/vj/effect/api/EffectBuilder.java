@@ -99,6 +99,8 @@ public class EffectBuilder {
 		
 		// start recursing through the descriptions
 		findLabelsHelper(desc,labelMap);
+		
+		return labelMap;
 	}
 
 	private static void findLabelsHelper(Description theDesc, Map<String, Description> labelMap) {
@@ -117,19 +119,31 @@ public class EffectBuilder {
 			}
 		}
 		else if(theDesc instanceof MovementDescription) {
-			MovementDescription desc = (MovementDescription) theDesc;
-			
+			// movements don't currently have child descriptions
+			//MovementDescription desc = (MovementDescription) theDesc;
 		}
 		else if(theDesc instanceof PaintableDescription) {
 			PaintableDescription desc = (PaintableDescription) theDesc;
 			
+			// paintables have Lists of movements and params
+			if(desc.getMovements() != null) {
+				for(MovementDescription m : desc.getMovements()) {
+					findLabelsHelper(m,labelMap);
+				}
+			}
+			if(desc.getParams() != null) {
+				for(ParamDescription p : desc.getParams()) {
+					findLabelsHelper(p,labelMap);
+				}
+			}
 		}
 		else if(theDesc instanceof ParamDescription) {
-			ParamDescription desc = (ParamDescription) theDesc;
-			
+			// params don't currently have child descriptions
+			//ParamDescription desc = (ParamDescription) theDesc;
 		}
 		else if(theDesc instanceof SequencerDescription) {
-			SequencerDescription desc = (SequencerDescription) theDesc;
+			// sequencers don't currently have child descriptions
+			//SequencerDescription desc = (SequencerDescription) theDesc;
 		}
 	}
 
