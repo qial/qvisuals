@@ -123,6 +123,10 @@ public class PaintableDescription extends Description {
 	}
 	
 	public List<ParamDescription> getParams() {
+		// don't return null
+		if(params == null) {
+			params = new ArrayList<ParamDescription>(0);
+		}
 		return params;
 	}
 
@@ -145,6 +149,9 @@ public class PaintableDescription extends Description {
 	public String toString() {
 		StringBuilder sb = new StringBuilder(); 
 		sb.append("PaintableDescription{");
+		if(getLabel() != null) {
+			sb.append("label=").append(getLabel()).append(",");
+		}
 		sb.append("type=").append(getType());
 		if(shape != null)
 			sb.append(",shape=").append(shape);

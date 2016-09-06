@@ -46,6 +46,9 @@ public class MovementDescription extends Description {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("MovementDescription{");
+		if(getLabel() != null) {
+			sb.append("label=").append(getLabel()).append(",");
+		}
 		sb.append("type=").append(getType());
 		for(String k : getDefaults().keySet()) {
 			Object v = getDefaults().get(k);

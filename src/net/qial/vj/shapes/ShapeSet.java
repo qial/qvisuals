@@ -98,6 +98,9 @@ public class ShapeSet extends AbstractShape {
 			// update the shape description
 			for(ParamDescription p : desc.getParams()) {
 				shape.set(p.getName(), curParams.get(p.getName()));
+				// manually set x and y, I guess
+				shape.set("x", x);
+				shape.set("y", y);
 			}
 			
 			Shape s = (Shape) EffectBuilder.buildPaintable(shape);

@@ -15,7 +15,7 @@ defaults:
 
 # we need to define a sequencer and bpm (or default will be used)
 # for this test lets define multiple sequencers
-sequencer: 
+sequencers: 
   # create labelled sequencers!
   - label: main # set label for main sequencer
     # type defines which sequencer processes the rest of the values
@@ -24,7 +24,7 @@ sequencer:
     positive: true
 
 # define labelled movements
-movement:
+movements:
   - label: circles
     # type 'sequencer' means use the main sequencer
     type: sequencer
@@ -39,10 +39,13 @@ movement:
 shapes:
   # Our first shape is a set of circles
   - type: set
-    start-size: 600
-    increment: -60
     amount: 10
     shape: circle
+    # list parameters changed
+    params:
+      - name: size
+        start: 600
+        increment: -60
     # set movement for each shape
     movement: 
       # set label so we can use this again

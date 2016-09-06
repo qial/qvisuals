@@ -25,10 +25,13 @@ sequencer:
 shapes:
   # Our first shape is a set of circles
   - type: set
-    start-size: 600
-    increment: -60
     amount: 10
     shape: circle
+    # list parameters changed
+    params:
+      - name: size
+        start: 600
+        increment: -60
     # set movement for each shape
     movement: 
       # type 'sequencer' means use the main sequencer

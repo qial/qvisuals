@@ -27,6 +27,10 @@ public class EffectDescription extends Description {
 	private List<PaintableDescription> paintables;
 	private List<LinkedHashMap> shapes;
 	
+	// defines labelled sequencers and movements
+	private List<SequencerDescription> sequencers;
+	private List<MovementDescription> movements;
+	
 	// list of defaults
 	// paintables can access this
 	private HashMap<String,Object> defaults;
@@ -38,6 +42,9 @@ public class EffectDescription extends Description {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("EffectDescription{\n");
+		if(getLabel() != null) {
+			sb.append("  label=").append(getLabel()).append(",\n");
+		}
 		sb.append("  type=").append(getType()).append(",\n");
 		if(subtype != null) {
 			sb.append("  subtype=").append(subtype).append(",\n");
@@ -103,6 +110,16 @@ public class EffectDescription extends Description {
 			this.paintables = paintables;
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void setMovements(List<LinkedHashMap> mvmnts) {
+		// create list of movements
+		try {
+			List<MovementDescription> movements = new ArrayList<MovementDescription>();
+			for(LinkedHashMap map : mvmnts) {
+				
+			}
 		}
 	}
 
