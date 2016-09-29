@@ -19,12 +19,13 @@ public class MovementDescription extends Description {
 	
 	public void set(String k, Object v) {
 		// handle some values specially
-		if("type".equals(k)) {
-			setType((String) v);
-		}
-		else {
+		// type handling is now in Description rather than subclasses
+//		if("type".equals(k)) {
+//			setType((String) v);
+//		}
+//		else {
 			super.set(k,v);
-		}
+//		}
 	}
 
 //	public int getAmplitude() {

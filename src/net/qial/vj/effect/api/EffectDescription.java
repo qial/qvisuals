@@ -118,8 +118,21 @@ public class EffectDescription extends Description {
 		try {
 			List<MovementDescription> movements = new ArrayList<MovementDescription>();
 			for(LinkedHashMap map : mvmnts) {
-				
+				MovementDescription desc = new MovementDescription();
+				desc.setValues(map);
+//				String label = (String) map.getOrDefault("label", "");
+//				if(label == null || label.equals("")) {
+//					// no label, this is useless
+//					continue;
+//				}
+//				// set label info
+//				desc.setLabel(label);
+//				// set other values
+//				desc.setType((String) map.getOrDefault("type", ""));
+//				desc.set
 			}
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 
