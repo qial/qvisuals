@@ -11,3 +11,6 @@ doc/
 .classpath
 .project
 .settings/
+
+# mac osx stuff
+.DS_Store

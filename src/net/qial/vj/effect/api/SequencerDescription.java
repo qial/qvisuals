@@ -49,6 +49,9 @@ public class SequencerDescription extends Description {
 	public String toString() {
 		StringBuilder sb = new StringBuilder(); 
 		sb.append("SequencerDescription{");
+		if(getLabel() != null) {
+			sb.append("label=").append(getLabel()).append(",");
+		}
 		sb.append("type=").append(type);
 		sb.append(",bpm=").append(bpm);
 		sb.append(",positive=").append(positive);

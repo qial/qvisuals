@@ -54,6 +54,9 @@ public class EffectBuilder {
 		// make sure the classpath scanner is initialized
 		loadScanner();
 		
+		// create map of labelled resources
+		Map<String,Description> labelMap = findLabels(desc);
+		
 		Effect effect = null;
 		
 		String type = desc.getType();
@@ -91,6 +94,59 @@ public class EffectBuilder {
 //		return d;
 //	}
 	
+	private static Map<String, Description> findLabels(EffectDescription desc) {
+		Map<String,Description> labelMap = new HashMap<String,Description>();
+		
+		// start recursing through the descriptions
+		findLabelsHelper(desc,labelMap);
+		
+		return labelMap;
+	}
+
+	private static void findLabelsHelper(Description theDesc, Map<String, Description> labelMap) {
+		// check this description for a label first
+		String label = theDesc.getLabel();
+		if(label != null && !"".equals(label)) {
+			labelMap.put(label, theDesc);
+		}
+		
+		// now recurse onto any child descriptions
+		if(theDesc instanceof EffectDescription) {
+			EffectDescription desc = (EffectDescription) theDesc;
+			// load paintables
+			for(PaintableDescription pdesc : desc.getPaintables()) {
+				findLabelsHelper(pdesc,labelMap);
+			}
+		}
+		else if(theDesc instanceof MovementDescription) {
+			// movements don't currently have child descriptions
+			//MovementDescription desc = (MovementDescription) theDesc;
+		}
+		else if(theDesc instanceof PaintableDescription) {
+			PaintableDescription desc = (PaintableDescription) theDesc;
+			
+			// paintables have Lists of movements and params
+			if(desc.getMovements() != null) {
+				for(MovementDescription m : desc.getMovements()) {
+					findLabelsHelper(m,labelMap);
+				}
+			}
+			if(desc.getParams() != null) {
+				for(ParamDescription p : desc.getParams()) {
+					findLabelsHelper(p,labelMap);
+				}
+			}
+		}
+		else if(theDesc instanceof ParamDescription) {
+			// params don't currently have child descriptions
+			//ParamDescription desc = (ParamDescription) theDesc;
+		}
+		else if(theDesc instanceof SequencerDescription) {
+			// sequencers don't currently have child descriptions
+			//SequencerDescription desc = (SequencerDescription) theDesc;
+		}
+	}
+
 	public static Paintable buildPaintable(PaintableDescription desc) {
 		Paintable p = null;
 		

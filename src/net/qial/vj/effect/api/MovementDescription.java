@@ -19,12 +19,13 @@ public class MovementDescription extends Description {
 	
 	public void set(String k, Object v) {
 		// handle some values specially
-		if("type".equals(k)) {
-			setType((String) v);
-		}
-		else {
+		// type handling is now in Description rather than subclasses
+//		if("type".equals(k)) {
+//			setType((String) v);
+//		}
+//		else {
 			super.set(k,v);
-		}
+//		}
 	}
 
 //	public int getAmplitude() {
@@ -46,6 +47,9 @@ public class MovementDescription extends Description {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("MovementDescription{");
+		if(getLabel() != null) {
+			sb.append("label=").append(getLabel()).append(",");
+		}
 		sb.append("type=").append(getType());
 		for(String k : getDefaults().keySet()) {
 			Object v = getDefaults().get(k);
