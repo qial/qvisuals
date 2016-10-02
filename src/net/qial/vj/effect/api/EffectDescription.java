@@ -36,6 +36,7 @@ public class EffectDescription extends Description {
 	private HashMap<String,Object> defaults;
 	
 	public EffectDescription() {
+		super(DescriptionClass.EFFECT);
 		paintables = new ArrayList<PaintableDescription>();
 	}
 	

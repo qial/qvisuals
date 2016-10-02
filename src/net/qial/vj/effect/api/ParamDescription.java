@@ -11,7 +11,7 @@ public class ParamDescription extends Description {
 	private int increment = 0;
 	
 	public ParamDescription() {
-		
+		super(DescriptionClass.PARAM);
 	}
 	
 	public void set(String k, Object v) {

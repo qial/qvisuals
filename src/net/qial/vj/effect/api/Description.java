@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public abstract class Description {
+	
+	private DescriptionClass desc;
 
 	private String label;
 	
@@ -14,8 +16,13 @@ public abstract class Description {
 	
 	private Map<String,Object> defaults;
 	
-	public Description() {
+	public Description(DescriptionClass desc) {
 		defaults = new HashMap<String,Object>();
+		this.desc = desc;
+	}
+	
+	public DescriptionClass getDescriptionClass() {
+		return desc;
 	}
 	
 	public void setValues(LinkedHashMap map) {

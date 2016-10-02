@@ -14,6 +14,7 @@ public class MovementDescription extends Description {
 //	private DesignedEffect parent;
 	
 	public MovementDescription() {
+		super(DescriptionClass.MOVEMENT);
 //		others = new HashMap<String,Object>();
 	}
 	

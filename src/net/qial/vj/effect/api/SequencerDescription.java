@@ -11,8 +11,11 @@ import net.qial.vj.util.PrintUtil;
  *
  */
 public class SequencerDescription extends Description {
-	// the "type" key defines the sequencer class used
+	public SequencerDescription() {
+		super(DescriptionClass.SEQUENCER);
+	}
 	
+	// the "type" key defines the sequencer class used
 	private String type;
 	
 	private Integer bpm;

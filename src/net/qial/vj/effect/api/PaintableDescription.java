@@ -32,6 +32,7 @@ public class PaintableDescription extends Description {
 	//private DesignedEffect parent;
 
 	public PaintableDescription() {
+		super(DescriptionClass.PAINTABLE);
 //		others = new HashMap<String,Object>();
 	}
 	
