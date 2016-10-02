@@ -36,4 +36,9 @@ public class EffectBuilderTest {
 		return effect;
 	}
 
+	public static Effect testLabels() throws Exception {
+		EffectDescription desc = EffectReaderTest.testLabels();
+		return loadEffect(desc);
+	}
+
 }

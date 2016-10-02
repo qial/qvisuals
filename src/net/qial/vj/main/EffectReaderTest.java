@@ -44,4 +44,8 @@ public class EffectReaderTest {
 		return desc;
 	}
 
+	public static EffectDescription testLabels() throws Exception {
+		return readEffect("effects\\test\\testlabels.yaml");
+	}
+
 }

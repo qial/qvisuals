@@ -42,7 +42,8 @@ public class EffectViewerMain {
 		// TODO return something
 //		return new BpmPulseCircle();
 		// lets load a designed effect
-		return EffectBuilderTest.testCircles1();
+//		return EffectBuilderTest.testCircles1();
+		return EffectBuilderTest.testLabels();
 	}
 
 }

@@ -54,25 +54,32 @@ public class EffectDescription extends Description {
 		if(sequencer != null) {
 			sb.append("  seq=").append(sequencer).append(",\n");
 		}
-		if(shapes != null && shapes.size() > 0) {
-			sb.append("  shapes=[");
-			if(shapes != null) {
+		descriptionListToString(sb,"shapes",paintables);
+		descriptionListToString(sb,"sequencers",sequencers);
+		descriptionListToString(sb,"movements",movements);
+		sb.append("\n}");
+		return sb.toString();
+	}
+	
+	private void descriptionListToString(StringBuilder sb, String name,
+			List<? extends Description> descs) {
+		if(descs != null && descs.size() > 0) {
+			sb.append("  ").append(name).append("=[");
+			if(descs != null) {
 				boolean first = true;
-				for(PaintableDescription shape : paintables) {
+				for(Description desc : descs) {
 					if(first) {
 						first = false;
 					} else {
 						sb.append(",");
 					}
-					sb.append("\n    ").append(shape);
+					sb.append("\n    ").append(desc);
 					//System.out.println(shape);
 					//System.out.println(shape.get("movement"));
 				}
 			}
 			sb.append("\n  ]");
 		}
-		sb.append("\n}");
-		return sb.toString();
 	}
 
 	public SequencerDescription getSequencer() {
@@ -111,6 +118,14 @@ public class EffectDescription extends Description {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<SequencerDescription> getSequencers() {
+		return sequencers;
+	}
+	
+	public void setSequencers(List<LinkedHashMap> seqs) {
+		
 	}
 	
 	public void setMovements(List<LinkedHashMap> mvmnts) {
