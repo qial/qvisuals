@@ -33,7 +33,7 @@ public class EffectDescription extends Description {
 	
 	// list of defaults
 	// paintables can access this
-	private HashMap<String,Object> defaults;
+	//private HashMap<String,Object> defaults;
 	
 	public EffectDescription() {
 		super(DescriptionClass.EFFECT);
@@ -50,7 +50,7 @@ public class EffectDescription extends Description {
 		if(subtype != null) {
 			sb.append("  subtype=").append(subtype).append(",\n");
 		}
-		sb.append("  defaults={").append(PrintUtil.toString(defaults));
+		//sb.append("  defaults={").append(PrintUtil.toString(defaults));
 		sb.append("},\n");
 		if(sequencer != null) {
 			sb.append("  seq=").append(sequencer).append(",\n");
